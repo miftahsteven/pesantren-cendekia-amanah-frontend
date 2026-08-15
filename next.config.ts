@@ -17,10 +17,15 @@ const nextConfig: NextConfig = {
     ]
   },
   async rewrites() {
+    const backendUrl = process.env.INTERNAL_BACKEND_URL || 'http://127.0.0.1:3001';
     return [
       {
         source: '/uploads/:path*',
-        destination: 'http://localhost:3001/uploads/:path*'
+        destination: `${backendUrl}/uploads/:path*`
+      },
+      {
+        source: '/api/v1/:path*',
+        destination: `${backendUrl}/api/v1/:path*`
       }
     ];
   },

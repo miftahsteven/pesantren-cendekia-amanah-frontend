@@ -11,7 +11,7 @@ export default function FAQAccordion() {
   useEffect(() => {
     async function loadFaqs() {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
         const res = await fetch(`${apiUrl}/faqs`, { cache: 'no-store' });
         if (res.ok) {
           const json = await res.json();

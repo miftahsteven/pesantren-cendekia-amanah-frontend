@@ -13,7 +13,7 @@ export default function BrochureModal() {
   useEffect(() => {
     async function loadBrochures() {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
         const res = await fetch(`${apiUrl}/brochures`, { cache: 'no-store' });
         if (res.ok) {
           const json = await res.json();
