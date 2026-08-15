@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, UserCheck, GraduationCap, Trophy, HelpCircle, ExternalLink } from 'lucide-react';
+import { Users, UserCheck, GraduationCap, Trophy, HelpCircle, ExternalLink, Award, BookOpen } from 'lucide-react';
 import { apiGet } from '@/lib/api-client';
 
 const defaultStats = [
@@ -13,20 +13,26 @@ const iconMapping: Record<string, any> = {
   teachers: UserCheck,
   students: Users,
   alumni: GraduationCap,
-  achievements: Trophy
+  achievements: Trophy,
+  Users,
+  UserCheck,
+  GraduationCap,
+  Trophy,
+  Award,
+  BookOpen
 };
 
 export default async function BigStatistics() {
   let stats = defaultStats;
 
   try {
-    const dbStats = await apiGet<any[]>('/statistics');
+    const dbStats = await apiGet<any[]>('/statistics?section=HOME_INSTITUTION');
     if (dbStats && Array.isArray(dbStats) && dbStats.length > 0) {
-      stats = dbStats.map((item, idx) => ({
-        value: item.statValue || defaultStats[idx % defaultStats.length].value,
-        label: item.title || defaultStats[idx % defaultStats.length].label,
-        icon: iconMapping[item.iconKey] || defaultStats[idx % defaultStats.length].icon,
-        desc: item.subtitle || defaultStats[idx % defaultStats.length].desc
+      stats = dbStats.slice(0, 4).map((item, idx) => ({
+        value: item.value || defaultStats[idx % defaultStats.length].value,
+        label: item.label || defaultStats[idx % defaultStats.length].label,
+        icon: (item.icon && iconMapping[item.icon]) || defaultStats[idx % defaultStats.length].icon,
+        desc: defaultStats[idx % defaultStats.length].desc
       }));
     }
   } catch {
