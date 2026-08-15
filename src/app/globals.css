@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ca-deep-blue: #0B2F6B;
+  --color-ca-navy: #1A4FA0;
+  --color-ca-navy-dark: #12377E;
+  --color-ca-blue-link: #1F5FD0;
+  --color-ca-blue-soft: #EBF3FF;
+
+  --color-ca-green: #17804A;
+  --color-ca-green-dark: #12643E;
+  --color-ca-green-soft: #8ED6A8;
+  --color-ca-green-light: #EAF7EF;
+
+  --color-ca-red: #D8232A;
+  --color-ca-red-dark: #B81C22;
+  --color-ca-red-soft: #FDE8E9;
+
+  --color-ca-yellow: #F0BD28;
+  --color-ca-yellow-dark: #D4A31C;
+  --color-ca-yellow-soft: #FEF8E8;
+
+  --color-ca-text-primary: #28384A;
+  --color-ca-text-secondary: #5C6B7D;
+  --color-ca-text-muted: #7B8CA1;
+  --color-ca-text-light: #8BA1BD;
+
+  --color-ca-background: #FFFFFF;
+  --color-ca-background-soft: #F4F7FB;
+
+  --color-ca-border: #DDE6F1;
+  --color-ca-border-soft: #E6EDF6;
+
+  --font-poppins: var(--font-poppins), 'Poppins', system-ui, sans-serif;
+}
+
+:root {
+  --ca-deep-blue: #0B2F6B;
+  --ca-navy: #1A4FA0;
+  --ca-navy-dark: #12377E;
+  --ca-blue-link: #1F5FD0;
+  --ca-green: #17804A;
+  --ca-green-dark: #12643E;
+  --ca-green-soft: #8ED6A8;
+  --ca-red: #D8232A;
+  --ca-red-dark: #B81C22;
+  --ca-yellow: #F0BD28;
+  --ca-text-primary: #28384A;
+  --ca-text-secondary: #5C6B7D;
+  --ca-text-muted: #7B8CA1;
+  --ca-background: #FFFFFF;
+  --ca-background-soft: #F4F7FB;
+  --ca-border: #DDE6F1;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-poppins), 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #28384A;
+  background-color: #F4F7FB;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #F4F7FB;
+  color: #28384A;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F7FB;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #B9C8DC;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8BA1BD;
+}
+
+/* Card hover lifts */
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(11, 47, 107, 0.09);
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hide scrollbar for clean horizontal scrolls */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
