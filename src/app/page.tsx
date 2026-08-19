@@ -28,10 +28,13 @@ export const metadata: Metadata = {
   }
 };
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 import { contentRepo } from '@/repositories/content.repository';
 
 export default async function HomePage() {
-  const achievements = await contentRepo.getAchievements();
+  const achievements = await contentRepo.getHomeAchievements();
 
   return (
     <div className="space-y-4 sm:space-y-6">

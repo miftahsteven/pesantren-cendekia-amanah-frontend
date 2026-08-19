@@ -28,6 +28,7 @@ export interface IContentRepository {
   getFeaturedOpinion(): Promise<OpinionArticle | null>;
   getAgendas(): Promise<Agenda[]>;
   getAchievements(unit?: string): Promise<Achievement[]>;
+  getHomeAchievements(): Promise<Achievement[]>;
   getGalleryItems(category?: string): Promise<GalleryItem[]>;
   getTestimonials(): Promise<Testimonial[]>;
   getPartners(): Promise<Partner[]>;

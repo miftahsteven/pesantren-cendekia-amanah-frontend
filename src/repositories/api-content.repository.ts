@@ -67,7 +67,20 @@ export class ApiContentRepository implements IContentRepository {
           programs: unit.programs || [],
           facilities: unit.facilities || [],
           activities: unit.activities || [],
-          achievements: unit.achievements || [],
+          achievements: Array.isArray(unit.achievements)
+            ? unit.achievements.map((ach: any) => ({
+                id: ach.id,
+                title: ach.title,
+                winner: ach.winner,
+                category: ach.category,
+                competition: ach.category,
+                year: ach.year,
+                badge: ach.badge,
+                rank: ach.badge,
+                unit: (ach.unit?.code || unit.code || unitId) as UnitType,
+                image: ach.imageUrl || '/uploads/units/juara1.jpg'
+              }))
+            : [],
           testimonials: unit.testimonials || [],
           whatsappNumber: '6285776446468'
         };
@@ -273,23 +286,40 @@ export class ApiContentRepository implements IContentRepository {
     try {
       const url = unit && unit !== 'all' ? `/achievements?unit=${unit}` : '/achievements';
       const items = await apiGet<any[]>(url);
-      if (items && items.length > 0) {
+      if (Array.isArray(items)) {
         return items.map((ach) => ({
           id: ach.id,
           title: ach.title,
           winner: ach.winner,
           category: ach.category,
-          competition: ach.category || 'Kompetisi Nasional',
+          competition: ach.category,
           year: ach.year,
           badge: ach.badge,
           rank: ach.badge,
-          unit: ach.unit?.code || 'Global',
-          image: ach.imageUrl || '/uploads/gallery/pesantren1.png'
+          unit: ach.unit?.code || (unit && unit !== 'all' ? unit : 'Global'),
+          image: ach.imageUrl || '/uploads/units/juara1.jpg'
         }));
       }
       return this.fallback.getAchievements(unit);
     } catch {
       return this.fallback.getAchievements(unit);
+    }
+  }
+
+  async getHomeAchievements(): Promise<Achievement[]> {
+    try {
+      const units = ['pesantren', 'diniyah', 'smp', 'sma'];
+      const results = await Promise.all(
+        units.map((u) => this.getAchievements(u))
+      );
+      const combined: Achievement[] = [];
+      results.forEach((list) => {
+        combined.push(...list.slice(0, 2));
+      });
+      if (combined.length > 0) return combined;
+      return this.fallback.getHomeAchievements();
+    } catch {
+      return this.fallback.getHomeAchievements();
     }
   }
 

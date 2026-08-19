@@ -1,6 +1,12 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  (typeof window !== 'undefined' ? '/api/v1' : 'http://127.0.0.1:3001/api/v1');
+export function getApiBaseUrl(): string {
+  if (typeof window === 'undefined') {
+    // Server-side in Node.js (Server Components / SSR) - MUST use absolute backend URL
+    const backendUrl = process.env.INTERNAL_BACKEND_URL || 'http://127.0.0.1:3001';
+    return `${backendUrl}/api/v1`;
+  }
+  // Client-side in browser - use relative Next.js proxy route or env
+  return process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+}
 
 export interface ApiResponse<T> {
   success: boolean;
@@ -25,7 +31,9 @@ export async function apiFetch<T>(
   endpoint: string,
   options?: RequestInit
 ): Promise<ApiResponse<T>> {
-  const url = `${API_BASE_URL}${endpoint.startsWith('/') ? endpoint : `/${endpoint}`}`;
+  const baseUrl = getApiBaseUrl();
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const url = `${baseUrl}${cleanEndpoint}`;
 
   const defaultHeaders: HeadersInit = {
     'Content-Type': 'application/json'
@@ -37,7 +45,7 @@ export async function apiFetch<T>(
       ...defaultHeaders,
       ...options?.headers
     },
-    cache: 'no-store' // Fresh data for dynamic integration
+    cache: 'no-store' // Always fresh data from database
   };
 
   const response = await fetch(url, config);

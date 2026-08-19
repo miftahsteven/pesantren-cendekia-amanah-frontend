@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   }
 };
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function SMPPage() {
   const unit = await contentRepo.getEducationUnit('smp');
   if (!unit) notFound();

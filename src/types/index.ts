@@ -144,6 +144,9 @@ export interface Achievement {
   year: string;
   unit: UnitType | 'Global';
   image?: string;
+  badge?: string;
+  winner?: string;
+  category?: string;
 }
 
 export interface GalleryItem {

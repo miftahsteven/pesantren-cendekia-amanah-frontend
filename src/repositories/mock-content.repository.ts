@@ -34,11 +34,19 @@ export class MockContentRepository implements IContentRepository {
   }
 
   async getEducationUnit(unitId: string): Promise<EducationUnit | null> {
-    return educationUnits[unitId] || null;
+    const unit = educationUnits[unitId];
+    if (!unit) return null;
+    return {
+      ...unit,
+      achievements: studentAchievements.filter((item) => item.unit === unitId)
+    };
   }
 
   async getAllEducationUnits(): Promise<EducationUnit[]> {
-    return Object.values(educationUnits);
+    return Object.values(educationUnits).map((unit) => ({
+      ...unit,
+      achievements: studentAchievements.filter((item) => item.unit === unit.id)
+    }));
   }
 
   async getNewsArticles(category?: string, query?: string): Promise<NewsArticle[]> {
@@ -97,6 +105,16 @@ export class MockContentRepository implements IContentRepository {
       return studentAchievements.filter((item) => item.unit === unit);
     }
     return studentAchievements;
+  }
+
+  async getHomeAchievements(): Promise<Achievement[]> {
+    const units: ('pesantren' | 'diniyah' | 'smp' | 'sma')[] = ['pesantren', 'diniyah', 'smp', 'sma'];
+    const result: Achievement[] = [];
+    for (const u of units) {
+      const items = studentAchievements.filter((item) => item.unit === u).slice(0, 2);
+      result.push(...items);
+    }
+    return result.length > 0 ? result : studentAchievements.slice(0, 8);
   }
 
   async getGalleryItems(category?: string): Promise<GalleryItem[]> {

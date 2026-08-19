@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { EducationUnit } from '@/types';
 import Breadcrumb from '@/components/common/Breadcrumb';
 import SectionHeader from '@/components/common/SectionHeader';
-import PrestasiCarousel from '@/components/home/PrestasiCarousel';
+import UnitPrestasiSection from '@/components/unit/UnitPrestasiSection';
 import TestimoniSection from '@/components/home/TestimoniSection';
 import GlobalCTA from '@/components/layout/GlobalCTA';
 import {
@@ -332,7 +332,7 @@ export default function EducationUnitPage({ unit }: EducationUnitPageProps) {
       </section>
 
       {/* Prestasi Santri */}
-      <PrestasiCarousel />
+      <UnitPrestasiSection unitCode={unit.id} initialAchievements={unit.achievements} />
 
       {/* Testimoni */}
       <TestimoniSection />

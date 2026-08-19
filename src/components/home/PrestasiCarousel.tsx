@@ -18,14 +18,20 @@ export default function PrestasiCarousel({ initialAchievements }: PrestasiCarous
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!initialAchievements || initialAchievements.length === 0) {
-      contentRepo.getAchievements().then((data) => {
-        if (data && data.length > 0) setItems(data);
-      }).catch(() => {});
-    } else {
-      setItems(initialAchievements);
-    }
-  }, [initialAchievements]);
+    let isMounted = true;
+    contentRepo
+      .getHomeAchievements()
+      .then((data) => {
+        if (isMounted && Array.isArray(data) && data.length > 0) {
+          setItems(data);
+        }
+      })
+      .catch(() => {});
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -103,11 +109,11 @@ export default function PrestasiCarousel({ initialAchievements }: PrestasiCarous
                 {/* Rank Badge */}
                 <div className="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#F0BD28] text-[#0B2F6B] shadow-sm">
                   <Medal className="w-3.5 h-3.5" />
-                  <span>{item.rank}</span>
+                  <span>{item.badge || item.rank || 'Juara'}</span>
                 </div>
 
                 <span className="absolute bottom-3 right-3 text-xs font-bold text-white bg-black/40 backdrop-blur-xs px-2.5 py-0.5 rounded-md">
-                  {item.year}
+                  {item.year || '2026'}
                 </span>
               </div>
 
@@ -115,15 +121,15 @@ export default function PrestasiCarousel({ initialAchievements }: PrestasiCarous
               <div className="p-5 space-y-2 flex-1 flex flex-col justify-between">
                 <div className="space-y-1">
                   <span className="text-[10px] font-bold text-[#17804A] uppercase tracking-wider">
-                    Tingkat Nasional
+                    {item.unit ? `Unit ${item.unit}` : 'Tingkat Nasional'}
                   </span>
-                  <h3 className="text-sm font-bold text-[#0B2F6B] leading-snug line-clamp-2">
-                    {item.competition}
+                  <h3 className="text-sm font-bold text-[#0B2F6B] leading-snug line-clamp-2" title={item.title}>
+                    {item.title}
                   </h3>
                 </div>
 
                 <p className="text-xs text-[#5C6B7D] line-clamp-2 pt-1 border-t border-[#F4F7FB]">
-                  {item.title}
+                  {item.category ? (item.winner ? `${item.category} • ${item.winner}` : item.category) : (item.winner || item.competition || '')}
                 </p>
               </div>
             </div>
