@@ -31,6 +31,7 @@ export function getUploadUrl(path: string | undefined | null): string {
   if (UPLOADS_BASE === '/uploads') {
     if (path.startsWith('/uploads/')) return path;
     if (path.startsWith('/images/galery/')) return `/uploads/gallery/${path.slice('/images/galery/'.length)}`;
+    if (path.startsWith('/images/gallery/')) return `/uploads/gallery/${path.slice('/images/gallery/'.length)}`;
     if (path.startsWith('/images/')) return `/uploads/${path.slice('/images/'.length)}`;
     if (path.startsWith('/logo/')) return `/uploads/logo/${path.slice('/logo/'.length)}`;
     return `/uploads/${path.replace(/^\//, '')}`;
@@ -42,6 +43,9 @@ export function getUploadUrl(path: string | undefined | null): string {
   }
   if (path.startsWith('/images/galery/')) {
     return `${UPLOADS_BASE}/gallery/${path.slice('/images/galery/'.length)}`;
+  }
+  if (path.startsWith('/images/gallery/')) {
+    return `${UPLOADS_BASE}/gallery/${path.slice('/images/gallery/'.length)}`;
   }
   if (path.startsWith('/images/')) {
     return `${UPLOADS_BASE}/${path.slice('/images/'.length)}`;

@@ -77,12 +77,12 @@ export default function ArticleDetail({ article, relatedNews }: ArticleDetailPro
           {/* Article Header */}
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#EAF7EF] text-[#17804A] border border-[#8ED6A8]/40 uppercase tracking-wider">
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#FDE8E9] text-[#D8232A] border border-[#FCA5A5]/40 uppercase tracking-wider">
                 {article.category}
               </span>
               <div className="flex items-center gap-4 text-xs text-[#7B8CA1]">
                 <span className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-[#17804A]" />
+                  <Calendar className="w-3.5 h-3.5 text-[#D8232A]" />
                   {article.publishedAt}
                 </span>
                 <span className="flex items-center gap-1.5">
@@ -183,7 +183,7 @@ export default function ArticleDetail({ article, relatedNews }: ArticleDetailPro
                   onClick={handleCopyLink}
                   className={`px-3.5 py-2 rounded-xl text-xs font-bold border transition-colors flex items-center gap-1.5 ${
                     copied
-                      ? 'bg-[#EAF7EF] border-[#8ED6A8] text-[#17804A]'
+                      ? 'bg-[#FDE8E9] border-[#FCA5A5] text-[#D8232A]'
                       : 'bg-[#F4F7FB] border-[#DDE6F1] text-[#28384A] hover:bg-[#EBF3FF]'
                   }`}
                 >
@@ -202,7 +202,7 @@ export default function ArticleDetail({ article, relatedNews }: ArticleDetailPro
           <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
             <div className="flex items-center justify-between">
               <div className="space-y-1">
-                <span className="text-xs font-bold text-[#17804A] uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#D8232A] uppercase tracking-wider">
                   Rekomendasi Bacaan
                 </span>
                 <h2 className="text-xl sm:text-2xl font-bold text-[#0B2F6B]">
@@ -246,7 +246,7 @@ export default function ArticleDetail({ article, relatedNews }: ArticleDetailPro
 
                     <Link
                       href={`/berita/${item.slug}`}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-[#1A4FA0] group-hover:text-[#17804A] transition-colors pt-2 border-t border-[#DDE6F1]"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#1A4FA0] group-hover:text-[#D8232A] transition-colors pt-2 border-t border-[#DDE6F1]"
                     >
                       <span>Baca Artikel</span>
                       <ArrowRight className="w-3 h-3" />

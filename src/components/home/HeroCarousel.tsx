@@ -132,7 +132,7 @@ export default function HeroCarousel() {
 
             {/* Slide Content */}
             <div className="relative z-10 max-w-3xl px-6 sm:px-12 py-12 text-white space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#17804A] text-white shadow-sm tracking-wider uppercase">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#D8232A] text-white shadow-sm tracking-wider uppercase">
                 <span>{slide.badge}</span>
               </div>
 

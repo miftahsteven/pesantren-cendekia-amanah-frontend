@@ -17,7 +17,7 @@ export default async function SambutanPengasuh() {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-sm">
               {/* Background gradient decorative card */}
-              <div className="absolute inset-0 bg-linear-to-tr from-[#0B2F6B] to-[#17804A] rounded-3xl transform -rotate-2 scale-98 opacity-90 shadow-xl" />
+              <div className="absolute inset-0 bg-linear-to-tr from-[#0B2F6B] to-[#D8232A] rounded-3xl transform -rotate-2 scale-98 opacity-90 shadow-xl" />
 
               {/* Main Photo Card */}
               <div className="relative bg-white rounded-3xl p-3 sm:p-4 border border-[#DDE6F1] shadow-xl overflow-hidden">
@@ -34,7 +34,7 @@ export default async function SambutanPengasuh() {
                   {/* Floating Name Badge */}
                   <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-xl p-3 border border-white/40 shadow-md">
                     <p className="text-xs font-black text-[#0B2F6B] tracking-tight">{leader.name}</p>
-                    <p className="text-[11px] text-[#17804A] font-bold">{leader.role}</p>
+                    <p className="text-[11px] text-[#D8232A] font-bold">{leader.role}</p>
                   </div>
                 </div>
               </div>
@@ -44,7 +44,7 @@ export default async function SambutanPengasuh() {
           {/* Sambutan Content (7 cols on lg) */}
           <div className="lg:col-span-7 space-y-6">
             <div className="space-y-2">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#EAF7EF] text-[#17804A] border border-[#8ED6A8]/40 uppercase tracking-wider">
+              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#FDE8E9] text-[#D8232A] border border-[#FCA5A5]/40 uppercase tracking-wider">
                 Sambutan Pengasuh
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B2F6B] tracking-tight leading-tight">
@@ -53,8 +53,8 @@ export default async function SambutanPengasuh() {
             </div>
 
             {/* Quote Box */}
-            <div className="relative pl-6 border-l-4 border-[#17804A] space-y-3">
-              <Quote className="w-8 h-8 text-[#8ED6A8] absolute -top-4 -left-3 opacity-60 pointer-events-none" />
+            <div className="relative pl-6 border-l-4 border-[#D8232A] space-y-3">
+              <Quote className="w-8 h-8 text-[#FCA5A5] absolute -top-4 -left-3 opacity-60 pointer-events-none" />
               {leader.quote.map((p, idx) => (
                 <p key={idx} className="text-sm sm:text-base text-[#5C6B7D] leading-relaxed italic">
                   &ldquo;{p}&rdquo;
@@ -65,19 +65,19 @@ export default async function SambutanPengasuh() {
             {/* Bullets Highlight */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <div className="flex items-center gap-2.5 text-xs text-[#28384A] font-semibold">
-                <CheckCircle2 className="w-4 h-4 text-[#17804A] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#D8232A] shrink-0" />
                 <span>Sanad Keilmuan Bersambung</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs text-[#28384A] font-semibold">
-                <CheckCircle2 className="w-4 h-4 text-[#17804A] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#D8232A] shrink-0" />
                 <span>Karakter & Akhlakul Karimah</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs text-[#28384A] font-semibold">
-                <CheckCircle2 className="w-4 h-4 text-[#17804A] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#D8232A] shrink-0" />
                 <span>Penguasaan Bahasa Internasional</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs text-[#28384A] font-semibold">
-                <CheckCircle2 className="w-4 h-4 text-[#17804A] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#D8232A] shrink-0" />
                 <span>Prestasi Akademik Unggulan</span>
               </div>
             </div>

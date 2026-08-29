@@ -52,7 +52,7 @@ export default function MobileNavigation() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-[10px] font-bold tracking-wider text-[#17804A] uppercase leading-tight">
+            <span className="text-[10px] font-bold tracking-wider text-[#D8232A] uppercase leading-tight">
               Pesantren
             </span>
             <span className="text-base font-black tracking-tight text-[#0B2F6B] leading-tight">
@@ -159,7 +159,7 @@ export default function MobileNavigation() {
                   }}
                   className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-white border border-[#DDE6F1] text-[#28384A] font-medium"
                 >
-                  <Download className="w-3.5 h-3.5 text-[#17804A]" />
+                  <Download className="w-3.5 h-3.5 text-[#D8232A]" />
                   <span>Unduh Brosur</span>
                 </button>
 
@@ -177,7 +177,7 @@ export default function MobileNavigation() {
 
               <div className="flex items-center justify-between text-xs text-[#5C6B7D] pt-2 border-t border-[#DDE6F1]">
                 <Link href="/kontak" className="flex items-center gap-1 hover:text-[#0B2F6B]">
-                  <Phone className="w-3.5 h-3.5 text-[#17804A]" />
+                  <Phone className="w-3.5 h-3.5 text-[#D8232A]" />
                   <span>Kontak Kami</span>
                 </Link>
                 <a

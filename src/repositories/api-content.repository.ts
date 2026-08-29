@@ -13,7 +13,9 @@ import {
   ContactInfo,
   PPDBFormData,
   PPDBSubmissionResult,
-  UnitType
+  UnitType,
+  FacilityItem,
+  OrganizationMember
 } from '@/types';
 import { IContentRepository } from './content.repository';
 import { MockContentRepository } from './mock-content.repository';
@@ -118,6 +120,40 @@ export class ApiContentRepository implements IContentRepository {
       return this.fallback.getAllEducationUnits();
     } catch {
       return this.fallback.getAllEducationUnits();
+    }
+  }
+
+  async getFacilities(unitSlug?: string): Promise<FacilityItem[]> {
+    try {
+      const params = new URLSearchParams();
+      if (unitSlug && unitSlug !== 'ALL') {
+        params.append('unitSlug', unitSlug);
+      }
+      const queryStr = params.toString() ? `?${params.toString()}` : '';
+      const res = await apiGet<FacilityItem[]>(`/facilities${queryStr}`);
+      if (res && Array.isArray(res) && res.length > 0) {
+        return res;
+      }
+      return this.fallback.getFacilities(unitSlug);
+    } catch {
+      return this.fallback.getFacilities(unitSlug);
+    }
+  }
+
+  async getOrganizationMembers(unitSlug?: string): Promise<OrganizationMember[]> {
+    try {
+      const params = new URLSearchParams();
+      if (unitSlug && unitSlug !== 'ALL') {
+        params.append('unitSlug', unitSlug);
+      }
+      const queryStr = params.toString() ? `?${params.toString()}` : '';
+      const res = await apiGet<OrganizationMember[]>(`/organizations${queryStr}`);
+      if (res && Array.isArray(res) && res.length > 0) {
+        return res;
+      }
+      return this.fallback.getOrganizationMembers(unitSlug);
+    } catch {
+      return this.fallback.getOrganizationMembers(unitSlug);
     }
   }
 

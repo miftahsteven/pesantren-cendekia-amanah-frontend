@@ -37,7 +37,7 @@ export default function DesktopNavigation() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-[11px] font-bold tracking-widest text-[#17804A] uppercase leading-tight">
+            <span className="text-[11px] font-bold tracking-widest text-[#D8232A] uppercase leading-tight">
               Pesantren
             </span>
             <span className="text-lg font-black tracking-tight text-[#0B2F6B] leading-tight group-hover:text-[#1A4FA0] transition-colors">

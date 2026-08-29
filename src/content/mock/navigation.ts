@@ -12,7 +12,7 @@ export const mainNavigation: NavigationItem[] = [
       { label: 'Profil Lembaga', href: '/tentang-kami#profil', description: 'Mengenal sejarah dan visi Cendekia Amanah' },
       { label: 'Visi & Misi', href: '/tentang-kami#visi-misi', description: 'Arah dan komitmen pendidikan terpadu' },
       { label: 'Sambutan Pengasuh', href: '/tentang-kami#sambutan', description: 'Pesan dari KH. Cholil Nafis, Lc., MA., Ph.D' },
-      { label: 'Fasilitas Lembaga', href: '/tentang-kami#fasilitas', description: 'Sarana & prasarana kampus terpadu' }
+      { label: 'Fasilitas Pesantren', href: '/tentang-kami#fasilitas', description: 'Sarana & prasarana kampus terpadu' }
     ]
   },
   {
@@ -23,7 +23,6 @@ export const mainNavigation: NavigationItem[] = [
       { label: 'Program Unggulan', href: '/pesantren#program' },
       { label: 'Kurikulum & Kitab', href: '/pesantren#kurikulum' },
       { label: 'Kehidupan Santri', href: '/pesantren#kegiatan' },
-      { label: 'Fasilitas Asrama', href: '/pesantren#fasilitas' },
       { label: 'Prestasi Santri', href: '/pesantren#prestasi' }
     ]
   },
@@ -34,7 +33,7 @@ export const mainNavigation: NavigationItem[] = [
       { label: 'Profil SMP', href: '/smp#profil' },
       { label: 'Keunggulan Kurikulum', href: '/smp#keunggulan' },
       { label: 'Program Unggulan', href: '/smp#program' },
-      { label: 'Fasilitas Belajar', href: '/smp#fasilitas' },
+      { label: 'Struktur Organisasi', href: '/smp#organisasi' },
       { label: 'Ekstrakurikuler', href: '/smp#kegiatan' },
       { label: 'Prestasi Siswa', href: '/smp#prestasi' }
     ]
@@ -45,7 +44,7 @@ export const mainNavigation: NavigationItem[] = [
     children: [
       { label: 'Profil SMA', href: '/sma#profil' },
       { label: 'Program Unggulan & PTN', href: '/sma#program' },
-      { label: 'Fasilitas Laboratorium', href: '/sma#fasilitas' },
+      { label: 'Struktur Organisasi', href: '/sma#organisasi' },
       { label: 'Kegiatan Riset & Siswa', href: '/sma#kegiatan' },
       { label: 'Prestasi Nasional', href: '/sma#prestasi' }
     ]
@@ -57,7 +56,6 @@ export const mainNavigation: NavigationItem[] = [
       { label: 'Profil Diniyah', href: '/diniyah#profil' },
       { label: 'Kurikulum Diniyah', href: '/diniyah#kurikulum' },
       { label: 'Program Pembelajaran', href: '/diniyah#program' },
-      { label: 'Fasilitas Belajar', href: '/diniyah#fasilitas' },
       { label: 'Prestasi Santri', href: '/diniyah#prestasi' }
     ]
   },

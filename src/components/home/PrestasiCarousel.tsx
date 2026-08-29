@@ -120,7 +120,7 @@ export default function PrestasiCarousel({ initialAchievements }: PrestasiCarous
               {/* Info */}
               <div className="p-5 space-y-2 flex-1 flex flex-col justify-between">
                 <div className="space-y-1">
-                  <span className="text-[10px] font-bold text-[#17804A] uppercase tracking-wider">
+                  <span className="text-[10px] font-bold text-[#D8232A] uppercase tracking-wider">
                     {item.unit ? `Unit ${item.unit}` : 'Tingkat Nasional'}
                   </span>
                   <h3 className="text-sm font-bold text-[#0B2F6B] leading-snug line-clamp-2" title={item.title}>

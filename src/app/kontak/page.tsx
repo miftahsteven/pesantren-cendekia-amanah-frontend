@@ -47,7 +47,7 @@ export default function ContactPage() {
           {/* Hero Banner */}
           <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 text-white bg-linear-to-r from-[#0B2F6B] via-[#1A4FA0] to-[#0B2F6B] shadow-xl border border-[#12377E]">
             <div className="max-w-2xl space-y-3">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#17804A] text-white uppercase tracking-wider shadow-xs">
+              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#D8232A] text-white uppercase tracking-wider shadow-xs">
                 Pusat Layanan & Sekretariat
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
@@ -90,7 +90,7 @@ export default function ContactPage() {
           {/* Card 2: Telepon */}
           <div className="bg-white p-6 rounded-2xl sm:rounded-3xl border border-[#DDE6F1] shadow-xs hover-lift flex flex-col justify-between space-y-3">
             <div className="space-y-2">
-              <div className="w-12 h-12 rounded-xl bg-[#EAF7EF] text-[#17804A] flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-[#FDE8E9] text-[#D8232A] flex items-center justify-center">
                 <Phone className="w-6 h-6" />
               </div>
               <h3 className="text-sm font-bold text-[#0B2F6B]">Nomor Telepon</h3>
@@ -100,7 +100,7 @@ export default function ContactPage() {
             </div>
             <a
               href="tel:+6285776446468"
-              className="text-xs font-bold text-[#17804A] hover:underline"
+              className="text-xs font-bold text-[#D8232A] hover:underline"
             >
               {contactInfo.phone}
             </a>
@@ -148,10 +148,10 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left: WhatsApp Per Unit List (5 cols on lg) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-linear-to-br from-[#17804A] to-[#12643E] p-6 sm:p-8 rounded-3xl text-white shadow-lg space-y-6">
+            <div className="bg-linear-to-br from-[#D8232A] to-[#B81C22] p-6 sm:p-8 rounded-3xl text-white shadow-lg space-y-6">
               <div className="space-y-2">
                 <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
-                  <MessageSquare className="w-5 h-5 fill-white text-[#17804A]" />
+                  <MessageSquare className="w-5 h-5 fill-white text-[#D8232A]" />
                 </div>
                 <h3 className="text-xl font-bold text-white">Layanan WhatsApp Unit</h3>
                 <p className="text-xs text-white/80 leading-relaxed">
@@ -172,7 +172,7 @@ export default function ContactPage() {
                       className="flex items-center justify-between p-4 rounded-2xl bg-white/10 hover:bg-white text-white hover:text-[#0B2F6B] border border-white/20 transition-all duration-200 group"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-xl bg-white/15 text-white group-hover:bg-[#EAF7EF] group-hover:text-[#17804A] transition-colors">
+                        <div className="p-2 rounded-xl bg-white/15 text-white group-hover:bg-[#FDE8E9] group-hover:text-[#D8232A] transition-colors">
                           <Icon className="w-4 h-4" />
                         </div>
                         <div>
@@ -183,7 +183,7 @@ export default function ContactPage() {
                         </div>
                       </div>
 
-                      <ArrowUpRight className="w-4 h-4 text-white/60 group-hover:text-[#17804A] transition-colors" />
+                      <ArrowUpRight className="w-4 h-4 text-white/60 group-hover:text-[#D8232A] transition-colors" />
                     </a>
                   );
                 })}

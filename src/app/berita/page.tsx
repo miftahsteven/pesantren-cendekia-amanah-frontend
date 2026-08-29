@@ -31,7 +31,7 @@ export default async function NewsPage() {
           {/* Hero Banner */}
           <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 text-white bg-linear-to-r from-[#0B2F6B] via-[#1A4FA0] to-[#0B2F6B] shadow-xl border border-[#12377E]">
             <div className="max-w-2xl space-y-3">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#17804A] text-white uppercase tracking-wider shadow-xs">
+              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#D8232A] text-white uppercase tracking-wider shadow-xs">
                 Kabar Cendekia
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">

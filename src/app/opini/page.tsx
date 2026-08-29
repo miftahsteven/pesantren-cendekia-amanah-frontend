@@ -36,7 +36,7 @@ export default async function OpinionPage() {
           {/* Hero Banner */}
           <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 text-white bg-linear-to-r from-[#0B2F6B] via-[#1A4FA0] to-[#0B2F6B] shadow-xl border border-[#12377E]">
             <div className="max-w-2xl space-y-3">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#17804A] text-white uppercase tracking-wider shadow-xs">
+              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#D8232A] text-white uppercase tracking-wider shadow-xs">
                 Kolom Pemikiran
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
@@ -75,7 +75,7 @@ export default async function OpinionPage() {
                     Opini Utama
                   </span>
                   <span className="text-xs text-[#7B8CA1] flex items-center gap-1">
-                    <Calendar className="w-3.5 h-3.5 text-[#17804A]" />
+                    <Calendar className="w-3.5 h-3.5 text-[#D8232A]" />
                     {featuredOpinion.publishedAt}
                   </span>
                 </div>
@@ -93,7 +93,7 @@ export default async function OpinionPage() {
                 {/* Author Info & CTA */}
                 <div className="pt-4 border-t border-[#F4F7FB] flex flex-wrap items-center justify-between gap-4">
                   <div className="flex items-center gap-2">
-                    <UserCheck className="w-4 h-4 text-[#17804A]" />
+                    <UserCheck className="w-4 h-4 text-[#D8232A]" />
                     <div>
                       <h3 className="text-xs font-bold text-[#28384A]">{featuredOpinion.author.name}</h3>
                       <p className="text-[10px] text-[#7B8CA1]">{featuredOpinion.author.role}</p>
@@ -132,7 +132,7 @@ export default async function OpinionPage() {
 
               <div className="space-y-3 relative z-10">
                 <div className="flex items-center gap-2 text-[11px] text-[#7B8CA1]">
-                  <Calendar className="w-3 h-3 text-[#17804A]" />
+                  <Calendar className="w-3 h-3 text-[#D8232A]" />
                   <span>{item.publishedAt}</span>
                   <span>•</span>
                   <span>{item.readTime}</span>

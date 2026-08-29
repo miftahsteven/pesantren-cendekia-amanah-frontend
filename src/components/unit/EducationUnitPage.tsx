@@ -1,10 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { EducationUnit } from '@/types';
+import { EducationUnit, OrganizationMember } from '@/types';
 import Breadcrumb from '@/components/common/Breadcrumb';
 import SectionHeader from '@/components/common/SectionHeader';
 import UnitPrestasiSection from '@/components/unit/UnitPrestasiSection';
+import UnitOrganizationSection from '@/components/unit/UnitOrganizationSection';
 import TestimoniSection from '@/components/home/TestimoniSection';
 import GlobalCTA from '@/components/layout/GlobalCTA';
 import {
@@ -28,9 +29,10 @@ import { getUploadUrl } from '@/lib/uploads';
 
 interface EducationUnitPageProps {
   unit: EducationUnit;
+  organizations?: OrganizationMember[];
 }
 
-export default function EducationUnitPage({ unit }: EducationUnitPageProps) {
+export default function EducationUnitPage({ unit, organizations }: EducationUnitPageProps) {
   const getFeatureIcon = (name: string) => {
     switch (name) {
       case 'BookOpen':
@@ -90,7 +92,7 @@ export default function EducationUnitPage({ unit }: EducationUnitPageProps) {
 
             {/* Banner Text Overlay */}
             <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-12 text-white space-y-3 max-w-3xl">
-              <span className="inline-block self-start px-3 py-1 rounded-full text-xs font-bold bg-[#17804A] text-white uppercase tracking-wider shadow-xs">
+              <span className="inline-block self-start px-3 py-1 rounded-full text-xs font-bold bg-[#D8232A] text-white uppercase tracking-wider shadow-xs">
                 {unit.badge}
               </span>
               <h1 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
@@ -132,7 +134,7 @@ export default function EducationUnitPage({ unit }: EducationUnitPageProps) {
                 href="/kontak"
                 className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#28384A] bg-[#F4F7FB] hover:bg-gray-200 transition-colors"
               >
-                <Phone className="w-3 h-3 text-[#17804A]" />
+                <Phone className="w-3 h-3 text-[#D8232A]" />
                 <span>Kontak</span>
               </Link>
               <Link
@@ -183,7 +185,7 @@ export default function EducationUnitPage({ unit }: EducationUnitPageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 space-y-6">
               <div className="space-y-2">
-                <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#EAF7EF] text-[#17804A] border border-[#8ED6A8]/40 uppercase tracking-wider">
+                <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#FDE8E9] text-[#D8232A] border border-[#FCA5A5]/40 uppercase tracking-wider">
                   Mengenal Lebih Dekat
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2F6B] tracking-tight">
@@ -201,7 +203,7 @@ export default function EducationUnitPage({ unit }: EducationUnitPageProps) {
               <div className="space-y-2.5 pt-2">
                 {unit.bulletPoints.map((bp, i) => (
                   <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-[#28384A]">
-                    <CheckCircle2 className="w-4 h-4 text-[#17804A] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#D8232A] shrink-0" />
                     <span>{bp}</span>
                   </div>
                 ))}
@@ -260,43 +262,13 @@ export default function EducationUnitPage({ unit }: EducationUnitPageProps) {
         </div>
       </section>
 
-      {/* Fasilitas Unit */}
-      <section id="fasilitas" className="py-12 bg-white border-y border-[#DDE6F1]">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
-          <SectionHeader
-            badge="Sarana & Prasarana"
-            title="FASILITAS UNGGULAN"
-            subtitle={`Sarana belajar, ibadah, dan asrama modern yang mendukung kenyamanan belajar di ${unit.name}.`}
-          />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {unit.facilities.map((fac) => (
-              <div
-                key={fac.id}
-                className="relative h-60 rounded-2xl overflow-hidden border border-[#DDE6F1] shadow-xs group hover-lift"
-              >
-                {fac.image ? (
-                  <Image
-                    src={getUploadUrl(fac.image)}
-                    alt={fac.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="400px"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-[#EBF3FF] flex items-center justify-center">
-                    <span className="text-[#1A4FA0] text-3xl">🏫</span>
-                  </div>
-                )}
-                <div className="absolute inset-0 bg-linear-to-t from-[#0B2F6B]/90 via-black/20 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-sm font-bold">{fac.name}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Struktur Organisasi & Tenaga Pendidik */}
+      {organizations && organizations.length > 0 && (
+        <UnitOrganizationSection
+          unitName={unit.shortName || unit.name}
+          members={organizations}
+        />
+      )}
 
       {/* Kegiatan Santri / Siswa */}
       <section id="kegiatan">
@@ -315,7 +287,7 @@ export default function EducationUnitPage({ unit }: EducationUnitPageProps) {
                 className="bg-white p-5 rounded-2xl border border-[#DDE6F1] shadow-xs hover-lift space-y-2"
               >
                 <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-[#EAF7EF] text-[#17804A] flex items-center justify-center shrink-0">
+                  <div className="w-7 h-7 rounded-full bg-[#FDE8E9] text-[#D8232A] flex items-center justify-center shrink-0">
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
                   <h3 className="text-sm font-bold text-[#0B2F6B] leading-snug">

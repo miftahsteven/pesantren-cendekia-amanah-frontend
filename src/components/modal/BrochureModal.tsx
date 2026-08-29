@@ -77,7 +77,7 @@ export default function BrochureModal() {
         {/* Header */}
         <div className="bg-[#0B2F6B] text-white px-6 py-5 flex items-center justify-between">
           <div>
-            <span className="text-xs uppercase font-bold tracking-wider text-[#8ED6A8]">Unduh Brosur</span>
+            <span className="text-xs uppercase font-bold tracking-wider text-[#FCA5A5]">Unduh Brosur</span>
             <h2 id="brochure-modal-title" className="text-xl font-bold text-white">
               Brosur & Pamflet PPDB
             </h2>
@@ -120,7 +120,7 @@ export default function BrochureModal() {
                         <span
                           className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                             isAvailable
-                              ? 'bg-[#EAF7EF] text-[#17804A] border border-[#8ED6A8]/40'
+                              ? 'bg-[#FDE8E9] text-[#D8232A] border border-[#FCA5A5]/40'
                               : 'bg-amber-50 text-amber-600 border border-amber-200'
                           }`}
                         >
@@ -136,7 +136,7 @@ export default function BrochureModal() {
                       <a
                         href={item.downloadUrl}
                         download
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-[#17804A] hover:bg-[#12643E] rounded-lg transition-colors shadow-sm"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-[#D8232A] hover:bg-[#B81C22] rounded-lg transition-colors shadow-sm"
                       >
                         <Download className="w-3.5 h-3.5" />
                         Unduh

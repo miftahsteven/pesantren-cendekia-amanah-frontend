@@ -89,6 +89,21 @@ export interface EducationUnit {
   whatsappNumber: string;
 }
 
+export interface FacilityItem {
+  id: string;
+  name: string;
+  description: string;
+  imageUrl: string;
+  sortOrder?: number;
+  isActive?: boolean;
+  unitId?: string;
+  unitName?: string;
+  unitShortName?: string;
+  unitSlug?: string;
+  unitBadge?: string;
+  category?: string;
+}
+
 export interface NewsArticle {
   id: string;
   slug: string;
@@ -248,3 +263,23 @@ export interface PPDBSubmissionResult {
   submittedAt: string;
   data: PPDBFormData;
 }
+
+export interface OrganizationMember {
+  id: string;
+  name: string;
+  position: string;
+  category?: string;
+  level?: number;
+  photoUrl: string;
+  nip?: string;
+  education?: string;
+  bio?: string;
+  sortOrder: number;
+  isActive: boolean;
+  unitId?: string;
+  unitName?: string;
+  unitShortName?: string;
+  unitSlug?: string;
+  unitBadge?: string;
+}
+

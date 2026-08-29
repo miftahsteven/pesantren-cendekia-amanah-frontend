@@ -20,7 +20,7 @@ export default function FloatingActions() {
           href="https://cholilnafis.id/#konsultasi"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-[78px] h-[78px] bg-[#17804A] hover:bg-[#12643E] text-white rounded-l-2xl shadow-xl transition-all duration-200 transform hover:-translate-x-1.5 flex flex-col items-center justify-center gap-1 text-center p-1.5 group"
+          className="w-[78px] h-[78px] bg-[#D8232A] hover:bg-[#B81C22] text-white rounded-l-2xl shadow-xl transition-all duration-200 transform hover:-translate-x-1.5 flex flex-col items-center justify-center gap-1 text-center p-1.5 group"
           title="Konsultasi Keislaman bersama KH. Cholil Nafis"
         >
           <MessageSquare className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />

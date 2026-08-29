@@ -110,7 +110,7 @@ export default async function UnitPendidikanCards() {
                     <ul className="space-y-2 text-xs text-[#5C6B7D]">
                       {unit.points.map((point, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#17804A] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#D8232A] shrink-0 mt-0.5" />
                           <span className="line-clamp-1">{point}</span>
                         </li>
                       ))}
@@ -121,7 +121,7 @@ export default async function UnitPendidikanCards() {
                   <div className="pt-3 border-t border-[#F4F7FB]">
                     <Link
                       href={unit.href}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1A4FA0] group-hover:text-[#17804A] transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1A4FA0] group-hover:text-[#D8232A] transition-colors"
                     >
                       <span>Lihat Selengkapnya</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

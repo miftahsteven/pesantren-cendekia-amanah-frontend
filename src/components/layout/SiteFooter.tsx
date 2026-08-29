@@ -103,7 +103,7 @@ export default function SiteFooter() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-bold tracking-widest text-[#8ED6A8] uppercase leading-tight">
+                <span className="text-[10px] font-bold tracking-widest text-[#FCA5A5] uppercase leading-tight">
                   Pesantren
                 </span>
                 <span className="text-lg font-black tracking-tight text-white leading-tight">
@@ -129,7 +129,7 @@ export default function SiteFooter() {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#17804A] text-white flex items-center justify-center transition-all duration-200"
+                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#D8232A] text-white flex items-center justify-center transition-all duration-200"
                     aria-label={`Kunjungi media sosial ${item.name}`}
                   >
                     {renderSocialIcon(item.platform)}
@@ -146,28 +146,28 @@ export default function SiteFooter() {
             </h3>
             <ul className="space-y-2 text-xs text-white/80">
               <li>
-                <Link href="/" className="hover:text-[#8ED6A8] transition-colors">Beranda</Link>
+                <Link href="/" className="hover:text-[#FCA5A5] transition-colors">Beranda</Link>
               </li>
               <li>
-                <Link href="/pesantren" className="hover:text-[#8ED6A8] transition-colors">Pesantren</Link>
+                <Link href="/pesantren" className="hover:text-[#FCA5A5] transition-colors">Pesantren</Link>
               </li>
               <li>
-                <Link href="/smp" className="hover:text-[#8ED6A8] transition-colors">SMP Cendekia</Link>
+                <Link href="/smp" className="hover:text-[#FCA5A5] transition-colors">SMP Cendekia</Link>
               </li>
               <li>
-                <Link href="/sma" className="hover:text-[#8ED6A8] transition-colors">SMA Cendekia</Link>
+                <Link href="/sma" className="hover:text-[#FCA5A5] transition-colors">SMA Cendekia</Link>
               </li>
               <li>
-                <Link href="/diniyah" className="hover:text-[#8ED6A8] transition-colors">Madrasah Diniyah</Link>
+                <Link href="/diniyah" className="hover:text-[#FCA5A5] transition-colors">Madrasah Diniyah</Link>
               </li>
               <li>
-                <Link href="/berita" className="hover:text-[#8ED6A8] transition-colors">Berita & Informasi</Link>
+                <Link href="/berita" className="hover:text-[#FCA5A5] transition-colors">Berita & Informasi</Link>
               </li>
               <li>
-                <Link href="/opini" className="hover:text-[#8ED6A8] transition-colors">Opini & Gagasan</Link>
+                <Link href="/opini" className="hover:text-[#FCA5A5] transition-colors">Opini & Gagasan</Link>
               </li>
               <li>
-                <Link href="/kontak" className="hover:text-[#8ED6A8] transition-colors">Kontak</Link>
+                <Link href="/kontak" className="hover:text-[#FCA5A5] transition-colors">Kontak</Link>
               </li>
             </ul>
           </div>
@@ -187,7 +187,7 @@ export default function SiteFooter() {
               <li>
                 <button
                   onClick={openBrochureModal}
-                  className="hover:text-[#8ED6A8] transition-colors text-left"
+                  className="hover:text-[#FCA5A5] transition-colors text-left"
                 >
                   Unduh Brosur
                 </button>
@@ -195,7 +195,7 @@ export default function SiteFooter() {
               <li>
                 <button
                   onClick={openVideoModal}
-                  className="hover:text-[#8ED6A8] transition-colors text-left"
+                  className="hover:text-[#FCA5A5] transition-colors text-left"
                 >
                   Virtual Tour Pesantren
                 </button>
@@ -205,14 +205,19 @@ export default function SiteFooter() {
                   href="https://cholilnafis.id/#konsultasi"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#8ED6A8] transition-colors flex items-center gap-1"
+                  className="hover:text-[#FCA5A5] transition-colors flex items-center gap-1"
                 >
                   <span>Konsultasi Keislaman</span>
                   <ExternalLink className="w-2.5 h-2.5 opacity-60" />
                 </a>
               </li>
               <li>
-                <Link href="/kontak#faq" className="hover:text-[#8ED6A8] transition-colors">
+                <Link href="/tentang-kami#fasilitas" className="hover:text-[#FCA5A5] transition-colors">
+                  Fasilitas Pesantren
+                </Link>
+              </li>
+              <li>
+                <Link href="/kontak#faq" className="hover:text-[#FCA5A5] transition-colors">
                   Tanya Jawab (FAQ)
                 </Link>
               </li>
@@ -226,23 +231,23 @@ export default function SiteFooter() {
             </h3>
             <ul className="space-y-2.5 text-xs text-white/80">
               <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#8ED6A8] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#FCA5A5] shrink-0 mt-0.5" />
                 <span>{contact.address.fullText}</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#8ED6A8] shrink-0" />
+                <Phone className="w-4 h-4 text-[#FCA5A5] shrink-0" />
                 <a href={`tel:${contact.whatsapp || '+6285776446468'}`} className="hover:text-white transition-colors">
                   {contact.phone}
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#8ED6A8] shrink-0" />
+                <Mail className="w-4 h-4 text-[#FCA5A5] shrink-0" />
                 <a href={`mailto:${contact.email}`} className="hover:text-white transition-colors">
                   {contact.email}
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-[#8ED6A8] shrink-0" />
+                <Clock className="w-4 h-4 text-[#FCA5A5] shrink-0" />
                 <span>{contact.workingHours}</span>
               </li>
             </ul>

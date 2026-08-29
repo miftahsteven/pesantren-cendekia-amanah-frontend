@@ -66,7 +66,7 @@ export default function NewsSidebar({
                   onClick={() => onSelectCategory(cat.name)}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-xl font-semibold transition-all ${
                     isSelected
-                      ? 'bg-[#17804A] text-white'
+                      ? 'bg-[#D8232A] text-white'
                       : 'text-[#28384A] hover:bg-[#F4F7FB] hover:text-[#1A4FA0]'
                   }`}
                 >
@@ -118,7 +118,7 @@ export default function NewsSidebar({
       {/* Popular Tags */}
       <div className="bg-white p-6 rounded-2xl sm:rounded-3xl border border-[#DDE6F1] shadow-xs space-y-4">
         <div className="flex items-center gap-2 pb-3 border-b border-[#F4F7FB]">
-          <Tag className="w-4 h-4 text-[#17804A]" />
+          <Tag className="w-4 h-4 text-[#D8232A]" />
           <h3 className="text-sm font-bold text-[#0B2F6B] uppercase tracking-wider">
             Tag Populer
           </h3>
@@ -140,7 +140,7 @@ export default function NewsSidebar({
       {/* Newsletter Subscription Widget */}
       <div className="bg-linear-to-br from-[#0B2F6B] to-[#1A4FA0] p-6 rounded-2xl sm:rounded-3xl text-white shadow-md space-y-4">
         <div className="space-y-1.5">
-          <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-[#8ED6A8]">
+          <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-[#FCA5A5]">
             <Mail className="w-5 h-5" />
           </div>
           <h3 className="text-base font-bold text-white">Langganan Newsletter</h3>
@@ -150,7 +150,7 @@ export default function NewsSidebar({
         </div>
 
         {isSubscribed ? (
-          <div className="p-3.5 rounded-xl bg-[#17804A] text-white flex items-center gap-2 text-xs font-bold animate-fade-in">
+          <div className="p-3.5 rounded-xl bg-[#D8232A] text-white flex items-center gap-2 text-xs font-bold animate-fade-in">
             <CheckCircle2 className="w-4 h-4 shrink-0" />
             <span>Terima kasih telah berlangganan! ✓</span>
           </div>
@@ -162,7 +162,7 @@ export default function NewsSidebar({
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Masukkan email Anda"
               required
-              className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-white text-[#28384A] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#8ED6A8]"
+              className="w-full px-3.5 py-2.5 rounded-xl text-xs bg-white text-[#28384A] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FCA5A5]"
             />
             <button
               type="submit"

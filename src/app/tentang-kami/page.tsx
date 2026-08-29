@@ -21,6 +21,9 @@ import {
   ArrowRight
 } from 'lucide-react';
 
+import { contentRepo } from '@/repositories/content.repository';
+import FasilitasPesantrenSection from '@/components/tentang-kami/FasilitasPesantrenSection';
+
 export const metadata: Metadata = {
   title: 'Tentang Kami — Pesantren Cendekia Amanah',
   description:
@@ -33,7 +36,9 @@ export const metadata: Metadata = {
   }
 };
 
-export default function TentangKamiPage() {
+export default async function TentangKamiPage() {
+  const facilities = await contentRepo.getFacilities();
+
   const coreValues = [
     {
       icon: Sparkles,
@@ -57,29 +62,6 @@ export default function TentangKamiPage() {
     }
   ];
 
-  const facilities = [
-    {
-      title: 'Masjid Jami’ Cendekia',
-      desc: 'Pusat ibadah berjamaah, tahfidz Al-Qur’an, kajian kitab kuning, dan pembinaan spiritual santri.',
-      image: '/uploads/gallery/pesantren1.png'
-    },
-    {
-      title: 'Asrama Putra & Putri Representatif',
-      desc: 'Hunian asrama bersih, nyaman, dan ber-AC dengan pengawasan asatidz/asatidzah 24 jam.',
-      image: '/uploads/gallery/pesantren2.png'
-    },
-    {
-      title: 'Laboratorium Sains & Komputer',
-      desc: 'Fasilitas riset modern untuk menunjang pembelajaran sains terapan, robotik, dan literasi digital.',
-      image: '/uploads/gallery/sma1.png'
-    },
-    {
-      title: 'Smart Classroom & Perpustakaan',
-      desc: 'Ruang kelas interaktif multimedia dan perpustakaan referensi kitab klasik serta buku modern.',
-      image: '/uploads/gallery/smp1.png'
-    }
-  ];
-
   return (
     <div className="space-y-14 sm:space-y-16">
       {/* Hero Header */}
@@ -90,7 +72,7 @@ export default function TentangKamiPage() {
           {/* Hero Banner */}
           <div className="relative rounded-3xl overflow-hidden p-8 sm:p-12 text-white bg-linear-to-r from-[#0B2F6B] via-[#1A4FA0] to-[#0B2F6B] shadow-xl border border-[#12377E]">
             <div className="max-w-3xl space-y-3">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#17804A] text-white uppercase tracking-wider shadow-xs">
+              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#D8232A] text-white uppercase tracking-wider shadow-xs">
                 Profil Institusi
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
@@ -110,7 +92,7 @@ export default function TentangKamiPage() {
         <div className="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-[#DDE6F1] shadow-xs">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 space-y-4">
-              <span className="text-xs font-bold text-[#17804A] uppercase tracking-wider">
+              <span className="text-xs font-bold text-[#D8232A] uppercase tracking-wider">
                 Mengenal Lebih Dekat
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2F6B] leading-tight">
@@ -131,9 +113,9 @@ export default function TentangKamiPage() {
                   <div className="text-2xl font-black text-[#0B2F6B]">2017</div>
                   <div className="text-xs text-[#7B8CA1] font-medium">Tahun Berdiri</div>
                 </div>
-                <div className="p-4 rounded-2xl bg-[#EAF7EF] border border-[#8ED6A8]/40">
-                  <div className="text-2xl font-black text-[#17804A]">4 Unit</div>
-                  <div className="text-xs text-[#17804A] font-medium">Pendidikan Terpadu</div>
+                <div className="p-4 rounded-2xl bg-[#FDE8E9] border border-[#FCA5A5]/40">
+                  <div className="text-2xl font-black text-[#D8232A]">4 Unit</div>
+                  <div className="text-xs text-[#D8232A] font-medium">Pendidikan Terpadu</div>
                 </div>
               </div>
             </div>
@@ -170,25 +152,25 @@ export default function TentangKamiPage() {
 
           {/* Misi */}
           <div className="bg-white p-8 sm:p-10 rounded-3xl border border-[#DDE6F1] shadow-xs space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#EAF7EF] flex items-center justify-center text-[#17804A]">
+            <div className="w-12 h-12 rounded-2xl bg-[#FDE8E9] flex items-center justify-center text-[#D8232A]">
               <Compass className="w-6 h-6" />
             </div>
             <h3 className="text-2xl font-bold text-[#0B2F6B]">Misi Kami</h3>
             <ul className="space-y-2.5 text-xs sm:text-sm text-[#5C6B7D]">
               <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#17804A] shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-[#D8232A] shrink-0 mt-0.5" />
                 <span>Menyelenggarakan tahfidz Al-Qur’an dan pendalaman ilmu keislaman berbasis kitab turats.</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#17804A] shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-[#D8232A] shrink-0 mt-0.5" />
                 <span>Menerapkan kurikulum akademik modern terintegrasi sains, teknologi, dan bahasa asing.</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#17804A] shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-[#D8232A] shrink-0 mt-0.5" />
                 <span>Membina kepemimpinan santri melalui keteladanan, kedisiplinan asrama, dan organisasi.</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#17804A] shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-[#D8232A] shrink-0 mt-0.5" />
                 <span>Membangun jejaring kerjasama pendidikan dengan perguruan tinggi dalam dan luar negeri.</span>
               </li>
             </ul>
@@ -228,39 +210,8 @@ export default function TentangKamiPage() {
         <SambutanPengasuh />
       </div>
 
-      {/* Sarana & Fasilitas Lembaga */}
-      <section id="fasilitas" className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
-        <SectionHeader
-          badge="Sarana Prasarana"
-          title="FASILITAS KAMPUS TERPADU"
-          subtitle="Mendukung kegiatan belajar mengajar, tahfidz, riset, dan kehidupan asrama yang kondusif."
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {facilities.map((fac, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-3xl border border-[#DDE6F1] overflow-hidden shadow-xs hover-lift flex flex-col sm:flex-row group"
-            >
-              <div className="relative h-48 sm:h-auto sm:w-2/5 shrink-0 overflow-hidden bg-gray-100">
-                <Image
-                  src={fac.image}
-                  alt={fac.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="300px"
-                />
-              </div>
-              <div className="p-6 space-y-2 flex-1 flex flex-col justify-center">
-                <h4 className="text-base font-bold text-[#0B2F6B] group-hover:text-[#1A4FA0] transition-colors">
-                  {fac.title}
-                </h4>
-                <p className="text-xs text-[#5C6B7D] leading-relaxed">{fac.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Sarana & Fasilitas Lembaga Pesantren Terpadu */}
+      <FasilitasPesantrenSection initialFacilities={facilities} />
 
       {/* Unit Pendidikan Links */}
       <section className="max-w-[1280px] mx-auto px-4 sm:px-6">
@@ -292,7 +243,7 @@ export default function TentangKamiPage() {
                   </h4>
                   <p className="text-xs text-[#7B8CA1] leading-snug mt-1">{u.desc}</p>
                 </div>
-                <div className="inline-flex items-center gap-1 text-xs font-bold text-[#1A4FA0] group-hover:text-[#17804A] transition-colors pt-2">
+                <div className="inline-flex items-center gap-1 text-xs font-bold text-[#1A4FA0] group-hover:text-[#D8232A] transition-colors pt-2">
                   <span>Lihat Detail</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>

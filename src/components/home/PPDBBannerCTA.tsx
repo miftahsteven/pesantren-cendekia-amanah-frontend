@@ -9,7 +9,7 @@ export default function PPDBBannerCTA() {
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-linear-to-r from-[#0B2F6B] via-[#1A4FA0] to-[#0B2F6B] border border-[#12377E] text-white p-8 sm:p-12 lg:p-14">
           {/* Subtle Background Glows */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#17804A]/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#D8232A]/20 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F0BD28]/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -37,19 +37,19 @@ export default function PPDBBannerCTA() {
               {/* Benefits checklist */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 max-w-xl mx-auto lg:mx-0">
                 <div className="flex items-center gap-2 text-xs font-semibold text-white/95">
-                  <CheckCircle2 className="w-4 h-4 text-[#8ED6A8] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#FCA5A5] shrink-0" />
                   <span>Sistem Pendaftaran Online 3 Langkah</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs font-semibold text-white/95">
-                  <CheckCircle2 className="w-4 h-4 text-[#8ED6A8] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#FCA5A5] shrink-0" />
                   <span>Tersedia Beasiswa Tahfidz & Prestasi</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs font-semibold text-white/95">
-                  <CheckCircle2 className="w-4 h-4 text-[#8ED6A8] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#FCA5A5] shrink-0" />
                   <span>Pilihan Program Boarding / Fullday</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs font-semibold text-white/95">
-                  <CheckCircle2 className="w-4 h-4 text-[#8ED6A8] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#FCA5A5] shrink-0" />
                   <span>Konfirmasi Cepat via WhatsApp 24 Jam</span>
                 </div>
               </div>
@@ -68,7 +68,7 @@ export default function PPDBBannerCTA() {
                   href="/kontak"
                   className="inline-flex items-center gap-2 px-6 py-4 rounded-full font-bold text-sm text-white bg-white/15 hover:bg-white/25 border border-white/30 backdrop-blur-xs transition-all"
                 >
-                  <ShieldCheck className="w-4 h-4 text-[#8ED6A8]" />
+                  <ShieldCheck className="w-4 h-4 text-[#FCA5A5]" />
                   <span>Alur & Panduan Pendaftaran</span>
                 </Link>
               </div>
@@ -87,7 +87,7 @@ export default function PPDBBannerCTA() {
                 <div className="absolute inset-0 bg-linear-to-t from-[#0B2F6B]/90 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 text-center p-3 rounded-2xl bg-white/90 backdrop-blur-md text-[#0B2F6B] shadow-md">
                   <span className="text-xs font-black block">Cendekia Amanah</span>
-                  <span className="text-[10px] text-[#17804A] font-bold">Generasi Qurani & Berprestasi</span>
+                  <span className="text-[10px] text-[#D8232A] font-bold">Generasi Qurani & Berprestasi</span>
                 </div>
               </div>
             </div>

@@ -29,16 +29,16 @@ export default function VideoProfilSection() {
           <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-4">
             <button
               onClick={openVideoModal}
-              className="group relative flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#17804A] hover:bg-[#12643E] text-white shadow-2xl transition-all transform hover:scale-110 active:scale-95 focus:outline-none focus:ring-4 focus:ring-white/40"
+              className="group relative flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#D8232A] hover:bg-[#B81C22] text-white shadow-2xl transition-all transform hover:scale-110 active:scale-95 focus:outline-none focus:ring-4 focus:ring-white/40"
               aria-label="Putar Video Profil Pesantren Cendekia Amanah"
             >
               {/* Ripple Ring */}
-              <span className="absolute inset-0 rounded-full bg-[#17804A] animate-ping opacity-30" />
+              <span className="absolute inset-0 rounded-full bg-[#D8232A] animate-ping opacity-30" />
               <Play className="w-8 h-8 sm:w-10 sm:h-10 fill-white text-white translate-x-0.5" />
             </button>
 
             <div className="space-y-1.5 max-w-xl text-white">
-              <span className="text-xs font-bold text-[#8ED6A8] uppercase tracking-widest block">
+              <span className="text-xs font-bold text-[#FCA5A5] uppercase tracking-widest block">
                 Virtual Tour & Profil Kampus
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight">

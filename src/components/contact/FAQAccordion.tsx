@@ -41,7 +41,7 @@ export default function FAQAccordion() {
   return (
     <div id="faq" className="space-y-4">
       <div className="space-y-1 text-center sm:text-left">
-        <span className="text-xs font-bold text-[#17804A] uppercase tracking-wider">
+        <span className="text-xs font-bold text-[#D8232A] uppercase tracking-wider">
           Pusat Bantuan
         </span>
         <h3 className="text-xl sm:text-2xl font-bold text-[#0B2F6B]">
@@ -66,7 +66,7 @@ export default function FAQAccordion() {
                 aria-expanded={isOpen}
               >
                 <span className="flex items-center gap-2.5">
-                  <HelpCircle className="w-4 h-4 text-[#17804A] shrink-0" />
+                  <HelpCircle className="w-4 h-4 text-[#D8232A] shrink-0" />
                   <span>{faq.question}</span>
                 </span>
                 <span

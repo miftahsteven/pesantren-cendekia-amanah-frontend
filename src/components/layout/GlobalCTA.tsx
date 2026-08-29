@@ -20,7 +20,7 @@ export default function GlobalCTA({ theme = 'blue' }: GlobalCTAProps) {
         <div
           className={`relative overflow-hidden rounded-3xl p-8 sm:p-12 text-white shadow-xl ${
             isGreen
-              ? 'bg-linear-to-r from-[#12643E] via-[#17804A] to-[#12643E]'
+              ? 'bg-linear-to-r from-[#B81C22] via-[#D8232A] to-[#B81C22]'
               : 'bg-linear-to-r from-[#0B2F6B] via-[#1A4FA0] to-[#0B2F6B]'
           }`}
         >
@@ -58,13 +58,13 @@ export default function GlobalCTA({ theme = 'blue' }: GlobalCTAProps) {
                 onClick={toggleWhatsAppPanel}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm text-white bg-white/15 hover:bg-white/25 border border-white/30 backdrop-blur-xs transition-all transform hover:-translate-y-0.5"
               >
-                <MessageSquare className="w-4 h-4 text-[#8ED6A8]" />
+                <MessageSquare className="w-4 h-4 text-[#FCA5A5]" />
                 <span>Chat WhatsApp Unit</span>
               </button>
 
               <Link
                 href="/ppdb"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm text-white bg-[#17804A] hover:bg-[#12643E] shadow-sm transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm text-white bg-[#D8232A] hover:bg-[#B81C22] shadow-sm transition-all"
               >
                 <span>Daftar PPDB</span>
                 <ArrowRight className="w-4 h-4" />

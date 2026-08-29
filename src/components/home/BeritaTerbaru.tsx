@@ -37,7 +37,7 @@ export default async function BeritaTerbaru() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 />
                 {/* Category Badge */}
-                <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/90 text-[#17804A] backdrop-blur-xs shadow-xs uppercase tracking-wider">
+                <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/90 text-[#D8232A] backdrop-blur-xs shadow-xs uppercase tracking-wider">
                   {news.category}
                 </span>
               </div>
@@ -47,7 +47,7 @@ export default async function BeritaTerbaru() {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-[11px] text-[#7B8CA1]">
                     <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3 text-[#17804A]" />
+                      <Calendar className="w-3 h-3 text-[#D8232A]" />
                       {news.publishedAt}
                     </span>
                     <span className="flex items-center gap-1">
@@ -68,7 +68,7 @@ export default async function BeritaTerbaru() {
                 <div className="pt-3 border-t border-[#F4F7FB]">
                   <Link
                     href={`/berita/${news.slug}`}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-[#1A4FA0] group-hover:text-[#17804A] transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#1A4FA0] group-hover:text-[#D8232A] transition-colors"
                   >
                     <span>Baca Selengkapnya</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

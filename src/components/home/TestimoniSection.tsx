@@ -52,7 +52,7 @@ export default async function TestimoniSection() {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-[#0B2F6B] leading-snug">{item.author}</h4>
-                  <p className="text-[10px] text-[#17804A] font-semibold">{item.category}</p>
+                  <p className="text-[10px] text-[#D8232A] font-semibold">{item.category}</p>
                   <p className="text-[10px] text-[#7B8CA1] line-clamp-1">{item.role}</p>
                 </div>
               </div>

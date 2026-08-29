@@ -32,7 +32,7 @@ export default async function OpiniTerbaru() {
 
               <div className="space-y-3 relative z-10">
                 <div className="flex items-center gap-2 text-[11px] text-[#7B8CA1]">
-                  <Calendar className="w-3.5 h-3.5 text-[#17804A]" />
+                  <Calendar className="w-3.5 h-3.5 text-[#D8232A]" />
                   <span>{opini.publishedAt}</span>
                   <span>•</span>
                   <span>{opini.readTime}</span>

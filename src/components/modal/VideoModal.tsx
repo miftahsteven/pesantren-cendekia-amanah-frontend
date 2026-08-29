@@ -44,14 +44,14 @@ export default function VideoModal() {
         {/* Header */}
         <div className="px-6 py-4 flex items-center justify-between border-b border-white/10">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-[#17804A] flex items-center justify-center text-white">
+            <div className="w-8 h-8 rounded-full bg-[#D8232A] flex items-center justify-center text-white">
               <Play className="w-4 h-4 fill-white" />
             </div>
             <div>
               <h2 id="video-modal-title" className="text-base font-bold text-white">
                 Video Profil & Virtual Tour Pesantren Cendekia Amanah
               </h2>
-              <p className="text-xs text-[#8ED6A8]">Mengenal Lingkungan Belajar, Asrama, dan Fasilitas Unggulan</p>
+              <p className="text-xs text-[#FCA5A5]">Mengenal Lingkungan Belajar, Asrama, dan Fasilitas Unggulan</p>
             </div>
           </div>
           <button

@@ -38,7 +38,7 @@ export default function ContactForm() {
   return (
     <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-[#DDE6F1] shadow-md space-y-6">
       <div className="space-y-1">
-        <span className="text-xs font-bold text-[#17804A] uppercase tracking-wider">
+        <span className="text-xs font-bold text-[#D8232A] uppercase tracking-wider">
           Formulir Pesan
         </span>
         <h3 className="text-xl font-bold text-[#0B2F6B]">Kirim Pesan ke Kami</h3>
@@ -48,19 +48,19 @@ export default function ContactForm() {
       </div>
 
       {isSuccess ? (
-        <div className="p-6 rounded-2xl bg-[#EAF7EF] border border-[#8ED6A8] text-center space-y-3 animate-fade-in">
-          <div className="w-12 h-12 rounded-full bg-[#17804A] text-white flex items-center justify-center mx-auto">
+        <div className="p-6 rounded-2xl bg-[#FDE8E9] border border-[#FCA5A5] text-center space-y-3 animate-fade-in">
+          <div className="w-12 h-12 rounded-full bg-[#D8232A] text-white flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-6 h-6" />
           </div>
           <div className="space-y-1">
-            <h4 className="text-base font-bold text-[#17804A]">Pesan Terkirim ✓</h4>
+            <h4 className="text-base font-bold text-[#D8232A]">Pesan Terkirim ✓</h4>
             <p className="text-xs text-[#5C6B7D]">
               Terima kasih. Pesan dan pertanyaan Anda telah kami terima dengan baik.
             </p>
           </div>
           <button
             onClick={() => setIsSuccess(false)}
-            className="px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#17804A] border border-[#8ED6A8] hover:bg-[#EAF7EF]"
+            className="px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#D8232A] border border-[#FCA5A5] hover:bg-[#FDE8E9]"
           >
             Kirim Pesan Lain
           </button>

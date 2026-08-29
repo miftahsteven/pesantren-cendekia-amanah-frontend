@@ -36,7 +36,7 @@ export default async function GaleriKegiatan() {
 
               {/* Caption on Overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-5 space-y-1 text-white">
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#8ED6A8]">
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#FCA5A5]">
                   <ImageIcon className="w-3 h-3" />
                   {item.category}
                 </span>

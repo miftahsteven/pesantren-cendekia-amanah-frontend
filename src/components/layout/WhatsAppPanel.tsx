@@ -66,14 +66,14 @@ export default function WhatsAppPanel() {
                 href={unit.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-3.5 rounded-xl border border-[#E6EDF6] hover:border-[#25D366] hover:bg-[#EAF7EF]/50 transition-all group"
+                className="flex items-center justify-between p-3.5 rounded-xl border border-[#E6EDF6] hover:border-[#25D366] hover:bg-[#FDE8E9]/50 transition-all group"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-[#EAF7EF] text-[#17804A] group-hover:bg-[#25D366] group-hover:text-white transition-colors">
+                  <div className="p-2 rounded-lg bg-[#FDE8E9] text-[#D8232A] group-hover:bg-[#25D366] group-hover:text-white transition-colors">
                     <Icon className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-[#28384A] group-hover:text-[#17804A] transition-colors">
+                    <h4 className="text-xs font-bold text-[#28384A] group-hover:text-[#D8232A] transition-colors">
                       {unit.unitName}
                     </h4>
                     <p className="text-[11px] text-[#7B8CA1]">{unit.formattedNumber}</p>

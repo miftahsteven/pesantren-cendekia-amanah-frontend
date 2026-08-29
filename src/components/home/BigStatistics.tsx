@@ -56,7 +56,7 @@ export default async function BigStatistics() {
                   <div className="w-12 h-12 rounded-2xl bg-[#EBF3FF] text-[#1A4FA0] flex items-center justify-center">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <span className="text-xs font-bold text-[#17804A] bg-[#EAF7EF] px-2.5 py-1 rounded-full">
+                  <span className="text-xs font-bold text-[#D8232A] bg-[#FDE8E9] px-2.5 py-1 rounded-full">
                     Cendekia Amanah
                   </span>
                 </div>
@@ -84,7 +84,7 @@ export default async function BigStatistics() {
               <HelpCircle className="w-7 h-7 text-[#F0BD28]" />
             </div>
             <div className="space-y-1">
-              <span className="text-xs font-bold text-[#8ED6A8] uppercase tracking-wider">
+              <span className="text-xs font-bold text-[#FCA5A5] uppercase tracking-wider">
                 Layanan Umat & Konseling
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">

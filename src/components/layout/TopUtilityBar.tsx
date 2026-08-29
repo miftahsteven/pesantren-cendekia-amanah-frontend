@@ -13,7 +13,7 @@ export default function TopUtilityBar() {
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 flex items-center justify-between h-9">
         {/* Left Side: Welcome / Tagline Info (No duplicate unit links) */}
         <div className="flex items-center gap-2 text-white/90">
-          <span className="text-[#8ED6A8] font-bold uppercase tracking-wider text-[10px]">
+          <span className="text-[#FCA5A5] font-bold uppercase tracking-wider text-[10px]">
             Cendekia Amanah
           </span>
           <span className="text-white/40">•</span>
@@ -28,7 +28,7 @@ export default function TopUtilityBar() {
             href="/kontak"
             className="inline-flex items-center gap-1 text-white/80 hover:text-white transition-colors"
           >
-            <Phone className="w-3 h-3 text-[#8ED6A8]" />
+            <Phone className="w-3 h-3 text-[#FCA5A5]" />
             <span>+62-857-7644-6468</span>
           </Link>
 
@@ -46,15 +46,15 @@ export default function TopUtilityBar() {
             onClick={openBrochureModal}
             className="inline-flex items-center gap-1 text-white/80 hover:text-white transition-colors"
           >
-            <Download className="w-3 h-3 text-[#8ED6A8]" />
+            <Download className="w-3 h-3 text-[#FCA5A5]" />
             <span>Unduh Brosur</span>
           </button>
 
           <button
             onClick={openVideoModal}
-            className="inline-flex items-center gap-1 text-white/80 hover:text-[#8ED6A8] transition-colors"
+            className="inline-flex items-center gap-1 text-white/80 hover:text-[#FCA5A5] transition-colors"
           >
-            <Play className="w-3 h-3 fill-[#8ED6A8] text-[#8ED6A8]" />
+            <Play className="w-3 h-3 fill-[#FCA5A5] text-[#FCA5A5]" />
             <span>Virtual Tour</span>
           </button>
         </div>

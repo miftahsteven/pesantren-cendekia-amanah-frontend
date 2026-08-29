@@ -12,13 +12,17 @@ import {
   FAQ,
   ContactInfo,
   PPDBFormData,
-  PPDBSubmissionResult
+  PPDBSubmissionResult,
+  FacilityItem,
+  OrganizationMember
 } from '@/types';
 
 export interface IContentRepository {
   getSiteConfig(): Promise<SiteConfig>;
   getEducationUnit(unitId: string): Promise<EducationUnit | null>;
   getAllEducationUnits(): Promise<EducationUnit[]>;
+  getFacilities(unitSlug?: string): Promise<FacilityItem[]>;
+  getOrganizationMembers(unitSlug?: string): Promise<OrganizationMember[]>;
   getNewsArticles(category?: string, query?: string): Promise<NewsArticle[]>;
   getNewsBySlug(slug: string): Promise<NewsArticle | null>;
   getPopularNews(limit?: number): Promise<NewsArticle[]>;

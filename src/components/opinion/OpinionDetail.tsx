@@ -70,7 +70,7 @@ export default function OpinionDetail({ opinion, otherOpinions }: OpinionDetailP
                 Kolom Opini
               </span>
               <span className="flex items-center gap-1">
-                <Calendar className="w-3.5 h-3.5 text-[#17804A]" />
+                <Calendar className="w-3.5 h-3.5 text-[#D8232A]" />
                 {opinion.publishedAt}
               </span>
               <span>•</span>
@@ -87,7 +87,7 @@ export default function OpinionDetail({ opinion, otherOpinions }: OpinionDetailP
 
           {/* Author Spotlight Box */}
           <div className="p-5 rounded-2xl bg-white border border-[#DDE6F1] shadow-xs flex items-center gap-4">
-            <div className="relative w-14 h-14 rounded-full overflow-hidden bg-gray-100 border-2 border-[#17804A] shrink-0">
+            <div className="relative w-14 h-14 rounded-full overflow-hidden bg-gray-100 border-2 border-[#D8232A] shrink-0">
               <Image
                 src={getUploadUrl(opinion.author.avatar)}
                 alt={opinion.author.name}
@@ -98,7 +98,7 @@ export default function OpinionDetail({ opinion, otherOpinions }: OpinionDetailP
             <div>
               <div className="flex items-center gap-1.5">
                 <h3 className="text-sm font-bold text-[#0B2F6B]">{opinion.author.name}</h3>
-                <UserCheck className="w-4 h-4 text-[#17804A]" />
+                <UserCheck className="w-4 h-4 text-[#D8232A]" />
               </div>
               <p className="text-xs text-[#5C6B7D]">{opinion.author.role}</p>
             </div>
@@ -115,8 +115,8 @@ export default function OpinionDetail({ opinion, otherOpinions }: OpinionDetailP
 
               {/* Quote Highlight */}
               {opinion.highlightQuote && (
-                <div className="my-6 p-6 rounded-2xl bg-[#EAF7EF] border-l-4 border-[#17804A] relative">
-                  <Quote className="w-8 h-8 text-[#17804A]/30 absolute top-3 right-3" />
+                <div className="my-6 p-6 rounded-2xl bg-[#FDE8E9] border-l-4 border-[#D8232A] relative">
+                  <Quote className="w-8 h-8 text-[#D8232A]/30 absolute top-3 right-3" />
                   <p className="text-base sm:text-lg font-bold text-[#0B2F6B] italic leading-relaxed">
                     {opinion.highlightQuote}
                   </p>
@@ -167,7 +167,7 @@ export default function OpinionDetail({ opinion, otherOpinions }: OpinionDetailP
                   onClick={handleCopyLink}
                   className={`px-3.5 py-2 rounded-xl text-xs font-bold border transition-colors flex items-center gap-1.5 ${
                     copied
-                      ? 'bg-[#EAF7EF] border-[#8ED6A8] text-[#17804A]'
+                      ? 'bg-[#FDE8E9] border-[#FCA5A5] text-[#D8232A]'
                       : 'bg-[#F4F7FB] border-[#DDE6F1] text-[#28384A] hover:bg-[#EBF3FF]'
                   }`}
                 >

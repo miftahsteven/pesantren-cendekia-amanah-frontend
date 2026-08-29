@@ -20,8 +20,12 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function SMAPage() {
-  const unit = await contentRepo.getEducationUnit('sma');
+  const [unit, organizations] = await Promise.all([
+    contentRepo.getEducationUnit('sma'),
+    contentRepo.getOrganizationMembers('sma')
+  ]);
+
   if (!unit) notFound();
 
-  return <EducationUnitPage unit={unit} />;
+  return <EducationUnitPage unit={unit} organizations={organizations} />;
 }

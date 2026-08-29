@@ -150,12 +150,12 @@ export default function PPDBWizard() {
   if (submissionResult) {
     return (
       <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#DDE6F1] shadow-xl text-center space-y-6 max-w-2xl mx-auto animate-fade-in">
-        <div className="w-20 h-20 rounded-full bg-[#EAF7EF] text-[#17804A] flex items-center justify-center mx-auto shadow-sm">
+        <div className="w-20 h-20 rounded-full bg-[#FDE8E9] text-[#D8232A] flex items-center justify-center mx-auto shadow-sm">
           <CheckCircle2 className="w-12 h-12" />
         </div>
 
         <div className="space-y-2">
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#EAF7EF] text-[#17804A] uppercase tracking-wider">
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#FDE8E9] text-[#D8232A] uppercase tracking-wider">
             Pendaftaran Berhasil Terkirim
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2F6B]">
@@ -171,7 +171,7 @@ export default function PPDBWizard() {
         <div className="p-6 rounded-2xl bg-[#F4F7FB] border border-[#DDE6F1] text-left space-y-3 max-w-md mx-auto">
           <div className="flex items-center justify-between border-b border-[#DDE6F1] pb-3">
             <span className="text-xs text-[#7B8CA1] font-semibold">Nomor Pendaftaran:</span>
-            <span className="text-base font-black text-[#17804A] tracking-wider">
+            <span className="text-base font-black text-[#D8232A] tracking-wider">
               {submissionResult.registrationNumber}
             </span>
           </div>
@@ -209,7 +209,7 @@ export default function PPDBWizard() {
 
           <button
             onClick={handleReset}
-            className="w-full sm:w-auto px-6 py-3 rounded-full text-xs sm:text-sm font-bold text-[#17804A] bg-[#EAF7EF] hover:bg-[#d6f0df] border border-[#8ED6A8] transition-colors flex items-center justify-center gap-1.5"
+            className="w-full sm:w-auto px-6 py-3 rounded-full text-xs sm:text-sm font-bold text-[#D8232A] bg-[#FDE8E9] hover:bg-[#fcdada] border border-[#FCA5A5] transition-colors flex items-center justify-center gap-1.5"
           >
             <RotateCcw className="w-4 h-4" />
             <span>Daftar Santri Lain</span>
@@ -238,7 +238,7 @@ export default function PPDBWizard() {
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all duration-300 ${
                     isCompleted
-                      ? 'bg-[#17804A] text-white'
+                      ? 'bg-[#D8232A] text-white'
                       : isCurrent
                       ? 'bg-[#1A4FA0] text-white ring-4 ring-[#EBF3FF]'
                       : 'bg-[#F4F7FB] text-[#7B8CA1] border border-[#DDE6F1]'
@@ -261,7 +261,7 @@ export default function PPDBWizard() {
         {/* Progress bar line */}
         <div className="w-full bg-[#F4F7FB] h-2 rounded-full overflow-hidden">
           <div
-            className="h-full bg-linear-to-r from-[#17804A] to-[#1A4FA0] transition-all duration-300"
+            className="h-full bg-linear-to-r from-[#D8232A] to-[#1A4FA0] transition-all duration-300"
             style={{ width: `${((currentStep - 1) / 2) * 100}%` }}
           />
         </div>
@@ -445,14 +445,14 @@ export default function PPDBWizard() {
                       onClick={() => setValue('selectedUnit', unit.id)}
                       className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between space-y-2 ${
                         isSelected
-                          ? 'border-[#17804A] bg-[#EAF7EF]/70 shadow-xs'
+                          ? 'border-[#D8232A] bg-[#FDE8E9]/70 shadow-xs'
                           : 'border-[#DDE6F1] bg-white hover:border-[#1A4FA0]'
                       }`}
                     >
                       <div className="flex items-center justify-between">
                         <div
                           className={`p-2 rounded-xl ${
-                            isSelected ? 'bg-[#17804A] text-white' : 'bg-[#EBF3FF] text-[#1A4FA0]'
+                            isSelected ? 'bg-[#D8232A] text-white' : 'bg-[#EBF3FF] text-[#1A4FA0]'
                           }`}
                         >
                           <Icon className="w-5 h-5" />
@@ -460,7 +460,7 @@ export default function PPDBWizard() {
                         <span
                           className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
                             isSelected
-                              ? 'bg-[#17804A] text-white'
+                              ? 'bg-[#D8232A] text-white'
                               : 'bg-[#F4F7FB] text-[#7B8CA1]'
                           }`}
                         >

@@ -50,7 +50,7 @@ export default async function BeritaDanAgenda() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
                     />
-                    <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full text-[9px] font-bold bg-white/95 text-[#17804A] backdrop-blur-xs shadow-xs uppercase tracking-wider">
+                    <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full text-[9px] font-bold bg-white/95 text-[#D8232A] backdrop-blur-xs shadow-xs uppercase tracking-wider">
                       {news.category}
                     </span>
                   </div>
@@ -68,7 +68,7 @@ export default async function BeritaDanAgenda() {
                     </div>
 
                     <div className="pt-2.5 border-t border-[#F4F7FB] flex items-center gap-1 text-[10px] text-[#7B8CA1]">
-                      <Calendar className="w-3 h-3 text-[#17804A]" />
+                      <Calendar className="w-3 h-3 text-[#D8232A]" />
                       <span>{news.publishedAt}</span>
                     </div>
                   </div>

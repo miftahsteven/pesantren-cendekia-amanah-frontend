@@ -125,7 +125,7 @@ export default function NewsListInteractive({
                   onClick={() => handleSelectCategory(cat)}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 ${
                     isSelected
-                      ? 'bg-[#17804A] text-white shadow-xs'
+                      ? 'bg-[#D8232A] text-white shadow-xs'
                       : 'bg-[#F4F7FB] text-[#5C6B7D] hover:bg-[#EBF3FF] hover:text-[#1A4FA0]'
                   }`}
                 >
@@ -173,7 +173,7 @@ export default function NewsListInteractive({
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, 400px"
                   />
-                  <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/90 text-[#17804A] shadow-xs uppercase tracking-wider backdrop-blur-xs">
+                  <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/90 text-[#D8232A] shadow-xs uppercase tracking-wider backdrop-blur-xs">
                     {item.category}
                   </span>
                 </div>
@@ -182,7 +182,7 @@ export default function NewsListInteractive({
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-[11px] text-[#7B8CA1]">
                       <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3 text-[#17804A]" />
+                        <Calendar className="w-3 h-3 text-[#D8232A]" />
                         {item.publishedAt}
                       </span>
                       <span className="flex items-center gap-1">
@@ -203,7 +203,7 @@ export default function NewsListInteractive({
                   <div className="pt-3 border-t border-[#F4F7FB]">
                     <Link
                       href={`/berita/${item.slug}`}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-[#1A4FA0] group-hover:text-[#17804A] transition-colors"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#1A4FA0] group-hover:text-[#D8232A] transition-colors"
                     >
                       <span>Baca Selengkapnya</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

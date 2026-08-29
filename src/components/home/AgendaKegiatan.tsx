@@ -26,7 +26,7 @@ export default function AgendaKegiatan() {
                 {/* Calendar Date Badge */}
                 <div className="w-16 h-18 rounded-2xl bg-[#0B2F6B] text-white flex flex-col items-center justify-center shrink-0 shadow-sm group-hover:bg-[#1A4FA0] transition-colors">
                   <span className="text-xl font-black leading-none">{agenda.day}</span>
-                  <span className="text-[10px] font-bold text-[#8ED6A8] uppercase tracking-wider mt-1">
+                  <span className="text-[10px] font-bold text-[#FCA5A5] uppercase tracking-wider mt-1">
                     {agenda.month}
                   </span>
                 </div>
@@ -34,7 +34,7 @@ export default function AgendaKegiatan() {
                 {/* Content */}
                 <div className="space-y-1.5 flex-1">
                   {agenda.status && (
-                    <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#EAF7EF] text-[#17804A] border border-[#8ED6A8]/40">
+                    <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#FDE8E9] text-[#D8232A] border border-[#FCA5A5]/40">
                       {agenda.status}
                     </span>
                   )}
@@ -47,7 +47,7 @@ export default function AgendaKegiatan() {
               {/* Meta Info */}
               <div className="pt-3 border-t border-[#DDE6F1] space-y-1.5 text-xs text-[#5C6B7D]">
                 <div className="flex items-center gap-2">
-                  <Clock className="w-3.5 h-3.5 text-[#17804A] shrink-0" />
+                  <Clock className="w-3.5 h-3.5 text-[#D8232A] shrink-0" />
                   <span>{agenda.time}</span>
                 </div>
                 {agenda.location && (
