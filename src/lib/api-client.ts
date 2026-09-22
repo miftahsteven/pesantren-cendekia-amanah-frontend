@@ -1,7 +1,7 @@
 export function getApiBaseUrl(): string {
   if (typeof window === 'undefined') {
     // Server-side in Node.js (Server Components / SSR) - MUST use absolute backend URL
-    const backendUrl = process.env.INTERNAL_BACKEND_URL || 'http://127.0.0.1:3001';
+    const backendUrl = process.env.INTERNAL_BACKEND_URL || 'http://127.0.0.1:3004';
     return `${backendUrl}/api/v1`;
   }
   // Client-side in browser - use relative Next.js proxy route or env

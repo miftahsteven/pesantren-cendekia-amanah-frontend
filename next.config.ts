@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
     ]
   },
   async rewrites() {
-    const backendUrl = process.env.INTERNAL_BACKEND_URL || 'http://127.0.0.1:3001';
+    const backendUrl = process.env.INTERNAL_BACKEND_URL || 'http://127.0.0.1:3004';
     return [
       {
         source: '/uploads/:path*',

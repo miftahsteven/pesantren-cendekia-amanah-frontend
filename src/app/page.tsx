@@ -32,16 +32,20 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 import { contentRepo } from '@/repositories/content.repository';
+import { apiGet } from '@/lib/api-client';
 
 export default async function HomePage() {
-  const achievements = await contentRepo.getHomeAchievements();
+  const [achievements, heroSlides] = await Promise.all([
+    contentRepo.getHomeAchievements(),
+    apiGet<any[]>('/hero-slides').catch(() => [])
+  ]);
 
   return (
     <div className="space-y-4 sm:space-y-6">
       {/* Top Banner Hero Carousel Section */}
       <section className="pt-4 sm:pt-6">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-          <HeroCarousel />
+          <HeroCarousel initialSlides={heroSlides} />
           <HeroCTAStats />
         </div>
       </section>

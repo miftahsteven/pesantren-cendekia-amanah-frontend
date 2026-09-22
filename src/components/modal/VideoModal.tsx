@@ -1,11 +1,81 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useUI } from '@/context/UIContext';
 import { X, Play } from 'lucide-react';
 
+const DEFAULT_YOUTUBE_URL = 'https://www.youtube.com/watch?v=iv-QsaLtvb8';
+
+function getYouTubeEmbedUrl(url: string | undefined | null): string {
+  const fallbackId = 'iv-QsaLtvb8';
+  if (!url || typeof url !== 'string' || url.trim() === '') {
+    return `https://www.youtube-nocookie.com/embed/${fallbackId}?autoplay=1`;
+  }
+
+  const trimmed = url.trim();
+
+  // If already an embed URL
+  if (trimmed.includes('youtube.com/embed/') || trimmed.includes('youtube-nocookie.com/embed/')) {
+    const separator = trimmed.includes('?') ? '&' : '?';
+    return trimmed.includes('autoplay=') ? trimmed : `${trimmed}${separator}autoplay=1`;
+  }
+
+  let videoId = '';
+
+  try {
+    const parsed = new URL(trimmed.startsWith('http') ? trimmed : `https://${trimmed}`);
+
+    if (parsed.hostname.includes('youtube.com')) {
+      if (parsed.pathname === '/watch') {
+        videoId = parsed.searchParams.get('v') || '';
+      } else if (parsed.pathname.startsWith('/embed/')) {
+        videoId = parsed.pathname.split('/embed/')[1]?.split('?')[0] || '';
+      } else if (parsed.pathname.startsWith('/shorts/')) {
+        videoId = parsed.pathname.split('/shorts/')[1]?.split('?')[0] || '';
+      }
+    } else if (parsed.hostname.includes('youtu.be')) {
+      videoId = parsed.pathname.slice(1).split('?')[0] || '';
+    }
+  } catch {
+    // URL parsing fallback via regex
+  }
+
+  if (!videoId) {
+    const match = trimmed.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+    if (match) videoId = match[1];
+  }
+
+  return `https://www.youtube-nocookie.com/embed/${videoId || fallbackId}?autoplay=1`;
+}
+
 export default function VideoModal() {
-  const { isVideoModalOpen, closeVideoModal } = useUI();
+  const { isVideoModalOpen, closeVideoModal, videoModalUrl } = useUI();
+  const [siteVideoUrl, setSiteVideoUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    async function fetchSiteSetting() {
+      try {
+        const res = await fetch('/api/v1/site');
+        if (res.ok) {
+          const json = await res.json();
+          if (isMounted && json?.data?.setting?.virtualTourUrl) {
+            setSiteVideoUrl(json.data.setting.virtualTourUrl);
+          }
+        }
+      } catch {
+        // Fallback handled automatically
+      }
+    }
+
+    if (isVideoModalOpen && !siteVideoUrl) {
+      fetchSiteSetting();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [isVideoModalOpen, siteVideoUrl]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -28,6 +98,9 @@ export default function VideoModal() {
   }, [isVideoModalOpen, closeVideoModal]);
 
   if (!isVideoModalOpen) return null;
+
+  const activeVideoUrl = videoModalUrl || siteVideoUrl || DEFAULT_YOUTUBE_URL;
+  const embedSrc = getYouTubeEmbedUrl(activeVideoUrl);
 
   return (
     <div
@@ -56,7 +129,7 @@ export default function VideoModal() {
           </div>
           <button
             onClick={closeVideoModal}
-            className="p-2 text-white/80 hover:text-white rounded-full hover:bg-white/10 transition-colors"
+            className="p-2 text-white/80 hover:text-white rounded-full hover:bg-white/10 transition-colors cursor-pointer"
             aria-label="Tutup modal video"
           >
             <X className="w-5 h-5" />
@@ -67,8 +140,8 @@ export default function VideoModal() {
         <div className="relative aspect-video w-full bg-black flex items-center justify-center">
           <iframe
             className="w-full h-full"
-            src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1"
-            title="Video Profil Cendekia Amanah"
+            src={embedSrc}
+            title="Video Profil Pesantren Cendekia Amanah"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -79,7 +152,7 @@ export default function VideoModal() {
           <span>Kanal YouTube Resmi: @amanahtv1035</span>
           <button
             onClick={closeVideoModal}
-            className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-medium transition-colors"
+            className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-medium transition-colors cursor-pointer"
           >
             Tutup Video
           </button>

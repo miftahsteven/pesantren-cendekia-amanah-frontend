@@ -5,10 +5,11 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 interface UIContextType {
   isBrochureModalOpen: boolean;
   isVideoModalOpen: boolean;
+  videoModalUrl: string | null;
   isWhatsAppPanelOpen: boolean;
   openBrochureModal: () => void;
   closeBrochureModal: () => void;
-  openVideoModal: () => void;
+  openVideoModal: (url?: string | React.MouseEvent | unknown) => void;
   closeVideoModal: () => void;
   openWhatsAppPanel: () => void;
   closeWhatsAppPanel: () => void;
@@ -20,12 +21,20 @@ const UIContext = createContext<UIContextType | undefined>(undefined);
 export function UIProvider({ children }: { children: ReactNode }) {
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [videoModalUrl, setVideoModalUrl] = useState<string | null>(null);
   const [isWhatsAppPanelOpen, setIsWhatsAppPanelOpen] = useState(false);
 
   const openBrochureModal = () => setIsBrochureModalOpen(true);
   const closeBrochureModal = () => setIsBrochureModalOpen(false);
 
-  const openVideoModal = () => setIsVideoModalOpen(true);
+  const openVideoModal = (url?: string | unknown) => {
+    if (typeof url === 'string' && url.trim() !== '') {
+      setVideoModalUrl(url.trim());
+    } else {
+      setVideoModalUrl(null);
+    }
+    setIsVideoModalOpen(true);
+  };
   const closeVideoModal = () => setIsVideoModalOpen(false);
 
   const openWhatsAppPanel = () => setIsWhatsAppPanelOpen(true);
@@ -37,6 +46,7 @@ export function UIProvider({ children }: { children: ReactNode }) {
       value={{
         isBrochureModalOpen,
         isVideoModalOpen,
+        videoModalUrl,
         isWhatsAppPanelOpen,
         openBrochureModal,
         closeBrochureModal,
