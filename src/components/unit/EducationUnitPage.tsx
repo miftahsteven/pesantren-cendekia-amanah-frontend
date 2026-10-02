@@ -313,11 +313,11 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
         </div>
       </section>
 
-      {/* 2. Kurikulum Section (Pesantren, SMP, & SMA) */}
-      {isPesantren && <KurikulumPesantrenSection />}
-      {isSMP && <KurikulumSMPSection />}
-      {isSMA && <KurikulumSMASection />}
-      {isDiniyah && <KurikulumMDTASection />}
+      {/* 2. Kurikulum Section (Pesantren, SMP, SMA, & MDTA) */}
+      {isPesantren && <KurikulumPesantrenSection items={unit.curriculums} />}
+      {isSMP && <KurikulumSMPSection items={unit.curriculums} />}
+      {isSMA && <KurikulumSMASection items={unit.curriculums} />}
+      {isDiniyah && <KurikulumMDTASection items={unit.curriculums} />}
 
       {/* 3. Program Unggulan Unit */}
       <div id="program-unggulan" className="scroll-mt-24" />

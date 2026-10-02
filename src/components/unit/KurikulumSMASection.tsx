@@ -12,8 +12,26 @@ import {
   Target
 } from 'lucide-react';
 
-export default function KurikulumSMASection() {
-  const curriculumPillars = [
+import { CurriculumItem } from '@/types';
+
+const ICON_MAP: Record<string, any> = {
+  BookOpen,
+  GraduationCap,
+  Microscope,
+  Award,
+  CheckCircle2,
+  Sparkles,
+  Compass,
+  FileText,
+  Target
+};
+
+interface KurikulumSMASectionProps {
+  items?: CurriculumItem[];
+}
+
+export default function KurikulumSMASection({ items }: KurikulumSMASectionProps) {
+  const defaultPillars = [
     {
       title: 'Kurikulum Merdeka & Peminatan Lanjutan (Fase F)',
       icon: BookOpen,
@@ -72,6 +90,17 @@ export default function KurikulumSMASection() {
     }
   ];
 
+  const curriculumPillars = items && items.length > 0
+    ? items.map((it) => ({
+        title: it.title,
+        icon: (it.icon && ICON_MAP[it.icon]) || BookOpen,
+        badge: it.badge || 'Pilar Kurikulum',
+        color: it.color || 'blue',
+        description: it.description,
+        highlights: it.highlights || []
+      }))
+    : defaultPillars;
+
   const pathways = [
     {
       step: '01',
@@ -114,6 +143,10 @@ export default function KurikulumSMASection() {
                 ? 'bg-[#FEF6E0] text-[#B88700] border-[#B88700]/20'
                 : pillar.color === 'emerald'
                 ? 'bg-[#E6F8F0] text-[#00875A] border-[#00875A]/20'
+                : pillar.color === 'indigo'
+                ? 'bg-indigo-50 text-indigo-700 border-indigo-200'
+                : pillar.color === 'purple'
+                ? 'bg-purple-50 text-purple-700 border-purple-200'
                 : 'bg-[#FDE8E9] text-[#D8232A] border-[#D8232A]/20';
 
             return (

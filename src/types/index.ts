@@ -85,6 +85,7 @@ export interface EducationUnit {
   }[];
   achievements?: Achievement[];
   testimonials?: Testimonial[];
+  curriculums?: CurriculumItem[];
   brochureUrl?: string;
   whatsappNumber: string;
   welcomeName?: string;
@@ -92,6 +93,18 @@ export interface EducationUnit {
   welcomePhoto?: string;
   welcomeQuote?: string;
   welcomeMessage?: string;
+}
+
+export interface CurriculumItem {
+  id: string;
+  title: string;
+  badge?: string;
+  icon?: string;
+  color?: string;
+  description: string;
+  highlights: string[];
+  sortOrder?: number;
+  isActive?: boolean;
 }
 
 export interface FacilityItem {

@@ -11,8 +11,25 @@ import {
   GraduationCap
 } from 'lucide-react';
 
-export default function KurikulumPesantrenSection() {
-  const curriculumPillars = [
+import { CurriculumItem } from '@/types';
+
+const ICON_MAP: Record<string, any> = {
+  BookOpen,
+  Scroll,
+  Languages,
+  Award,
+  CheckCircle2,
+  Sparkles,
+  BookmarkCheck,
+  GraduationCap
+};
+
+interface KurikulumPesantrenSectionProps {
+  items?: CurriculumItem[];
+}
+
+export default function KurikulumPesantrenSection({ items }: KurikulumPesantrenSectionProps) {
+  const defaultPillars = [
     {
       title: 'Tahfidz Al-Qur’an Bersanad 30 Juz',
       icon: BookOpen,
@@ -70,6 +87,17 @@ export default function KurikulumPesantrenSection() {
       ]
     }
   ];
+
+  const curriculumPillars = items && items.length > 0
+    ? items.map((it) => ({
+        title: it.title,
+        icon: (it.icon && ICON_MAP[it.icon]) || BookOpen,
+        badge: it.badge || 'Pilar Kurikulum',
+        color: it.color || 'blue',
+        description: it.description,
+        highlights: it.highlights || []
+      }))
+    : defaultPillars;
 
   const methodologyItems = [
     {

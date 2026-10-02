@@ -76,6 +76,19 @@ export class ApiContentRepository implements IContentRepository {
                 image: p.imageUrl || p.image || undefined
               }))
             : [],
+          curriculums: Array.isArray(unit.curriculums)
+            ? unit.curriculums.map((c: any) => ({
+                id: c.id,
+                title: c.title,
+                badge: c.badge || undefined,
+                icon: c.icon || 'BookOpen',
+                color: c.color || 'blue',
+                description: c.description,
+                highlights: Array.isArray(c.highlights) ? c.highlights : [],
+                sortOrder: c.sortOrder ?? 0,
+                isActive: c.isActive
+              }))
+            : [],
           facilities: unit.facilities || [],
           activities: unit.activities || [],
           achievements: Array.isArray(unit.achievements)
@@ -132,6 +145,19 @@ export class ApiContentRepository implements IContentRepository {
                 iconName: p.icon || p.iconName || 'BookOpen',
                 badge: p.badge || undefined,
                 image: p.imageUrl || p.image || undefined
+              }))
+            : [],
+          curriculums: Array.isArray(unit.curriculums)
+            ? unit.curriculums.map((c: any) => ({
+                id: c.id,
+                title: c.title,
+                badge: c.badge || undefined,
+                icon: c.icon || 'BookOpen',
+                color: c.color || 'blue',
+                description: c.description,
+                highlights: Array.isArray(c.highlights) ? c.highlights : [],
+                sortOrder: c.sortOrder ?? 0,
+                isActive: c.isActive
               }))
             : [],
           facilities: unit.facilities || [],
