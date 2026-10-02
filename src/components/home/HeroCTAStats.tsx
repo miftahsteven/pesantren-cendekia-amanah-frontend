@@ -5,15 +5,34 @@ import Link from 'next/link';
 import { useUI } from '@/context/UIContext';
 import { ArrowRight, Play, Users, Award, GraduationCap, BookOpen } from 'lucide-react';
 
-export default function HeroCTAStats() {
+const iconMap: Record<string, any> = {
+  Users,
+  GraduationCap,
+  Award,
+  BookOpen
+};
+
+interface HeroCTAStatsProps {
+  initialStats?: any[];
+}
+
+export default function HeroCTAStats({ initialStats }: HeroCTAStatsProps) {
   const { openVideoModal } = useUI();
 
-  const stats = [
+  const defaultStats = [
     { value: '1500+', label: 'Alumni', icon: Users },
     { value: '500+', label: 'Santri Aktif', icon: GraduationCap },
     { value: '95%', label: 'Lulus PTN', icon: Award },
     { value: '25', label: 'Guru Tahfidz', icon: BookOpen }
   ];
+
+  const stats = initialStats && initialStats.length > 0
+    ? initialStats.slice(0, 4).map((item, idx) => ({
+        value: item.value || defaultStats[idx]?.value || '',
+        label: item.label || defaultStats[idx]?.label || '',
+        icon: (item.icon && iconMap[item.icon]) || defaultStats[idx]?.icon || Users
+      }))
+    : defaultStats;
 
   return (
     <div className="space-y-8 pt-6 pb-2">

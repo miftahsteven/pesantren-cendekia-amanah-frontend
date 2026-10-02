@@ -2,6 +2,16 @@ import { Testimonial } from '@/types';
 
 export const testimonials: Testimonial[] = [
   {
+    id: 'testi-tokoh-1',
+    author: 'KH. Miftachul Achyar',
+    role: "Rais 'Aam Pengurus Besar Nahdlatul Ulama (PBNU)",
+    category: 'Tokoh',
+    content:
+      'Waduh, ini pesantren ini tanpa didoakan saja sudah sedemikian pesatnya. Nah, kalau didoakan, habis semua yang lain! Pesantren Cendekia Amanah adalah ikhtiar nyata memadukan ilmu agama, adab kepesantrenan, dan sains modern untuk mencetak generasi ulama intelektual.',
+    avatar: '/uploads/guru/_dsc3403-jpg-1790912451361.jpg',
+    rating: 5
+  },
+  {
     id: 'testi-1',
     author: 'Bapak Andi Pratama',
     role: 'Wali Santri SMP & Pesantren',

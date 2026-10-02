@@ -35,9 +35,10 @@ import { contentRepo } from '@/repositories/content.repository';
 import { apiGet } from '@/lib/api-client';
 
 export default async function HomePage() {
-  const [achievements, heroSlides] = await Promise.all([
+  const [achievements, heroSlides, heroStats] = await Promise.all([
     contentRepo.getHomeAchievements(),
-    apiGet<any[]>('/hero-slides').catch(() => [])
+    apiGet<any[]>('/hero-slides').catch(() => []),
+    apiGet<any[]>('/statistics?section=HOME_HERO').catch(() => [])
   ]);
 
   return (
@@ -46,7 +47,7 @@ export default async function HomePage() {
       <section className="pt-4 sm:pt-6">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
           <HeroCarousel initialSlides={heroSlides} />
-          <HeroCTAStats />
+          <HeroCTAStats initialStats={heroStats} />
         </div>
       </section>
 

@@ -176,7 +176,7 @@ export interface Testimonial {
   id: string;
   author: string;
   role: string;
-  category: 'Orang Tua Santri' | 'Alumni' | 'Tokoh Pendidikan';
+  category: 'Tokoh' | 'Umum' | 'Orang Tua Santri' | 'Alumni' | 'Tokoh Pendidikan' | string;
   content: string;
   avatar: string;
   rating?: number;
