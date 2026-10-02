@@ -65,6 +65,8 @@ export default async function TestimoniSection() {
   const generalTestimonials = testimonials.filter((t) => t.id !== tokoh.id);
   const umum = generalTestimonials.length >= 3 ? generalTestimonials.slice(0, 3) : defaultUmum;
 
+  const cleanQuote = (text: string) => text.replace(/^["“”\s]+|["“”\s]+$/g, '');
+
   return (
     <section className="py-14 sm:py-16 bg-[#F4F7FB]/50 border-y border-[#DDE6F1]">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
@@ -76,74 +78,79 @@ export default async function TestimoniSection() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          {/* Box Besar Sebelah Kiri - Kategori TOKOH (Highlight dengan Foto Besar) */}
-          <div className="lg:col-span-5 flex flex-col">
-            <div className="bg-gradient-to-br from-[#07214E] via-[#0B2F6B] to-[#123D8A] text-white rounded-3xl p-6 sm:p-8 border border-[#1E4A96]/60 shadow-lg relative overflow-hidden flex flex-col justify-between h-full group hover:shadow-2xl transition-all">
-              {/* Decorative Background Elements */}
-              <Quote className="w-32 h-32 text-white/5 absolute -bottom-6 -right-6 pointer-events-none -rotate-12" />
-              <div className="absolute top-0 right-0 w-72 h-72 bg-radial from-[#F0BD28]/10 via-blue-400/10 to-transparent pointer-events-none" />
+          {/* Box Besar Sebelah Kiri - Kategori TOKOH (Foto di sebelah kanan sebagai background, teks di atasnya dengan opacity tidak terlalu gelap) */}
+          <div className="lg:col-span-6 flex flex-col">
+            <div className="bg-[#07214E] text-white rounded-3xl p-7 sm:p-9 border border-[#1E4A96]/60 shadow-xl relative overflow-hidden flex flex-col justify-between h-full group min-h-[460px]">
+              {/* Foto Tokoh di sebelah kanan sebagai background */}
+              <div className="absolute right-0 top-0 bottom-0 w-3/5 sm:w-1/2 md:w-3/5 h-full pointer-events-none overflow-hidden">
+                <Image
+                  src={getUploadUrl(tokoh.avatar)}
+                  alt={tokoh.author}
+                  fill
+                  className="object-cover object-top sm:object-right-top transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 640px) 60vw, (max-width: 1024px) 50vw, 35vw"
+                  priority
+                />
+                {/* Gradient halus dari kiri ke kanan agar foto tetap terlihat jelas dan menyatu dengan background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#07214E] via-[#07214E]/70 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07214E]/90 via-transparent to-[#07214E]/40" />
+              </div>
+
+              {/* Watermark Quote Dekoratif di Background */}
+              <Quote className="w-28 h-28 text-white/5 absolute top-6 right-6 pointer-events-none -rotate-6" />
+
+              {/* Lapisan overlay lembut (tidak terlalu gelap) untuk teks */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#07214E]/80 via-[#07214E]/40 to-transparent pointer-events-none" />
 
               {/* 1. Header Bar: Tokoh Nasional badge & Stars */}
               <div className="flex items-center justify-between gap-3 relative z-10">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-[#D8232A] text-white shadow-xs">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-[#D8232A] text-white shadow-md">
                   <Award className="w-3.5 h-3.5 text-[#F0BD28]" />
                   <span>Tokoh Nasional</span>
                 </span>
 
-                <div className="flex items-center gap-1 text-[#F0BD28]">
+                <div className="flex items-center gap-1 text-[#F0BD28] bg-black/20 backdrop-blur-xs px-2.5 py-1 rounded-full border border-white/10">
                   {[...Array(tokoh.rating || 5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#F0BD28]" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-[#F0BD28]" />
                   ))}
                 </div>
               </div>
 
-              {/* 2. Highlight Showcase: Foto Besar & Identitas Tokoh */}
-              <div className="flex flex-col items-center text-center my-auto py-5 relative z-10">
-                <div className="relative group/photo mb-4">
-                  {/* Glowing Aura Effect */}
-                  <div className="absolute -inset-2 bg-gradient-to-tr from-[#D8232A]/30 via-white/15 to-[#F0BD28]/35 rounded-3xl blur-xl opacity-80 group-hover/photo:opacity-100 transition duration-500" />
-
-                  {/* Foto Besar Framed */}
-                  <div className="relative w-44 h-56 sm:w-52 sm:h-64 rounded-3xl overflow-hidden border-3 border-white/30 shadow-2xl bg-white/10">
-                    <Image
-                      src={getUploadUrl(tokoh.avatar)}
-                      alt={tokoh.author}
-                      fill
-                      className="object-cover object-top group-hover/photo:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 640px) 176px, 208px"
-                      priority
-                    />
-                  </div>
-
-                  {/* Verified Checkmark Badge */}
-                  <div className="absolute -bottom-2 -right-2 bg-[#D8232A] text-white p-1.5 rounded-full shadow-lg border-2 border-[#07214E]">
-                    <CheckCircle2 className="w-4 h-4 text-white" />
-                  </div>
-                </div>
-
-                {/* Nama & Gelar Tokoh */}
-                <div className="space-y-1 max-w-sm">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
-                    {tokoh.author}
-                  </h3>
-                  <p className="text-xs sm:text-sm font-semibold text-[#F0BD28] tracking-wide">
-                    {tokoh.role}
+              {/* 2. Text Testimoni di atas gambar (dengan opacity tidak terlalu gelap) */}
+              <div className="my-auto py-6 relative z-10 max-w-[85%] sm:max-w-[75%]">
+                <Quote className="w-9 h-9 text-[#F0BD28] mb-2.5 opacity-90 drop-shadow" />
+                <blockquote className="space-y-2">
+                  <p className="text-base sm:text-lg lg:text-xl font-medium leading-relaxed italic text-white drop-shadow-md">
+                    &ldquo;{cleanQuote(tokoh.content)}&rdquo;
                   </p>
-                </div>
+                </blockquote>
               </div>
 
-              {/* 3. Quote Box Tokoh */}
-              <div className="relative z-10 bg-white/10 rounded-2xl p-4 sm:p-5 border border-white/15 backdrop-blur-xs shadow-inner">
-                <Quote className="w-6 h-6 text-[#F0BD28] mb-1.5 opacity-90" />
-                <blockquote className="text-xs sm:text-sm md:text-[15px] font-medium leading-relaxed italic text-white/95">
-                  &ldquo;{tokoh.content}&rdquo;
-                </blockquote>
+              {/* 3. Tokoh Identity & Status */}
+              <div className="pt-5 border-t border-white/15 relative z-10 max-w-[85%] sm:max-w-[75%]">
+                <div className="flex items-center gap-1.5">
+                  <h3 className="text-lg sm:text-xl font-bold text-white leading-tight drop-shadow-md">
+                    {tokoh.author}
+                  </h3>
+                  <CheckCircle2 className="w-4 h-4 text-[#38BDF8] shrink-0" />
+                </div>
+                <p className="text-xs sm:text-sm text-[#F0BD28] font-semibold mt-1 leading-snug drop-shadow-xs">
+                  {tokoh.role}
+                </p>
+                <div className="mt-2 flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/15 text-white/90 border border-white/20 backdrop-blur-xs">
+                    {tokoh.category || 'Tokoh'}
+                  </span>
+                  <span className="text-[11px] text-white/70 italic">
+                    Pesantren Cendekia Amanah
+                  </span>
+                </div>
               </div>
             </div>
           </div>
 
           {/* 3 Kotak Kecil Sebelah Kanan - Kategori UMUM */}
-          <div className="lg:col-span-7 flex flex-col justify-between gap-4">
+          <div className="lg:col-span-6 flex flex-col justify-between gap-4">
             {umum.map((item) => (
               <div
                 key={item.id}
@@ -166,7 +173,7 @@ export default async function TestimoniSection() {
 
                   {/* Testimonial Quote */}
                   <p className="text-xs sm:text-sm text-[#475569] leading-relaxed italic line-clamp-3">
-                    &ldquo;{item.content}&rdquo;
+                    &ldquo;{cleanQuote(item.content)}&rdquo;
                   </p>
                 </div>
 
