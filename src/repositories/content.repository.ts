@@ -30,7 +30,7 @@ export interface IContentRepository {
   getOpinionArticles(): Promise<OpinionArticle[]>;
   getOpinionBySlug(slug: string): Promise<OpinionArticle | null>;
   getFeaturedOpinion(): Promise<OpinionArticle | null>;
-  getAgendas(): Promise<Agenda[]>;
+  getAgendas(unit?: string): Promise<Agenda[]>;
   getAchievements(unit?: string): Promise<Achievement[]>;
   getHomeAchievements(): Promise<Achievement[]>;
   getGalleryItems(category?: string): Promise<GalleryItem[]>;

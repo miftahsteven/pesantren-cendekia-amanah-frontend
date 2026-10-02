@@ -1,12 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { EducationUnit, OrganizationMember } from '@/types';
+import { EducationUnit, OrganizationMember, Agenda } from '@/types';
 import Breadcrumb from '@/components/common/Breadcrumb';
 import SectionHeader from '@/components/common/SectionHeader';
 import UnitPrestasiSection from '@/components/unit/UnitPrestasiSection';
 import UnitOrganizationSection from '@/components/unit/UnitOrganizationSection';
 import KurikulumPesantrenSection from '@/components/unit/KurikulumPesantrenSection';
+import KurikulumSMPSection from '@/components/unit/KurikulumSMPSection';
+import KalenderAkademikSection from '@/components/unit/KalenderAkademikSection';
+import SambutanKepalaUnitSection from '@/components/unit/SambutanKepalaUnitSection';
 import UnitSubNav from '@/components/unit/UnitSubNav';
 import TestimoniSection from '@/components/home/TestimoniSection';
 import GlobalCTA from '@/components/layout/GlobalCTA';
@@ -32,9 +35,10 @@ import { getUploadUrl } from '@/lib/uploads';
 interface EducationUnitPageProps {
   unit: EducationUnit;
   organizations?: OrganizationMember[];
+  agendas?: Agenda[];
 }
 
-export default function EducationUnitPage({ unit, organizations }: EducationUnitPageProps) {
+export default function EducationUnitPage({ unit, organizations, agendas }: EducationUnitPageProps) {
   const getFeatureIcon = (name: string) => {
     switch (name) {
       case 'BookOpen':
@@ -70,6 +74,7 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
   ];
 
   const isPesantren = unit.id === 'pesantren';
+  const isSMP = unit.id === 'smp';
   const isDiniyah = unit.id === 'diniyah';
 
   // Submenu items matching user specifications
@@ -82,11 +87,21 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
         { label: 'Prestasi Santri', href: '#prestasi-santri' },
         { label: 'Kegiatan Santri', href: '#kegiatan-santri' }
       ]
+    : isSMP
+    ? [
+        { label: 'Profile SMP', href: '#profil' },
+        { label: 'Kurikulum', href: '#kurikulum' },
+        { label: 'Program Unggulan', href: '#program-unggulan' },
+        { label: 'Struktur Organisasi', href: '#struktur-organisasi' },
+        { label: 'Prestasi Siswa', href: '#prestasi-siswa' },
+        { label: 'Ekstrakurikuler', href: '#ekstrakurikuler' },
+        { label: 'Kalender Akademik 1 Semester', href: '#kalender-akademik' }
+      ]
     : [
         { label: `Profil ${unit.shortName || unit.name}`, href: '#profil' },
         { label: 'Program Pembelajaran', href: '#program' },
         { label: 'Struktur Organisasi', href: '#organisasi' },
-        { label: 'Prestasi Santri', href: '#prestasi' },
+        { label: 'Prestasi Siswa', href: '#prestasi' },
         { label: 'Kegiatan Siswa', href: '#kegiatan' }
       ];
 
@@ -247,11 +262,15 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
               </div>
             </div>
           </div>
+
+          {/* Sambutan Kepala Unit SMP (Khusus Unit SMP) */}
+          {isSMP && <SambutanKepalaUnitSection unit={unit} />}
         </div>
       </section>
 
-      {/* 2. Kurikulum Section (Pesantren) */}
+      {/* 2. Kurikulum Section (Pesantren & SMP) */}
       {isPesantren && <KurikulumPesantrenSection />}
+      {isSMP && <KurikulumSMPSection />}
 
       {/* 3. Program Unggulan Unit */}
       <div id="program-unggulan" className="scroll-mt-24" />
@@ -259,8 +278,8 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
           <SectionHeader
             badge="Kurikulum & Pembinaan"
-            title={isPesantren ? 'PROGRAM UNGGULAN PESANTREN' : 'PROGRAM PEMBELAJARAN'}
-            subtitle={`Ragam program prioritas yang dirancang khusus untuk mengoptimalkan potensi santri di ${unit.name}.`}
+            title={isPesantren ? 'PROGRAM UNGGULAN PESANTREN' : isSMP ? 'PROGRAM UNGGULAN SMP' : 'PROGRAM PEMBELAJARAN'}
+            subtitle={`Ragam program prioritas yang dirancang khusus untuk mengoptimalkan potensi ${isSMP ? 'siswa' : 'santri'} di ${unit.name}.`}
             centered
           />
 
@@ -299,17 +318,22 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
         />
       )}
 
-      {/* 5. Prestasi Santri */}
+      {/* 5. Prestasi Siswa / Santri */}
       <UnitPrestasiSection unitCode={unit.id} initialAchievements={unit.achievements} />
 
-      {/* 6. Kegiatan Santri / Siswa */}
+      {/* 6. Kegiatan Santri / Ekstrakurikuler */}
       <div id="kegiatan-santri" className="scroll-mt-24" />
+      <div id="ekstrakurikuler" className="scroll-mt-24" />
       <section id="kegiatan" className="scroll-mt-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
           <SectionHeader
-            badge="Aktivitas Keseharian"
-            title={isPesantren ? 'KEGIATAN SANTRI PESANTREN' : 'KEGIATAN SANTRI & SISWA'}
-            subtitle="Keseimbangan antara rutinitas ibadah, eksplorasi akademik, dan pengembangan bakat kepemimpinan."
+            badge={isSMP ? 'Bakat & Minat Siswa' : 'Aktivitas Keseharian'}
+            title={isPesantren ? 'KEGIATAN SANTRI PESANTREN' : isSMP ? 'EKSTRAKURIKULER SMP' : 'KEGIATAN SANTRI & SISWA'}
+            subtitle={
+              isSMP
+                ? 'Wadah eksplorasi potensi bakat, kepanduan pramuka, riset sains & robotika, seni Islam, dan kebugaran jasmani siswa SMP Cendekia Amanah.'
+                : 'Keseimbangan antara rutinitas ibadah, eksplorasi akademik, dan pengembangan bakat kepemimpinan.'
+            }
             centered
           />
 
@@ -335,6 +359,9 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
           </div>
         </div>
       </section>
+
+      {/* 7. Kalender Akademik 1 Semester (Khusus Unit SMP) */}
+      {isSMP && <KalenderAkademikSection unitCode={unit.id} initialAgendas={agendas} />}
 
       {/* Testimoni */}
       <TestimoniSection />

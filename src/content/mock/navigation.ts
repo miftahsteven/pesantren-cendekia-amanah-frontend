@@ -31,12 +31,13 @@ export const mainNavigation: NavigationItem[] = [
     label: 'SMP',
     href: '/smp',
     children: [
-      { label: 'Profil SMP', href: '/smp#profil' },
-      { label: 'Keunggulan Kurikulum', href: '/smp#keunggulan' },
-      { label: 'Program Unggulan', href: '/smp#program' },
-      { label: 'Struktur Organisasi', href: '/smp#organisasi' },
-      { label: 'Ekstrakurikuler', href: '/smp#kegiatan' },
-      { label: 'Prestasi Siswa', href: '/smp#prestasi' }
+      { label: 'Profile SMP', href: '/smp#profil', description: 'Visi, keunggulan & sambutan kepala sekolah' },
+      { label: 'Kurikulum', href: '/smp#kurikulum', description: 'Kurikulum Merdeka, Tahfidz & Smart Classroom' },
+      { label: 'Program Unggulan', href: '/smp#program-unggulan', description: 'Program prioritas pembinaan siswa berprestasi' },
+      { label: 'Struktur Organisasi', href: '/smp#struktur-organisasi', description: 'Kepala sekolah & dewan pendidik SMP' },
+      { label: 'Prestasi Siswa', href: '/smp#prestasi-siswa', description: 'Raihan kejuaraan akademik & non-akademik' },
+      { label: 'Ekstrakurikuler', href: '/smp#ekstrakurikuler', description: 'Wadah minat, bakat, sains, & teknologi' },
+      { label: 'Kalender Akademik 1 Semester', href: '/smp#kalender-akademik', description: 'Jadwal kegiatan akademik & ujian sekolah' }
     ]
   },
   {

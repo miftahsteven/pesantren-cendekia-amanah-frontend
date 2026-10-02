@@ -84,7 +84,12 @@ export class ApiContentRepository implements IContentRepository {
               }))
             : [],
           testimonials: unit.testimonials || [],
-          whatsappNumber: '6285776446468'
+          whatsappNumber: '6285776446468',
+          welcomeName: unit.welcomeName,
+          welcomeRole: unit.welcomeRole,
+          welcomePhoto: unit.welcomePhoto,
+          welcomeQuote: unit.welcomeQuote,
+          welcomeMessage: unit.welcomeMessage
         };
       }
       return this.fallback.getEducationUnit(unitId);
@@ -299,9 +304,10 @@ export class ApiContentRepository implements IContentRepository {
     return list.find((item) => item.isFeatured) || list[0] || null;
   }
 
-  async getAgendas(): Promise<Agenda[]> {
+  async getAgendas(unit?: string): Promise<Agenda[]> {
     try {
-      const items = await apiGet<any[]>('/agendas');
+      const url = unit && unit !== 'all' ? `/agendas?unit=${unit}` : '/agendas';
+      const items = await apiGet<any[]>(url);
       if (items && items.length > 0) {
         return items.map((ag) => ({
           id: ag.id,
@@ -311,12 +317,16 @@ export class ApiContentRepository implements IContentRepository {
           title: ag.title,
           time: ag.time,
           location: ag.location,
-          status: ag.status
+          status: ag.status,
+          description: ag.description,
+          eventDate: ag.eventDate,
+          category: ag.category,
+          unitId: ag.unitId
         }));
       }
-      return this.fallback.getAgendas();
+      return this.fallback.getAgendas(unit);
     } catch {
-      return this.fallback.getAgendas();
+      return this.fallback.getAgendas(unit);
     }
   }
 

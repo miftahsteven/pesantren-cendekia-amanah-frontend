@@ -107,6 +107,11 @@ export const educationUnits: Record<string, EducationUnit> = {
     iconName: 'GraduationCap',
     colorTheme: 'blue',
     whatsappNumber: '6285183368851',
+    welcomeName: 'Ust. Sodik, SQ., S.Ud., ME., Gr',
+    welcomeRole: 'Kepala Sekolah SMP Cendekia Amanah',
+    welcomePhoto: '/uploads/gallery/kartu-unit-pendidikan-ustadz-sodik-smp-pesantren-cendekia-amanah-1790831920585.jpg',
+    welcomeQuote: 'Membimbing Generasi Remaja Berkarakter Qurani, Berprestasi Akademik, dan Berwawasan Global di Era Digital.',
+    welcomeMessage: 'Assalamu’alaikum Warahmatullahi Wabarakatuh.\n\nSelamat datang di Sekolah Menengah Pertama (SMP) Cendekia Amanah. Kami berkomitmen untuk menghadirkan ekosistem pendidikan yang memadukan keunggulan akademik Kurikulum Nasional Merdeka dengan kedalaman nilai-nilai Islam, Al-Qur\'an, dan pembentukan adab santri.\n\nDi SMP Cendekia Amanah, setiap siswa didampingi untuk menemukan potensi terbaiknya melalui pembelajaran interaktif berbasis digital smart classroom, pembiasaan hafalan Al-Qur\'an bersanad, pembinaan karakter kemandirian santri, serta penguasaan bahasa internasional (Arab & Inggris). Kami percaya bahwa masa transisi remaja adalah fase emas untuk menanamkan pondasi aqidah yang kokoh sekaligus mengasah nalar kritis dan daya cipta inovatif.\n\nBersama para pendidik yang berdedikasi dan fasilitas pendukung yang memadai, kami siap membersamai putra-putri Anda menjadi pribadi yang bertaqwa, cerdas, berprestasi, dan siap memimpin masa depan peradaban Islam.\n\nWassalamu’alaikum Warahmatullahi Wabarakatuh.',
     bulletPoints: [
       'Kurikulum Nasional Terpadu Nilai Islam',
       'Target Tahfidz Al-Qur’an Juz 29 & 30 + Pilihan',

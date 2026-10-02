@@ -20,12 +20,13 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function SMPPage() {
-  const [unit, organizations] = await Promise.all([
+  const [unit, organizations, agendas] = await Promise.all([
     contentRepo.getEducationUnit('smp'),
-    contentRepo.getOrganizationMembers('smp')
+    contentRepo.getOrganizationMembers('smp'),
+    contentRepo.getAgendas('smp')
   ]);
 
   if (!unit) notFound();
 
-  return <EducationUnitPage unit={unit} organizations={organizations} />;
+  return <EducationUnitPage unit={unit} organizations={organizations} agendas={agendas} />;
 }

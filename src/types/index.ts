@@ -87,6 +87,11 @@ export interface EducationUnit {
   testimonials?: Testimonial[];
   brochureUrl?: string;
   whatsappNumber: string;
+  welcomeName?: string;
+  welcomeRole?: string;
+  welcomePhoto?: string;
+  welcomeQuote?: string;
+  welcomeMessage?: string;
 }
 
 export interface FacilityItem {
@@ -149,6 +154,10 @@ export interface Agenda {
   time: string;
   location?: string;
   status?: string;
+  description?: string;
+  eventDate?: string;
+  category?: string;
+  unitId?: string;
 }
 
 export interface Achievement {

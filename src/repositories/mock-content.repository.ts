@@ -404,7 +404,10 @@ export class MockContentRepository implements IContentRepository {
     return opinionArticles.find((item) => item.isFeatured) || opinionArticles[0] || null;
   }
 
-  async getAgendas(): Promise<Agenda[]> {
+  async getAgendas(unit?: string): Promise<Agenda[]> {
+    if (unit && unit !== 'all') {
+      return agendas.filter((item) => (item as any).unit === unit || item.unitId === unit);
+    }
     return agendas;
   }
 

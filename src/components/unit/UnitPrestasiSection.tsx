@@ -58,15 +58,18 @@ export default function UnitPrestasiSection({
     return null;
   }
 
+  const isSMP = unitCode === 'smp' || unitCode === 'SMP';
+
   return (
     <section id="prestasi" className="py-12 sm:py-14 bg-white border-y border-[#DDE6F1] scroll-mt-24">
       <div id="prestasi-santri" className="scroll-mt-24" />
+      <div id="prestasi-siswa" className="scroll-mt-24" />
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
         {/* Section Header with Red Lines */}
         <div className="flex items-center justify-center gap-3 sm:gap-4">
           <span className="w-8 sm:w-12 h-0.5 bg-[#D8232A] rounded-full" />
           <h2 className="text-xl sm:text-2xl font-black text-[#0B2F6B] tracking-wider uppercase">
-            PRESTASI SANTRI
+            {isSMP ? 'PRESTASI SISWA SMP' : 'PRESTASI SANTRI'}
           </h2>
           <span className="w-8 sm:w-12 h-0.5 bg-[#D8232A] rounded-full" />
         </div>
