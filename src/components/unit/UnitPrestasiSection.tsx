@@ -59,7 +59,8 @@ export default function UnitPrestasiSection({
   }
 
   return (
-    <section className="py-12 sm:py-14 bg-white border-y border-[#DDE6F1]">
+    <section id="prestasi" className="py-12 sm:py-14 bg-white border-y border-[#DDE6F1] scroll-mt-24">
+      <div id="prestasi-santri" className="scroll-mt-24" />
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
         {/* Section Header with Red Lines */}
         <div className="flex items-center justify-center gap-3 sm:gap-4">

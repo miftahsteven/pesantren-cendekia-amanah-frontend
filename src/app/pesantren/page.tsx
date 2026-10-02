@@ -20,8 +20,11 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function PesantrenPage() {
-  const unit = await contentRepo.getEducationUnit('pesantren');
+  const [unit, organizations] = await Promise.all([
+    contentRepo.getEducationUnit('pesantren'),
+    contentRepo.getOrganizationMembers('pesantren')
+  ]);
   if (!unit) notFound();
 
-  return <EducationUnitPage unit={unit} />;
+  return <EducationUnitPage unit={unit} organizations={organizations} />;
 }

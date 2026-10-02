@@ -6,6 +6,8 @@ import Breadcrumb from '@/components/common/Breadcrumb';
 import SectionHeader from '@/components/common/SectionHeader';
 import UnitPrestasiSection from '@/components/unit/UnitPrestasiSection';
 import UnitOrganizationSection from '@/components/unit/UnitOrganizationSection';
+import KurikulumPesantrenSection from '@/components/unit/KurikulumPesantrenSection';
+import UnitSubNav from '@/components/unit/UnitSubNav';
 import TestimoniSection from '@/components/home/TestimoniSection';
 import GlobalCTA from '@/components/layout/GlobalCTA';
 import {
@@ -67,7 +69,26 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
     { id: 'diniyah', label: 'Madrasah Diniyah', href: '/diniyah' }
   ];
 
+  const isPesantren = unit.id === 'pesantren';
   const isDiniyah = unit.id === 'diniyah';
+
+  // Submenu items matching user specifications
+  const subNavItems = isPesantren
+    ? [
+        { label: 'Profile Pesantren', href: '#profil' },
+        { label: 'Kurikulum', href: '#kurikulum' },
+        { label: 'Program Unggulan', href: '#program-unggulan' },
+        { label: 'Struktur Organisasi', href: '#struktur-organisasi' },
+        { label: 'Prestasi Santri', href: '#prestasi-santri' },
+        { label: 'Kegiatan Santri', href: '#kegiatan-santri' }
+      ]
+    : [
+        { label: `Profil ${unit.shortName || unit.name}`, href: '#profil' },
+        { label: 'Program Pembelajaran', href: '#program' },
+        { label: 'Struktur Organisasi', href: '#organisasi' },
+        { label: 'Prestasi Santri', href: '#prestasi' },
+        { label: 'Kegiatan Siswa', href: '#kegiatan' }
+      ];
 
   return (
     <div className="space-y-12 sm:space-y-16">
@@ -149,6 +170,9 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
         </div>
       </section>
 
+      {/* Sticky Unit Submenu Navigation Bar */}
+      <UnitSubNav items={subNavItems} />
+
       {/* 4 Feature Pills */}
       <section>
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
@@ -179,8 +203,9 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
         </div>
       </section>
 
-      {/* Unit Profil Section */}
-      <section id="profil" className="py-12 bg-white border-y border-[#DDE6F1]">
+      {/* 1. Unit Profil Section */}
+      <div id="profile" className="scroll-mt-24" />
+      <section id="profil" className="py-12 bg-white border-y border-[#DDE6F1] scroll-mt-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 space-y-6">
@@ -225,12 +250,16 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
         </div>
       </section>
 
-      {/* Program Unggulan Unit */}
-      <section id="program">
+      {/* 2. Kurikulum Section (Pesantren) */}
+      {isPesantren && <KurikulumPesantrenSection />}
+
+      {/* 3. Program Unggulan Unit */}
+      <div id="program-unggulan" className="scroll-mt-24" />
+      <section id="program" className="scroll-mt-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
           <SectionHeader
             badge="Kurikulum & Pembinaan"
-            title="PROGRAM PEMBELAJARAN"
+            title={isPesantren ? 'PROGRAM UNGGULAN PESANTREN' : 'PROGRAM PEMBELAJARAN'}
             subtitle={`Ragam program prioritas yang dirancang khusus untuk mengoptimalkan potensi santri di ${unit.name}.`}
             centered
           />
@@ -262,7 +291,7 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
         </div>
       </section>
 
-      {/* Struktur Organisasi & Tenaga Pendidik */}
+      {/* 4. Struktur Organisasi & Tenaga Pendidik */}
       {organizations && organizations.length > 0 && (
         <UnitOrganizationSection
           unitName={unit.shortName || unit.name}
@@ -270,12 +299,16 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
         />
       )}
 
-      {/* Kegiatan Santri / Siswa */}
-      <section id="kegiatan">
+      {/* 5. Prestasi Santri */}
+      <UnitPrestasiSection unitCode={unit.id} initialAchievements={unit.achievements} />
+
+      {/* 6. Kegiatan Santri / Siswa */}
+      <div id="kegiatan-santri" className="scroll-mt-24" />
+      <section id="kegiatan" className="scroll-mt-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
           <SectionHeader
             badge="Aktivitas Keseharian"
-            title="KEGIATAN SANTRI & SISWA"
+            title={isPesantren ? 'KEGIATAN SANTRI PESANTREN' : 'KEGIATAN SANTRI & SISWA'}
             subtitle="Keseimbangan antara rutinitas ibadah, eksplorasi akademik, dan pengembangan bakat kepemimpinan."
             centered
           />
@@ -303,9 +336,6 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
         </div>
       </section>
 
-      {/* Prestasi Santri */}
-      <UnitPrestasiSection unitCode={unit.id} initialAchievements={unit.achievements} />
-
       {/* Testimoni */}
       <TestimoniSection />
 
@@ -314,3 +344,4 @@ export default function EducationUnitPage({ unit, organizations }: EducationUnit
     </div>
   );
 }
+

@@ -46,7 +46,8 @@ export default function UnitOrganizationSection({ unitName, members }: Props) {
   const level3 = filteredMembers.filter((m) => m.level === 3 || !m.level);
 
   return (
-    <section id="organisasi" className="py-14 sm:py-16 bg-[#F4F7FB] border-y border-[#DDE6F1] scroll-mt-20">
+    <section id="organisasi" className="py-14 sm:py-16 bg-[#F4F7FB] border-y border-[#DDE6F1] scroll-mt-24">
+      <div id="struktur-organisasi" className="scroll-mt-24" />
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-10">
         <SectionHeader
           badge="Struktur & Tenaga Pendidik"

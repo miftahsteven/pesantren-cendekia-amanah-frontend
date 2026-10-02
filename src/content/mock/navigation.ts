@@ -19,11 +19,12 @@ export const mainNavigation: NavigationItem[] = [
     label: 'Pesantren',
     href: '/pesantren',
     children: [
-      { label: 'Profil Pesantren', href: '/pesantren#profil' },
-      { label: 'Program Unggulan', href: '/pesantren#program' },
-      { label: 'Kurikulum & Kitab', href: '/pesantren#kurikulum' },
-      { label: 'Kehidupan Santri', href: '/pesantren#kegiatan' },
-      { label: 'Prestasi Santri', href: '/pesantren#prestasi' }
+      { label: 'Profile Pesantren', href: '/pesantren#profil', description: 'Mengenal visi, keunggulan, dan profil pesantren' },
+      { label: 'Kurikulum', href: '/pesantren#kurikulum', description: 'Dirasah Islamiyah, Tahfidz Al-Qur’an & Kitab Kuning' },
+      { label: 'Program Unggulan', href: '/pesantren#program-unggulan', description: 'Program prioritas pembinaan santri berprestasi' },
+      { label: 'Struktur Organisasi', href: '/pesantren#struktur-organisasi', description: 'Pengasuh & dewan asatidz pembina santri' },
+      { label: 'Prestasi Santri', href: '/pesantren#prestasi-santri', description: 'Raihan kejuaraan & penghargaan santri' },
+      { label: 'Kegiatan Santri', href: '/pesantren#kegiatan-santri', description: 'Rutinitas 24 jam & ekstrakurikuler kepesantrenan' }
     ]
   },
   {
