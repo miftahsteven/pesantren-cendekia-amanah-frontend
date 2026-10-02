@@ -158,6 +158,14 @@ export interface Agenda {
   eventDate?: string;
   category?: string;
   unitId?: string;
+  unit?: {
+    id?: string;
+    code?: string;
+    slug?: string;
+    name?: string;
+    shortName?: string;
+    badge?: string;
+  };
 }
 
 export interface Achievement {

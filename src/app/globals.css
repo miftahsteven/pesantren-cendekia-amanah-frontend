@@ -134,3 +134,22 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Elegant scrollbar for Agenda container */
+.agenda-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E1 transparent;
+}
+.agenda-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+.agenda-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.agenda-scroll::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+.agenda-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}

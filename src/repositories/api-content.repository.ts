@@ -339,7 +339,8 @@ export class ApiContentRepository implements IContentRepository {
           description: ag.description,
           eventDate: ag.eventDate,
           category: ag.category,
-          unitId: ag.unitId
+          unitId: ag.unitId,
+          unit: ag.unit
         }));
       }
       return this.fallback.getAgendas(unit);
