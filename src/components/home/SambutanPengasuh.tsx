@@ -100,13 +100,15 @@ export default async function SambutanPengasuh() {
 
             {/* CTA Actions */}
             <div className="pt-4 flex flex-wrap items-center gap-4">
-              <Link
-                href="/tentang-kami#sambutan"
+              <a
+                href="https://cholilnafis.id"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-xs sm:text-sm text-white bg-[#0B2F6B] hover:bg-[#1A4FA0] shadow-md hover:shadow-lg transition-all"
               >
                 <span>Baca Profil Pengasuh Selengkapnya</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
