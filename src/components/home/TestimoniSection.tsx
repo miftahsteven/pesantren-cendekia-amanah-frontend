@@ -78,60 +78,62 @@ export default async function TestimoniSection() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch mt-8">
-          {/* Box Sebelah Kiri - Kategori TOKOH (Foto di atas, testimoni di bawah, ukuran profesional dan tidak terlalu besar) */}
+          {/* Box Sebelah Kiri - Kategori TOKOH (Foto penuh satu box, wajah terang di atas, testimoni di bawah di dalam foto) */}
           <div className="lg:col-span-5 flex flex-col">
-            <div className="bg-[#0B2F6B] text-white rounded-2xl border border-[#1E4A96]/60 shadow-xs hover:shadow-md transition-all overflow-hidden flex flex-col justify-between h-full group">
-              {/* 1. Foto Tokoh di Atas (Bersih, Wajah Tidak Tertutup Teks) */}
-              <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-900 shrink-0">
+            <div className="relative rounded-2xl border border-[#1E4A96]/60 shadow-xs hover:shadow-md transition-all overflow-hidden flex flex-col justify-between h-full group min-h-[320px]">
+              {/* Foto Penuh Tokoh sebagai Background */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden bg-slate-900">
                 <Image
                   src={getUploadUrl(tokoh.avatar)}
                   alt={tokoh.author}
                   fill
-                  className="object-cover object-top sm:object-[center_15%] transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 42vw"
                   priority
                 />
-                {/* Gradasi lembut di bagian bawah foto agar menyatu ke area testimoni */}
-                <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#0B2F6B] to-transparent pointer-events-none" />
+                {/* Gradien gelap lembut HANYA di bagian bawah (agar wajah di atas tetap terang dan jelas) */}
+                <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-black/95 via-black/60 to-transparent pointer-events-none" />
+                {/* Bayangan halus di bagian paling atas untuk kontras badge */}
+                <div className="absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
+              </div>
 
-                {/* Badge Mengambang di Atas Foto */}
-                <div className="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none z-10">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-[#D8232A] text-white shadow-md">
-                    <Award className="w-3 h-3 text-[#F0BD28]" />
-                    <span>Tokoh Nasional</span>
-                  </span>
-                  <div className="flex items-center gap-0.5 bg-black/50 backdrop-blur-xs px-2 py-0.5 rounded-full border border-white/10 text-[#F0BD28]">
-                    {[...Array(tokoh.rating || 5)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-[#F0BD28]" />
-                    ))}
-                  </div>
+              {/* 1. Header Bar: Tokoh Nasional badge & Stars */}
+              <div className="relative z-10 p-3.5 sm:p-4 flex items-center justify-between pointer-events-none">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-[#D8232A] text-white shadow-md">
+                  <Award className="w-3 h-3 text-[#F0BD28]" />
+                  <span>Tokoh Nasional</span>
+                </span>
+                <div className="flex items-center gap-0.5 bg-black/40 backdrop-blur-xs px-2 py-0.5 rounded-full border border-white/10 text-[#F0BD28]">
+                  {[...Array(tokoh.rating || 5)].map((_, i) => (
+                    <Star key={i} className="w-3 h-3 fill-[#F0BD28]" />
+                  ))}
                 </div>
               </div>
 
-              {/* 2. Area Testimoni Berada di Bawah Gambar */}
-              <div className="p-4 sm:p-4.5 flex-1 flex flex-col justify-between gap-3 bg-[#0B2F6B]">
+              {/* 2. Area Testimoni Berada di BAWAH di dalam Foto (Wajah di tengah/atas tetap leluasa) */}
+              <div className="relative z-10 p-3.5 sm:p-4 mt-auto pt-6 space-y-2.5">
                 {/* Kutipan Testimoni */}
-                <div className="flex items-start gap-2.5">
-                  <Quote className="w-5 h-5 text-[#F0BD28] shrink-0 mt-0.5 opacity-90" />
-                  <p className="text-xs sm:text-[13px] text-white/95 italic font-medium leading-relaxed">
+                <div className="flex items-start gap-2">
+                  <Quote className="w-5 h-5 text-[#F0BD28] shrink-0 mt-0.5 opacity-90 drop-shadow" />
+                  <p className="text-xs sm:text-[13px] text-white italic font-medium leading-relaxed drop-shadow-md">
                     &ldquo;{cleanQuote(tokoh.content)}&rdquo;
                   </p>
                 </div>
 
                 {/* Identitas Tokoh */}
-                <div className="pt-2.5 border-t border-white/10 flex items-center justify-between gap-2">
+                <div className="pt-2 border-t border-white/20 flex items-center justify-between gap-2">
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5">
-                      <h3 className="text-sm sm:text-base font-bold text-white leading-tight truncate">
+                      <h3 className="text-sm sm:text-base font-bold text-white leading-tight drop-shadow-md truncate">
                         {tokoh.author}
                       </h3>
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" />
                     </div>
-                    <p className="text-[11px] text-[#F0BD28] font-semibold truncate mt-0.5">
+                    <p className="text-[11px] text-[#F0BD28] font-semibold drop-shadow-xs truncate mt-0.5">
                       {tokoh.role}
                     </p>
                   </div>
-                  <span className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-white/10 text-white/90 border border-white/15 shrink-0">
+                  <span className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-white/20 text-white border border-white/20 backdrop-blur-xs shrink-0">
                     {tokoh.category || 'Tokoh'}
                   </span>
                 </div>
