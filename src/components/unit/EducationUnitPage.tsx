@@ -8,6 +8,7 @@ import UnitPrestasiSection from '@/components/unit/UnitPrestasiSection';
 import UnitOrganizationSection from '@/components/unit/UnitOrganizationSection';
 import KurikulumPesantrenSection from '@/components/unit/KurikulumPesantrenSection';
 import KurikulumSMPSection from '@/components/unit/KurikulumSMPSection';
+import KurikulumSMASection from '@/components/unit/KurikulumSMASection';
 import KalenderAkademikSection from '@/components/unit/KalenderAkademikSection';
 import SambutanKepalaUnitSection from '@/components/unit/SambutanKepalaUnitSection';
 import UnitSubNav from '@/components/unit/UnitSubNav';
@@ -75,6 +76,7 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
 
   const isPesantren = unit.id === 'pesantren';
   const isSMP = unit.id === 'smp';
+  const isSMA = unit.id === 'sma';
   const isDiniyah = unit.id === 'diniyah';
 
   // Submenu items matching user specifications
@@ -90,6 +92,16 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
     : isSMP
     ? [
         { label: 'Profile SMP', href: '#profil' },
+        { label: 'Kurikulum', href: '#kurikulum' },
+        { label: 'Program Unggulan', href: '#program-unggulan' },
+        { label: 'Struktur Organisasi', href: '#struktur-organisasi' },
+        { label: 'Prestasi Siswa', href: '#prestasi-siswa' },
+        { label: 'Ekstrakurikuler', href: '#ekstrakurikuler' },
+        { label: 'Kalender Akademik 1 Semester', href: '#kalender-akademik' }
+      ]
+    : isSMA
+    ? [
+        { label: 'Profile SMA', href: '#profil' },
         { label: 'Kurikulum', href: '#kurikulum' },
         { label: 'Program Unggulan', href: '#program-unggulan' },
         { label: 'Struktur Organisasi', href: '#struktur-organisasi' },
@@ -263,14 +275,15 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
             </div>
           </div>
 
-          {/* Sambutan Kepala Unit SMP (Khusus Unit SMP) */}
-          {isSMP && <SambutanKepalaUnitSection unit={unit} />}
+          {/* Sambutan Kepala Unit (Khusus Unit SMP & SMA) */}
+          {(isSMP || isSMA || Boolean(unit.welcomeName)) && <SambutanKepalaUnitSection unit={unit} />}
         </div>
       </section>
 
-      {/* 2. Kurikulum Section (Pesantren & SMP) */}
+      {/* 2. Kurikulum Section (Pesantren, SMP, & SMA) */}
       {isPesantren && <KurikulumPesantrenSection />}
       {isSMP && <KurikulumSMPSection />}
+      {isSMA && <KurikulumSMASection />}
 
       {/* 3. Program Unggulan Unit */}
       <div id="program-unggulan" className="scroll-mt-24" />
@@ -278,8 +291,20 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
           <SectionHeader
             badge="Kurikulum & Pembinaan"
-            title={isPesantren ? 'PROGRAM UNGGULAN PESANTREN' : isSMP ? 'PROGRAM UNGGULAN SMP' : 'PROGRAM PEMBELAJARAN'}
-            subtitle={`Ragam program prioritas yang dirancang khusus untuk mengoptimalkan potensi ${isSMP ? 'siswa' : 'santri'} di ${unit.name}.`}
+            title={
+              isPesantren
+                ? 'PROGRAM UNGGULAN PESANTREN'
+                : isSMP
+                ? 'PROGRAM UNGGULAN SMP'
+                : isSMA
+                ? 'PROGRAM UNGGULAN SMA'
+                : 'PROGRAM PEMBELAJARAN'
+            }
+            subtitle={
+              isSMA
+                ? 'Program unggulan komprehensif untuk persiapan sukses menembus Perguruan Tinggi Negeri (PTN) favorit, kedinasan, kampus luar negeri, serta kepemimpinan Islami.'
+                : `Ragam program prioritas yang dirancang khusus untuk mengoptimalkan potensi ${isSMP ? 'siswa' : 'santri'} di ${unit.name}.`
+            }
             centered
           />
 
@@ -327,10 +352,20 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
       <section id="kegiatan" className="scroll-mt-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
           <SectionHeader
-            badge={isSMP ? 'Bakat & Minat Siswa' : 'Aktivitas Keseharian'}
-            title={isPesantren ? 'KEGIATAN SANTRI PESANTREN' : isSMP ? 'EKSTRAKURIKULER SMP' : 'KEGIATAN SANTRI & SISWA'}
+            badge={isSMP || isSMA ? 'Bakat & Minat Siswa' : 'Aktivitas Keseharian'}
+            title={
+              isPesantren
+                ? 'KEGIATAN SANTRI PESANTREN'
+                : isSMP
+                ? 'EKSTRAKURIKULER SMP'
+                : isSMA
+                ? 'EKSTRAKURIKULER SMA'
+                : 'KEGIATAN SANTRI & SISWA'
+            }
             subtitle={
-              isSMP
+              isSMA
+                ? 'Wadah eksplorasi minat bakat, riset ilmiah (KIR), kepemimpinan OSIS & MPK, olimpiade sains, olahraga prestasi, seni Islam, dan bahasa asing siswa SMA Cendekia Amanah.'
+                : isSMP
                 ? 'Wadah eksplorasi potensi bakat, kepanduan pramuka, riset sains & robotika, seni Islam, dan kebugaran jasmani siswa SMP Cendekia Amanah.'
                 : 'Keseimbangan antara rutinitas ibadah, eksplorasi akademik, dan pengembangan bakat kepemimpinan.'
             }
@@ -360,8 +395,8 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
         </div>
       </section>
 
-      {/* 7. Kalender Akademik 1 Semester (Khusus Unit SMP) */}
-      {isSMP && <KalenderAkademikSection unitCode={unit.id} initialAgendas={agendas} />}
+      {/* 7. Kalender Akademik 1 Semester (Khusus Unit SMP & SMA) */}
+      {(isSMP || isSMA) && <KalenderAkademikSection unitCode={unit.id} initialAgendas={agendas} />}
 
       {/* Testimoni */}
       <TestimoniSection />

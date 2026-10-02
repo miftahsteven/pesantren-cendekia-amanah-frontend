@@ -207,6 +207,11 @@ export const educationUnits: Record<string, EducationUnit> = {
     iconName: 'BookOpen',
     colorTheme: 'navy',
     whatsappNumber: '6285888663587',
+    welcomeName: 'Dr. H. Muhammad Ilyas, M.Ag.',
+    welcomeRole: 'Kepala Sekolah SMA Cendekia Amanah',
+    welcomePhoto: '/uploads/gallery/guru1.png',
+    welcomeQuote: 'Mempersiapkan Generasi Pemimpin Muslim yang Unggul Akademik, Berkarakter Qurani, dan Siap Bersaing di Perguruan Tinggi Terbaik Dunia.',
+    welcomeMessage: 'Assalamu’alaikum Warahmatullahi Wabarakatuh.\n\nSelamat datang di Sekolah Menengah Atas (SMA) Cendekia Amanah. Pendidikan tingkat menengah atas adalah fase krusial dalam menempa kematangan berpikir, kedalaman spiritual, dan kesiapan para santri menuju gerbang perguruan tinggi bergengsi serta kepemimpinan global.\n\nDi SMA Cendekia Amanah, kami memadukan keunggulan Kurikulum Nasional Merdeka dengan program bimbingan intensif tembus PTN Favorit (SNBP, SNBT/UTBK, Kedokteran/Teknik), persiapan beasiswa internasional (Timur Tengah, Eropa, Asia), pendalaman riset ilmiah remaja (KIR), dan pemantapan hafalan Al-Qur\'an bersanad.\n\nDidukung oleh dewan asatidz dan pendidik lulusan universitas ternama serta fasilitas laboratorium dan digital learning modern, kami senantiasa mendampingi setiap santri untuk meraih potensi tertingginya menjadi pribadi yang berilmu, beradab, dan siap memimpin masa depan.\n\nWassalamu’alaikum Warahmatullahi Wabarakatuh.',
     bulletPoints: [
       'Kurikulum Nasional & Penguatan Minat Bakat Riset',
       'Program Persiapan Sukses Masuk PTN Favorit & Luar Negeri',

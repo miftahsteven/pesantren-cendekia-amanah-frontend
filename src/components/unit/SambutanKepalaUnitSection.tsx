@@ -9,15 +9,14 @@ interface SambutanKepalaUnitSectionProps {
 }
 
 export default function SambutanKepalaUnitSection({ unit }: SambutanKepalaUnitSectionProps) {
-  const name = unit.welcomeName || 'Ust. Sodik, SQ., S.Ud., ME., Gr';
-  const role = unit.welcomeRole || `Kepala Sekolah ${unit.name}`;
-  const photo = unit.welcomePhoto || '/uploads/gallery/kartu-unit-pendidikan-ustadz-sodik-smp-pesantren-cendekia-amanah-1790831920585.jpg';
-  const quote =
-    unit.welcomeQuote ||
-    'Membimbing Generasi Remaja Berkarakter Qurani, Berprestasi Akademik, dan Berwawasan Global di Era Digital.';
-  const message =
-    unit.welcomeMessage ||
-    `Assalamu’alaikum Warahmatullahi Wabarakatuh.
+  const isSMA = unit.id === 'sma';
+
+  const defaultSMP = {
+    name: 'Ust. Sodik, SQ., S.Ud., ME., Gr',
+    role: 'Kepala Sekolah SMP Cendekia Amanah',
+    photo: '/uploads/gallery/kartu-unit-pendidikan-ustadz-sodik-smp-pesantren-cendekia-amanah-1790831920585.jpg',
+    quote: 'Membimbing Generasi Remaja Berkarakter Qurani, Berprestasi Akademik, dan Berwawasan Global di Era Digital.',
+    message: `Assalamu’alaikum Warahmatullahi Wabarakatuh.
 
 Selamat datang di Sekolah Menengah Pertama (SMP) Cendekia Amanah. Kami berkomitmen untuk menghadirkan ekosistem pendidikan yang memadukan keunggulan akademik Kurikulum Nasional Merdeka dengan kedalaman nilai-nilai Islam, Al-Qur'an, dan pembentukan adab santri.
 
@@ -25,7 +24,32 @@ Di SMP Cendekia Amanah, setiap siswa didampingi untuk menemukan potensi terbaikn
 
 Bersama para pendidik yang berdedikasi dan fasilitas pendukung yang memadai, kami siap membersamai putra-putri Anda menjadi pribadi yang bertaqwa, cerdas, berprestasi, dan siap memimpin masa depan peradaban Islam.
 
-Wassalamu’alaikum Warahmatullahi Wabarakatuh.`;
+Wassalamu’alaikum Warahmatullahi Wabarakatuh.`
+  };
+
+  const defaultSMA = {
+    name: 'Dr. H. Muhammad Ilyas, M.Ag.',
+    role: 'Kepala Sekolah SMA Cendekia Amanah',
+    photo: '/uploads/gallery/guru1.png',
+    quote: 'Mempersiapkan Generasi Pemimpin Muslim yang Unggul Akademik, Berkarakter Qurani, dan Siap Bersaing di Perguruan Tinggi Terbaik Dunia.',
+    message: `Assalamu’alaikum Warahmatullahi Wabarakatuh.
+
+Selamat datang di Sekolah Menengah Atas (SMA) Cendekia Amanah. Pendidikan tingkat menengah atas adalah fase krusial dalam menempa kematangan berpikir, kedalaman spiritual, dan kesiapan para santri menuju gerbang perguruan tinggi bergengsi serta kepemimpinan global.
+
+Di SMA Cendekia Amanah, kami memadukan keunggulan Kurikulum Nasional Merdeka dengan program bimbingan intensif tembus PTN Favorit (SNBP, SNBT/UTBK, Kedokteran/Teknik), persiapan beasiswa internasional (Timur Tengah, Eropa, Asia), pendalaman riset ilmiah remaja (KIR), dan pemantapan hafalan Al-Qur'an bersanad.
+
+Didukung oleh dewan asatidz dan pendidik lulusan universitas ternama serta fasilitas laboratorium dan digital learning modern, kami senantiasa mendampingi setiap santri untuk meraih potensi tertingginya menjadi pribadi yang berilmu, beradab, dan siap memimpin masa depan.
+
+Wassalamu’alaikum Warahmatullahi Wabarakatuh.`
+  };
+
+  const chosenDefault = isSMA ? defaultSMA : defaultSMP;
+
+  const name = unit.welcomeName || chosenDefault.name;
+  const role = unit.welcomeRole || chosenDefault.role;
+  const photo = unit.welcomePhoto || chosenDefault.photo;
+  const quote = unit.welcomeQuote || chosenDefault.quote;
+  const message = unit.welcomeMessage || chosenDefault.message;
 
   const paragraphs = message.split('\n\n').filter(Boolean);
 
@@ -67,10 +91,12 @@ Wassalamu’alaikum Warahmatullahi Wabarakatuh.`;
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold bg-[#EBF3FF] text-[#1F5FD0] border border-[#1F5FD0]/20">
               <Sparkles className="w-3.5 h-3.5 text-[#D8232A]" />
-              <span>Sambutan Kepala Unit SMP</span>
+              <span>Sambutan Kepala {unit.shortName || unit.name}</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-black text-[#0B2F6B] tracking-tight">
-              Membangun Fondasi Karakter & Nalar Unggul Remaja
+              {isSMA
+                ? 'Membina Generasi Pemimpin, Saintis, & Peneliti Unggul'
+                : 'Membangun Fondasi Karakter & Nalar Unggul Remaja'}
             </h3>
           </div>
 
@@ -93,7 +119,7 @@ Wassalamu’alaikum Warahmatullahi Wabarakatuh.`;
           <div className="pt-3 border-t border-[#DDE6F1] flex items-center justify-between text-xs text-[#64748B]">
             <span className="flex items-center gap-1.5 font-bold text-[#0B2F6B]">
               <Award className="w-4 h-4 text-[#D8232A]" />
-              SMP Cendekia Amanah
+              {unit.name}
             </span>
             <span className="text-[11px] font-medium text-gray-500">Tahun Ajaran 2026/2027</span>
           </div>

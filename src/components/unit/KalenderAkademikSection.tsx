@@ -135,17 +135,124 @@ const DEFAULT_SMP_AGENDAS: Agenda[] = [
   }
 ];
 
+const DEFAULT_SMA_AGENDAS: Agenda[] = [
+  {
+    id: 'sma-ag-1',
+    title: 'Workshop Strategi Tembus SNBP & Pemetaan Jurusan PTN',
+    category: 'Persiapan PTN',
+    eventDate: '2026-10-03',
+    day: '03',
+    month: 'Oktober',
+    year: '2026',
+    time: '08:30 - 12:00 WIB',
+    location: 'Auditorium Utama & Ruang Konseling Karir',
+    description: 'Analisis nilai rapor berkala, strategi pemilihan prodi unggulan (UI, ITB, UGM, Unair, ITS), dan konsultasi peminatan karir siswa kelas XII.',
+    status: 'Mendatang'
+  },
+  {
+    id: 'sma-ag-2',
+    title: 'Penilaian Tengah Semester (PTS) Ganjil TP 2026/2027',
+    category: 'Ujian',
+    eventDate: '2026-10-06',
+    day: '06',
+    month: 'Oktober',
+    year: '2026',
+    time: '07:30 - 13:00 WIB',
+    location: 'Ruang Ujian CBT Lantai 2 & 3',
+    description: 'Evaluasi formatif tengah semester mata pelajaran peminatan sains, humaniora, dan dirasah kepesantrenan berbasis Computer-Based Test.',
+    status: 'Mendatang'
+  },
+  {
+    id: 'sma-ag-3',
+    title: 'Expo Riset Ilmiah Remaja & Presentasi Karya Tulis (KTI)',
+    category: 'Riset & Sains',
+    eventDate: '2026-10-17',
+    day: '17',
+    month: 'Oktober',
+    year: '2026',
+    time: '08:00 - 15:30 WIB',
+    location: 'Science Center & Exhibition Hall',
+    description: 'Pameran hasil penelitian karya ilmiah remaja (KIR) bidang bioteknologi, energi terbarukan, sosial humaniora, dan teknologi tepat guna.',
+    status: 'Mendatang'
+  },
+  {
+    id: 'sma-ag-4',
+    title: 'Peringatan Hari Santri Nasional: Orasi Ilmiah & Bedah Buku',
+    category: 'Peringatan',
+    eventDate: '2026-10-22',
+    day: '22',
+    month: 'Oktober',
+    year: '2026',
+    time: '08:00 - 12:30 WIB',
+    location: 'Masjid Jami’ Cendekia Amanah',
+    description: 'Upacara peringatan Hari Santri Nasional, orasi kebangsaan santri milenial, dan bedah karya literasi keislaman bersama narasumber nasional.',
+    status: 'Mendatang'
+  },
+  {
+    id: 'sma-ag-5',
+    title: 'Try Out Akbar UTBK-SNBT Nasional Sesi 1',
+    category: 'Try Out UTBK',
+    eventDate: '2026-11-04',
+    day: '04',
+    month: 'November',
+    year: '2026',
+    time: '07:30 - 12:00 WIB',
+    location: 'Laboratorium Komputer CBT & Aula SMA',
+    description: 'Simulasi ujian seleksi nasional berbasis tes (SNBT) bekerjasama dengan lembaga bimbel nasional dengan analisis skor IRT (Item Response Theory).',
+    status: 'Mendatang'
+  },
+  {
+    id: 'sma-ag-6',
+    title: 'Campus Fair & Sharing Beasiswa Luar Negeri',
+    category: 'Bimbingan Karir',
+    eventDate: '2026-11-12',
+    day: '12',
+    month: 'November',
+    year: '2026',
+    time: '09:00 - 15:00 WIB',
+    location: 'Hall Pertemuan & Virtual Hybrid',
+    description: 'Sosialisasi beasiswa Al-Azhar Mesir, Turki Burslari, Monbukagakusho Jepang, serta beasiswa kedinasan bersama para alumni SMA.',
+    status: 'Mendatang'
+  },
+  {
+    id: 'sma-ag-7',
+    title: 'Tasmi’ Akbar Al-Qur’an & Ujian Hafalan Mutqin Tingkat SMA',
+    category: 'Tahfidz',
+    eventDate: '2026-11-21',
+    day: '21',
+    month: 'November',
+    year: '2026',
+    time: '05:30 - 12:00 WIB',
+    location: 'Masjid Utama Cendekia Amanah',
+    description: 'Ujian tasmi’ sekali duduk 5 s.d. 10 Juz santri SMA di hadapan tim penguji lajnah tahfidz dan orang tua santri.',
+    status: 'Mendatang'
+  },
+  {
+    id: 'sma-ag-8',
+    title: 'Penilaian Akhir Semester (PAS) Ganjil TP 2026/2027',
+    category: 'Ujian',
+    eventDate: '2026-11-28',
+    day: '28',
+    month: 'November',
+    year: '2026',
+    time: '07:30 - 13:30 WIB',
+    location: 'Gedung Kelas SMA Cendekia Amanah',
+    description: 'Pelaksanaan ujian akhir semester ganjil seluruh mata pelajaran kurikulum merdeka, peminatan rumpun ilmu, dan kurikulum diniyah.',
+    status: 'Mendatang'
+  }
+];
+
 export default function KalenderAkademikSection({
   unitCode = 'smp',
   initialAgendas
 }: KalenderAkademikSectionProps) {
-  // Use provided agendas if any, else default to SMP dummy events
+  // Use provided agendas if any, else default according to unitCode
   const agendas: Agenda[] = useMemo(() => {
     if (initialAgendas && initialAgendas.length > 0) {
       return initialAgendas;
     }
-    return DEFAULT_SMP_AGENDAS;
-  }, [initialAgendas]);
+    return unitCode.toLowerCase() === 'sma' ? DEFAULT_SMA_AGENDAS : DEFAULT_SMP_AGENDAS;
+  }, [initialAgendas, unitCode]);
 
   // Base state for 2-month window: start at October 2026 (local context 2026-10)
   const [baseDate, setBaseDate] = useState(() => new Date(2026, 9, 1)); // October 2026 (0-indexed month 9)
@@ -365,8 +472,8 @@ export default function KalenderAkademikSection({
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <SectionHeader
             badge="Kalender Akademik 1 Semester"
-            title="KALENDER AKADEMIK & AGENDA SMP"
-            subtitle="Jadwal lengkap kegiatan belajar mengajar, pelaksanaan asesmen/ujian, peringatan hari besar, serta agenda kesiswaan SMP Cendekia Amanah."
+            title={`KALENDER AKADEMIK & AGENDA ${unitCode.toUpperCase()}`}
+            subtitle={`Jadwal lengkap kegiatan belajar mengajar, pelaksanaan asesmen/ujian, peringatan hari besar, serta agenda akademik ${unitCode.toUpperCase()} Cendekia Amanah.`}
           />
 
           {/* Month Navigation Controls */}

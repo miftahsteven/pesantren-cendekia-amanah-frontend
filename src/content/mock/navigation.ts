@@ -44,11 +44,13 @@ export const mainNavigation: NavigationItem[] = [
     label: 'SMA',
     href: '/sma',
     children: [
-      { label: 'Profil SMA', href: '/sma#profil' },
-      { label: 'Program Unggulan & PTN', href: '/sma#program' },
-      { label: 'Struktur Organisasi', href: '/sma#organisasi' },
-      { label: 'Kegiatan Riset & Siswa', href: '/sma#kegiatan' },
-      { label: 'Prestasi Nasional', href: '/sma#prestasi' }
+      { label: 'Profile SMA', href: '/sma#profil', description: 'Visi, keunggulan & sambutan kepala sekolah' },
+      { label: 'Kurikulum', href: '/sma#kurikulum', description: 'Kurikulum Merdeka, Riset Sains & Sukses PTN' },
+      { label: 'Program Unggulan', href: '/sma#program-unggulan', description: 'Persiapan PTN Favorit & beasiswa luar negeri' },
+      { label: 'Struktur Organisasi', href: '/sma#struktur-organisasi', description: 'Kepala sekolah & dewan pendidik SMA' },
+      { label: 'Prestasi Siswa', href: '/sma#prestasi-siswa', description: 'Raihan kejuaraan olimpiade & riset ilmiah' },
+      { label: 'Ekstrakurikuler', href: '/sma#ekstrakurikuler', description: 'Wadah minat, bakat, sains, & kepemimpinan' },
+      { label: 'Kalender Akademik 1 Semester', href: '/sma#kalender-akademik', description: 'Jadwal UTBK, ujian & agenda akademik SMA' }
     ]
   },
   {
