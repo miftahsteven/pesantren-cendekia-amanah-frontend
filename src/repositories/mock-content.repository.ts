@@ -14,7 +14,8 @@ import {
   PPDBFormData,
   PPDBSubmissionResult,
   FacilityItem,
-  OrganizationMember
+  OrganizationMember,
+  CurriculumItem
 } from '@/types';
 import { IContentRepository } from './content.repository';
 import { siteConfig } from '@/content/mock/site';
@@ -49,6 +50,331 @@ export class MockContentRepository implements IContentRepository {
       ...unit,
       achievements: studentAchievements.filter((item) => item.unit === unit.id)
     }));
+  }
+
+  async getCurriculums(unitSlug?: string): Promise<CurriculumItem[]> {
+    const allCurriculums: CurriculumItem[] = [
+      // SMP
+      {
+        id: 'mock-curr-smp-1',
+        unitSlug: 'smp',
+        unitName: 'SMP Cendekia Amanah',
+        unitShortName: 'SMP',
+        title: 'Kurikulum Nasional Merdeka Terpadu',
+        badge: 'Standar Nasional & Karakter',
+        icon: 'BookOpen',
+        color: 'blue',
+        description: 'Penerapan Kurikulum Merdeka yang disinergikan secara harmonis dengan nilai-nilai adab Islami, penguatan literasi-numerasi berstandar ANBK, dan pembelajaran berbasis projek (P5).',
+        highlights: [
+          'Projek Penguatan Profil Pelajar Pancasila (P5) tematik',
+          'Differentiated learning sesuai gaya belajar & potensi siswa',
+          'Praktikum terpadu sains, matematika, dan teknologi',
+          'Asesmen formatif & diagnostik berkala untuk pemetaan prestasi'
+        ],
+        sortOrder: 1,
+        isActive: true
+      },
+      {
+        id: 'mock-curr-smp-2',
+        unitSlug: 'smp',
+        unitName: 'SMP Cendekia Amanah',
+        unitShortName: 'SMP',
+        title: 'Tahfidz Al-Qur’an & Nilai Diniyah',
+        badge: 'Tartil & Sanad Keilmuan',
+        icon: 'Award',
+        color: 'amber',
+        description: 'Program bimbingan tahfidz terstruktur dengan target mutqin Juz 28, 29, dan 30 (plus juz pilihan) yang diampu oleh musyrif tahfidz bersanad, dipadukan materi Fiqih dan Aqidah praktis.',
+        highlights: [
+          'Metode Talaqqi, Tasmi’, dan Ziyadah harian terarah',
+          'Khataman tasmi’ berkala sekali duduk di hadapan wali santri',
+          'Bimbingan tajwid standar Jazariyah & makharijul huruf',
+          'Pembiasaan shalat berjamaah, dhuha, dan dzikir Ma’tsurat'
+        ],
+        sortOrder: 2,
+        isActive: true
+      },
+      {
+        id: 'mock-curr-smp-3',
+        unitSlug: 'smp',
+        unitName: 'SMP Cendekia Amanah',
+        unitShortName: 'SMP',
+        title: 'Digital Smart Classroom & AI Literacy',
+        badge: 'Teknologi & Inovasi 4.0',
+        icon: 'Laptop',
+        color: 'emerald',
+        description: 'Pemanfaatan interactive board, platform pembelajaran cerdas, dan pengenalan literasi komputasional sejak dini agar siswa cakap teknologi dan bijak berinternet.',
+        highlights: [
+          'Ruang kelas modern dengan Interactive Display Screen',
+          'Pengenalan dasar Coding, Robotika, dan logika komputasi',
+          'Ujian terstandar Computer-Based Testing (CBT)',
+          'Edukasi etika digital & pemanfaatan Artificial Intelligence (AI)'
+        ],
+        sortOrder: 3,
+        isActive: true
+      },
+      {
+        id: 'mock-curr-smp-4',
+        unitSlug: 'smp',
+        unitName: 'SMP Cendekia Amanah',
+        unitShortName: 'SMP',
+        title: 'Bilingual Classroom (Arab & Inggris)',
+        badge: 'Komunikasi Global',
+        icon: 'Languages',
+        color: 'rose',
+        description: 'Pembiasaan bahasa internasional melalui Morning Vocabulary, English & Arabic Club, serta percakapan harian untuk melatih kepercayaan diri siswa di forum global.',
+        highlights: [
+          'Morning Talk & Daily Vocabulary Enrichment',
+          'English & Arabic Public Speaking (Muhadhoroh)',
+          'Pelatihan speech contest, storytelling, dan debat ilmiah',
+          'Program pendampingan native speaker & foreign cultural exchange'
+        ],
+        sortOrder: 4,
+        isActive: true
+      },
+
+      // SMA
+      {
+        id: 'mock-curr-sma-1',
+        unitSlug: 'sma',
+        unitName: 'SMA Cendekia Amanah',
+        unitShortName: 'SMA',
+        title: 'Kurikulum Merdeka & Peminatan Lanjutan (Fase F)',
+        badge: 'Standar Nasional & Peminatan',
+        icon: 'BookOpen',
+        color: 'blue',
+        description: 'Penerapan Kurikulum Merdeka Fase F yang fleksibel dan terarah, memfasilitasi pilihan mata pelajaran peminatan sesuai orientasi prodi perguruan tinggi (Kedokteran, Teknik, Sains Terapan, Humaniora, & Ekonomi Syariah).',
+        highlights: [
+          'Pemilihan rumpun mata pelajaran peminatan terarah sesuai minat studi',
+          'Pembelajaran berpikir tingkat tinggi (Higher Order Thinking Skills / HOTS)',
+          'Projek Penguatan Profil Pelajar Pancasila (P5) berbasis pengabdian',
+          'Asesmen formatif & diagnostik berkala untuk optimalisasi nilai rapor SNBP'
+        ],
+        sortOrder: 1,
+        isActive: true
+      },
+      {
+        id: 'mock-curr-sma-2',
+        unitSlug: 'sma',
+        unitName: 'SMA Cendekia Amanah',
+        unitShortName: 'SMA',
+        title: 'Program Akselerasi Sukses PTN & Beasiswa Global',
+        badge: 'Tembus Kampus Impian',
+        icon: 'GraduationCap',
+        color: 'amber',
+        description: 'Program pendampingan komprehensif untuk mengantarkan santri menembus PTN Favorit serta perguruan tinggi bergengsi luar negeri.',
+        highlights: [
+          'Bimbingan intensif UTBK-SNBT & pembedahan materi skolastik berkala',
+          'Simulasi Try Out terstandar dengan analisis skor Item Response Theory (IRT)',
+          'Bimbingan beasiswa Al-Azhar Kairo, Timur Tengah, dan beasiswa internasional',
+          'Konsultasi pemetaan karir dan peluang passing grade jurusan PTN favorit'
+        ],
+        sortOrder: 2,
+        isActive: true
+      },
+      {
+        id: 'mock-curr-sma-3',
+        unitSlug: 'sma',
+        unitName: 'SMA Cendekia Amanah',
+        unitShortName: 'SMA',
+        title: 'Karya Ilmiah Remaja (KIR) & Laboratorium Riset',
+        badge: 'Kultur Riset & Sains',
+        icon: 'Microscope',
+        color: 'emerald',
+        description: 'Pengembangan nalar analitis dan daya cipta santri melalui riset ilmiah terpandu di laboratorium modern, penulisan artikel ilmiah, serta keikutsertaan dalam kompetisi sains.',
+        highlights: [
+          'Bimbingan penyusunan Karya Tulis Ilmiah (KTI) syarat kelulusan',
+          'Praktikum terpadu di Laboratorium Fisika, Kimia, Biologi, & Komputer',
+          'Klinik pembinaan Olimpiade Sains Nasional (OSN) & Lomba Karya Ilmiah',
+          'Pengembangan proyek digitalisasi, Internet of Things (IoT), dan kecerdasan buatan'
+        ],
+        sortOrder: 3,
+        isActive: true
+      },
+      {
+        id: 'mock-curr-sma-4',
+        unitSlug: 'sma',
+        unitName: 'SMA Cendekia Amanah',
+        unitShortName: 'SMA',
+        title: 'Tahfidz Al-Qur’an Lanjutan & Kepemimpinan Santri',
+        badge: 'Karakter & Spiritual Mutqin',
+        icon: 'Award',
+        color: 'rose',
+        description: 'Pemantapan hafalan Al-Qur’an mutqin hingga bersanad, pendalaman literatur Fiqih kontemporer dan Ushul Fiqih, serta latihan kepemimpinan manajerial berasrama.',
+        highlights: [
+          'Target hafalan Al-Qur’an mutqin bersanad bagi kelas takhasus',
+          'Kajian Fiqih Muamalah, Ushul Fiqih, dan Hadits Tematik kepemimpinan',
+          'Penguatan kemampuan diplomasi dan pidato 3 bahasa (Arab, Inggris, Indonesia)',
+          'Organisasi santri mandiri untuk melatih kepemimpinan transformasional'
+        ],
+        sortOrder: 4,
+        isActive: true
+      },
+
+      // Pesantren
+      {
+        id: 'mock-curr-pes-1',
+        unitSlug: 'pesantren',
+        unitName: 'Pesantren Cendekia Amanah',
+        unitShortName: 'Pesantren',
+        title: 'Tahfidz Al-Qur’an Bersanad 30 Juz',
+        badge: 'Tahfidz & Tajwid',
+        icon: 'BookOpen',
+        color: 'blue',
+        description: 'Bimbingan hafalan Al-Qur’an intensif dengan metode Talaqqi & Tasmi’ bersanad resmi Jazariyah, setoran harian (ziyadah), muraja’ah berkala, dan sertifikasi kelulusan tahfidz.',
+        highlights: [
+          'Target hafalan bertahap & terukur',
+          'Metode Talaqqi face-to-face bersama muhaffidz bersanad',
+          'Khataman & Tasmi’ 5 s.d. 30 Juz sekali duduk',
+          'Pembinaan makhorijul huruf & tartil Al-Qur’an'
+        ],
+        sortOrder: 1,
+        isActive: true
+      },
+      {
+        id: 'mock-curr-pes-2',
+        unitSlug: 'pesantren',
+        unitName: 'Pesantren Cendekia Amanah',
+        unitShortName: 'Pesantren',
+        title: 'Dirasah Islamiyah (Kitab Kuning / Turats)',
+        badge: 'Turats Salaf',
+        icon: 'Scroll',
+        color: 'amber',
+        description: 'Pendalaman literatur klasik Islam bermazhab Syafi’i dengan sanad keilmuan yang bersambung langsung kepada para ulama mu’allif kitab hingga Rasulullah SAW.',
+        highlights: [
+          'Aqidah: Aqidatul Awwam, Tijanud Darori, Jawahirul Kalamiyah',
+          'Fiqih: Safinatun Najah, Sullamut Taufiq, Fathul Qorib',
+          'Akhlak: Taisirul Khalaq, Akhlaq Lil Banin, Ta’limul Muta’allim',
+          'Gramatika: Matan Al-Jurumiyyah, Al-Amtsilah At-Tashrifiyyah'
+        ],
+        sortOrder: 2,
+        isActive: true
+      },
+      {
+        id: 'mock-curr-pes-3',
+        unitSlug: 'pesantren',
+        unitName: 'Pesantren Cendekia Amanah',
+        unitShortName: 'Pesantren',
+        title: 'Biah Lughawiyyah (Bahasa Arab & Inggris Aktif)',
+        badge: 'Lingkungan Berbahasa',
+        icon: 'Languages',
+        color: 'emerald',
+        description: 'Penerapan lingkungan asrama dwibahasa yang dinamis untuk membiasakan santri cakap berkomunikasi secara lisan dan tulisan dalam percakapan sehari-hari dan forum resmi.',
+        highlights: [
+          'Muhadatsah yaumiyyah (percakapan tematik harian)',
+          'Muhadhoroh 3 Bahasa (latihan pidato Arab, Inggris, Indonesia)',
+          'Mufrodat yaumiyyah (pengayaan kosakata setiap hari)',
+          'Latihan insya’ (menulis artikel & essai bahasa Arab)'
+        ],
+        sortOrder: 3,
+        isActive: true
+      },
+      {
+        id: 'mock-curr-pes-4',
+        unitSlug: 'pesantren',
+        unitName: 'Pesantren Cendekia Amanah',
+        unitShortName: 'Pesantren',
+        title: 'Pembinaan Akhlak, Adab & Karakter 24 Jam',
+        badge: 'Tarbiyah & Adab',
+        icon: 'Award',
+        color: 'rose',
+        description: 'Penanaman nilai-nilai adab santri, kemandirian hidup berasrama, kedisiplinan ibadah, kepemimpinan organisasi, serta kepekaan sosial kemasyarakatan.',
+        highlights: [
+          'Shalat lima waktu berjamaah di masjid & Qiyamul Lail',
+          'Dzikir & wirid harian Al-Ma’tsurat / Ratibul Haddad',
+          'Latihan kepemimpinan santri (OSIS, IPNU/IPPNU)',
+          'Bimbingan konseling dan asuhan asatidz pembina asrama'
+        ],
+        sortOrder: 4,
+        isActive: true
+      },
+
+      // MDTA
+      {
+        id: 'mock-curr-diniyah-1',
+        unitSlug: 'diniyah',
+        unitName: 'Madrasah Diniyah Takmiliyah Awaliyah',
+        unitShortName: 'MDTA',
+        title: "Baca Tulis Al-Qur'an (BTQ) & Tahsin",
+        badge: 'Tartil & Tajwid',
+        icon: 'BookOpen',
+        color: 'blue',
+        description: "Bimbingan membaca Al-Qur'an dengan kaidah tajwid yang benar menggunakan metode Iqro' bertahap, disertai latihan menulis huruf hijaiyah dan pengenalan makhraj serta sifatul huruf.",
+        highlights: [
+          "Metode Iqro' bertahap dari jilid 1 sampai Al-Qur'an",
+          "Pengenalan hukum tajwid dasar: idzhar, ikhfa', idgham, iqlab",
+          "Hafalan Juz 'Amma (Juz 30) dan surat-surat pilihan",
+          "Latihan menulis huruf hijaiyah dan kaligrafi dasar"
+        ],
+        sortOrder: 1,
+        isActive: true
+      },
+      {
+        id: 'mock-curr-diniyah-2',
+        unitSlug: 'diniyah',
+        unitName: 'Madrasah Diniyah Takmiliyah Awaliyah',
+        unitShortName: 'MDTA',
+        title: "Aqidah Ahlussunnah wal Jama'ah",
+        badge: 'Fondasi Keimanan',
+        icon: 'HeartHandshake',
+        color: 'amber',
+        description: 'Penanaman dasar-dasar keimanan (Rukun Iman & Rukun Islam) dengan pendekatan yang mudah dipahami anak-anak, berdasarkan tuntunan Ahlussunnah wal Jama\'ah dan dalil-dalil shahih.',
+        highlights: [
+          'Pemahaman Rukun Iman enam perkara secara mendalam',
+          'Pendalaman makna dua kalimat syahadat',
+          'Kisah para Nabi & Rasul sebagai teladan keimanan',
+          'Kitab rujukan: Aqidatul Awwam & Tijanud Darori'
+        ],
+        sortOrder: 2,
+        isActive: true
+      },
+      {
+        id: 'mock-curr-diniyah-3',
+        unitSlug: 'diniyah',
+        unitName: 'Madrasah Diniyah Takmiliyah Awaliyah',
+        unitShortName: 'MDTA',
+        title: 'Fiqih Ibadah Praktis & Doa Harian',
+        badge: 'Ibadah & Amaliyah',
+        icon: 'ShieldCheck',
+        color: 'emerald',
+        description: 'Pembelajaran tata cara ibadah yang benar sesuai mazhab Syafi\'i, mulai dari bersuci (thaharah), wudhu, shalat fardhu & sunnah, hingga puasa dan hafalan doa sehari-hari.',
+        highlights: [
+          'Praktik langsung wudhu, tayammum, dan mandi wajib',
+          'Tata cara shalat fardhu, sunnah rawatib, dan shalat jenazah',
+          'Hafalan bacaan shalat lengkap dengan artinya',
+          'Kitab rujukan: Safinatun Najah & Sullamut Taufiq'
+        ],
+        sortOrder: 3,
+        isActive: true
+      },
+      {
+        id: 'mock-curr-diniyah-4',
+        unitSlug: 'diniyah',
+        unitName: 'Madrasah Diniyah Takmiliyah Awaliyah',
+        unitShortName: 'MDTA',
+        title: 'Akhlak Mulia & Adab Islami',
+        badge: 'Tarbiyah & Adab',
+        icon: 'Scroll',
+        color: 'rose',
+        description: 'Penanaman budi pekerti luhur, sopan santun kepada orang tua, guru, dan sesama, serta penghayatan nilai-nilai akhlak terpuji melalui keteladanan dan pembiasaan sehari-hari.',
+        highlights: [
+          'Adab kepada kedua orang tua, guru, dan teman sebaya',
+          'Pembiasaan 5S: Senyum, Salam, Sapa, Sopan, Santun',
+          'Kisah para Sahabat Nabi sebagai inspirasi akhlak',
+          'Kitab rujukan: Taisirul Khalaq & Akhlaq Lil Banin'
+        ],
+        sortOrder: 4,
+        isActive: true
+      }
+    ];
+
+    if (!unitSlug || unitSlug === 'ALL' || unitSlug === 'all') {
+      return allCurriculums;
+    }
+
+    const targetSlug = unitSlug.toLowerCase() === 'mdta' ? 'diniyah' : unitSlug.toLowerCase();
+    return allCurriculums.filter(
+      (c) => c.unitSlug?.toLowerCase() === targetSlug
+    );
   }
 
   async getFacilities(unitSlug?: string): Promise<FacilityItem[]> {

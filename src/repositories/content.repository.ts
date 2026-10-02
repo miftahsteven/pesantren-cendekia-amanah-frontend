@@ -14,13 +14,15 @@ import {
   PPDBFormData,
   PPDBSubmissionResult,
   FacilityItem,
-  OrganizationMember
+  OrganizationMember,
+  CurriculumItem
 } from '@/types';
 
 export interface IContentRepository {
   getSiteConfig(): Promise<SiteConfig>;
   getEducationUnit(unitId: string): Promise<EducationUnit | null>;
   getAllEducationUnits(): Promise<EducationUnit[]>;
+  getCurriculums(unitSlug?: string): Promise<CurriculumItem[]>;
   getFacilities(unitSlug?: string): Promise<FacilityItem[]>;
   getOrganizationMembers(unitSlug?: string): Promise<OrganizationMember[]>;
   getNewsArticles(category?: string, query?: string): Promise<NewsArticle[]>;

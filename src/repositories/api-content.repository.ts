@@ -15,7 +15,8 @@ import {
   PPDBSubmissionResult,
   UnitType,
   FacilityItem,
-  OrganizationMember
+  OrganizationMember,
+  CurriculumItem
 } from '@/types';
 import { IContentRepository } from './content.repository';
 import { MockContentRepository } from './mock-content.repository';
@@ -171,6 +172,38 @@ export class ApiContentRepository implements IContentRepository {
     } catch (err: any) {
       console.error('[ApiContentRepository] Error fetching all education units, falling back to mock:', err?.message || err);
       return this.fallback.getAllEducationUnits();
+    }
+  }
+
+  async getCurriculums(unitSlug?: string): Promise<CurriculumItem[]> {
+    try {
+      const params = new URLSearchParams();
+      if (unitSlug && unitSlug !== 'ALL' && unitSlug !== 'all') {
+        params.append('unitSlug', unitSlug);
+      }
+      const queryStr = params.toString() ? `?${params.toString()}` : '';
+      const res = await apiGet<any[]>(`/curriculums${queryStr}`);
+      if (res && Array.isArray(res) && res.length > 0) {
+        return res.map((c: any) => ({
+          id: c.id,
+          title: c.title,
+          badge: c.badge || undefined,
+          icon: c.icon || 'BookOpen',
+          color: c.color || 'blue',
+          description: c.description,
+          highlights: Array.isArray(c.highlights) ? c.highlights : [],
+          sortOrder: c.sortOrder ?? 0,
+          isActive: c.isActive,
+          unitId: c.unitId || c.unit?.id,
+          unitCode: c.unit?.code,
+          unitSlug: c.unit?.slug,
+          unitName: c.unit?.name,
+          unitShortName: c.unit?.shortName
+        }));
+      }
+      return this.fallback.getCurriculums(unitSlug);
+    } catch {
+      return this.fallback.getCurriculums(unitSlug);
     }
   }
 

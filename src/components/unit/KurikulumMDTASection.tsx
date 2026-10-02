@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import SectionHeader from '@/components/common/SectionHeader';
 import {
   BookOpen,
@@ -8,7 +9,8 @@ import {
   CheckCircle2,
   Sparkles,
   Languages,
-  UserCheck
+  UserCheck,
+  ArrowRight
 } from 'lucide-react';
 
 import { CurriculumItem } from '@/types';
@@ -129,7 +131,7 @@ export default function KurikulumMDTASection({ items }: KurikulumMDTASectionProp
 
         {/* 4 Curriculum Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {curriculumPillars.map((pillar, idx) => {
+          {curriculumPillars.slice(0, 4).map((pillar, idx) => {
             const Icon = pillar.icon;
             const badgeBg =
               pillar.color === 'blue'
@@ -186,6 +188,19 @@ export default function KurikulumMDTASection({ items }: KurikulumMDTASectionProp
             );
           })}
         </div>
+
+        {/* Link Lihat Lainnya jika kurikulum lebih dari 4 */}
+        {curriculumPillars.length > 4 && (
+          <div className="flex justify-center pt-2">
+            <Link
+              href="/kurikulum?unit=diniyah"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-white border border-[#1F5FD0]/30 text-[#1F5FD0] hover:bg-[#1F5FD0] hover:text-white font-bold text-xs sm:text-sm shadow-xs transition-all hover-lift"
+            >
+              <span>Lihat Kurikulum MDTA Lainnya ({curriculumPillars.length - 4} pilar lagi)</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        )}
 
         {/* Metode & Pendekatan Pembelajaran */}
         <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#DDE6F1] shadow-xs space-y-8">

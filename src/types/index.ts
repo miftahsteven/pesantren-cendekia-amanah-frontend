@@ -105,6 +105,11 @@ export interface CurriculumItem {
   highlights: string[];
   sortOrder?: number;
   isActive?: boolean;
+  unitId?: string;
+  unitCode?: string;
+  unitSlug?: string;
+  unitName?: string;
+  unitShortName?: string;
 }
 
 export interface FacilityItem {
