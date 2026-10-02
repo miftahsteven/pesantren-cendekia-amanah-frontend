@@ -7,6 +7,7 @@ interface UIContextType {
   isVideoModalOpen: boolean;
   videoModalUrl: string | null;
   isWhatsAppPanelOpen: boolean;
+  isPpdbModalOpen: boolean;
   openBrochureModal: () => void;
   closeBrochureModal: () => void;
   openVideoModal: (url?: string | React.MouseEvent | unknown) => void;
@@ -14,6 +15,8 @@ interface UIContextType {
   openWhatsAppPanel: () => void;
   closeWhatsAppPanel: () => void;
   toggleWhatsAppPanel: () => void;
+  openPpdbModal: () => void;
+  closePpdbModal: () => void;
 }
 
 const UIContext = createContext<UIContextType | undefined>(undefined);
@@ -23,6 +26,7 @@ export function UIProvider({ children }: { children: ReactNode }) {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [videoModalUrl, setVideoModalUrl] = useState<string | null>(null);
   const [isWhatsAppPanelOpen, setIsWhatsAppPanelOpen] = useState(false);
+  const [isPpdbModalOpen, setIsPpdbModalOpen] = useState(false);
 
   const openBrochureModal = () => setIsBrochureModalOpen(true);
   const closeBrochureModal = () => setIsBrochureModalOpen(false);
@@ -41,6 +45,9 @@ export function UIProvider({ children }: { children: ReactNode }) {
   const closeWhatsAppPanel = () => setIsWhatsAppPanelOpen(false);
   const toggleWhatsAppPanel = () => setIsWhatsAppPanelOpen((prev) => !prev);
 
+  const openPpdbModal = () => setIsPpdbModalOpen(true);
+  const closePpdbModal = () => setIsPpdbModalOpen(false);
+
   return (
     <UIContext.Provider
       value={{
@@ -48,13 +55,16 @@ export function UIProvider({ children }: { children: ReactNode }) {
         isVideoModalOpen,
         videoModalUrl,
         isWhatsAppPanelOpen,
+        isPpdbModalOpen,
         openBrochureModal,
         closeBrochureModal,
         openVideoModal,
         closeVideoModal,
         openWhatsAppPanel,
         closeWhatsAppPanel,
-        toggleWhatsAppPanel
+        toggleWhatsAppPanel,
+        openPpdbModal,
+        closePpdbModal
       }}
     >
       {children}

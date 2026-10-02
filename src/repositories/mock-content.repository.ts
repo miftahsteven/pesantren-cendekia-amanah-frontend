@@ -15,7 +15,8 @@ import {
   PPDBSubmissionResult,
   FacilityItem,
   OrganizationMember,
-  CurriculumItem
+  CurriculumItem,
+  PpdbLink
 } from '@/types';
 import { IContentRepository } from './content.repository';
 import { siteConfig } from '@/content/mock/site';
@@ -792,6 +793,59 @@ export class MockContentRepository implements IContentRepository {
       submittedAt: new Date().toISOString(),
       data
     };
+  }
+
+  async getPpdbLinks(): Promise<PpdbLink[]> {
+    return [
+      {
+        id: 'mock-ppdb-sma',
+        unitCode: 'sma',
+        unitName: 'SMA Cendekia Amanah',
+        title: 'SPMB 2027-2028 SMA PCA',
+        description: 'Pendaftaran Peserta Didik Baru Jenjang SMA Boarding / Fullday School TP. 2027/2028',
+        formUrl: 'https://bit.ly/SPMB_SMAPCA_27-28',
+        academicYear: '2027/2028',
+        badge: 'Boarding & Fullday',
+        isActive: true,
+        sortOrder: 1
+      },
+      {
+        id: 'mock-ppdb-smp',
+        unitCode: 'smp',
+        unitName: 'SMP Cendekia Amanah',
+        title: 'SPMB 2027-2028 SMP PCA',
+        description: 'Pendaftaran Peserta Didik Baru Jenjang SMP Boarding / Fullday School TP. 2027/2028',
+        formUrl: 'https://forms.gle/VTSESWSS3CzPFf7C6',
+        academicYear: '2027/2028',
+        badge: 'Boarding & Fullday',
+        isActive: true,
+        sortOrder: 2
+      },
+      {
+        id: 'mock-ppdb-mdta',
+        unitCode: 'mdta',
+        unitName: 'Madrasah Diniyah (MDTA / MDTU)',
+        title: 'SPMB 2027-2028 MDTA',
+        description: 'Formulir Pendaftaran MDTU Cendekia Amanah (Pendidikan Keagamaan Non-Formal Sore)',
+        formUrl: 'https://forms.gle/mBt9EyWuqf76ifsj9',
+        academicYear: '2027/2028',
+        badge: 'Non-Formal Sore',
+        isActive: true,
+        sortOrder: 3
+      },
+      {
+        id: 'mock-ppdb-pesantren',
+        unitCode: 'pesantren',
+        unitName: 'Pesantren Cendekia Amanah',
+        title: 'Pendaftaran Santri Pesantren 2027/2028',
+        description: 'Program Kepesantrenan Terpadu, Tahfidz Al-Quran Bersanad, dan Bahasa Internasional',
+        formUrl: 'https://bit.ly/SPMB_SMAPCA_27-28',
+        academicYear: '2027/2028',
+        badge: 'Boarding Pesantren',
+        isActive: true,
+        sortOrder: 4
+      }
+    ];
   }
 }
 

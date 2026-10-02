@@ -307,6 +307,19 @@ export interface PPDBSubmissionResult {
   data: PPDBFormData;
 }
 
+export interface PpdbLink {
+  id: string;
+  unitCode: string;
+  unitName: string;
+  title: string;
+  description?: string;
+  formUrl: string;
+  academicYear: string;
+  badge?: string;
+  isActive: boolean;
+  sortOrder: number;
+}
+
 export interface OrganizationMember {
   id: string;
   name: string;

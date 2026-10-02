@@ -6,10 +6,12 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { mainNavigation } from '@/content/mock/navigation';
 import { ChevronDown, ArrowRight } from 'lucide-react';
+import { useUI } from '@/context/UIContext';
 
 export default function DesktopNavigation() {
   const pathname = usePathname();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const { openPpdbModal } = useUI();
 
   const isLinkActive = (href: string, hasChildren?: boolean) => {
     if (href === '/') {
@@ -109,13 +111,14 @@ export default function DesktopNavigation() {
 
         {/* PPDB Button */}
         <div className="shrink-0 pl-3 xl:pl-4">
-          <Link
-            href="/ppdb"
-            className="inline-flex items-center gap-1.5 xl:gap-2 px-4 xl:px-5 py-2.5 rounded-full text-xs xl:text-sm font-bold text-[#0B2F6B] bg-[#F0BD28] hover:bg-[#e0ad19] hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap"
+          <button
+            type="button"
+            onClick={openPpdbModal}
+            className="inline-flex items-center gap-1.5 xl:gap-2 px-4 xl:px-5 py-2.5 rounded-full text-xs xl:text-sm font-bold text-[#0B2F6B] bg-[#F0BD28] hover:bg-[#e0ad19] hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap cursor-pointer"
           >
             <span>PPDB ONLINE</span>
             <ArrowRight className="w-4 h-4 shrink-0" />
-          </Link>
+          </button>
         </div>
       </div>
     </div>

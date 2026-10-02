@@ -16,7 +16,8 @@ import {
   UnitType,
   FacilityItem,
   OrganizationMember,
-  CurriculumItem
+  CurriculumItem,
+  PpdbLink
 } from '@/types';
 import { IContentRepository } from './content.repository';
 import { MockContentRepository } from './mock-content.repository';
@@ -616,6 +617,18 @@ export class ApiContentRepository implements IContentRepository {
       };
     } catch (err: any) {
       throw err;
+    }
+  }
+
+  async getPpdbLinks(): Promise<PpdbLink[]> {
+    try {
+      const res = await apiGet<PpdbLink[]>('/ppdb/links');
+      if (res && Array.isArray(res) && res.length > 0) {
+        return res;
+      }
+      return this.fallback.getPpdbLinks();
+    } catch {
+      return this.fallback.getPpdbLinks();
     }
   }
 }

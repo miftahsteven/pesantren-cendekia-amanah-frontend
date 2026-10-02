@@ -8,6 +8,7 @@ import FloatingActions from '@/components/layout/FloatingActions';
 import WhatsAppPanel from '@/components/layout/WhatsAppPanel';
 import BrochureModal from '@/components/modal/BrochureModal';
 import VideoModal from '@/components/modal/VideoModal';
+import PPDBModal from '@/components/modal/PPDBModal';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -110,6 +111,7 @@ export default function RootLayout({
           <WhatsAppPanel />
           <BrochureModal />
           <VideoModal />
+          <PPDBModal />
         </UIProvider>
       </body>
     </html>

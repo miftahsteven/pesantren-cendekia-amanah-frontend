@@ -12,7 +12,7 @@ export default function MobileNavigation() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  const { openBrochureModal, openVideoModal } = useUI();
+  const { openBrochureModal, openVideoModal, openPpdbModal } = useUI();
 
   // Close mobile drawer on route change
   useEffect(() => {
@@ -143,13 +143,17 @@ export default function MobileNavigation() {
 
             {/* Quick Actions at bottom */}
             <div className="p-4 bg-[#F4F7FB] border-t border-[#DDE6F1] space-y-3 mt-auto">
-              <Link
-                href="/ppdb"
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-[#0B2F6B] bg-[#F0BD28] hover:bg-[#e0ad19] shadow-sm"
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  openPpdbModal();
+                }}
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-[#0B2F6B] bg-[#F0BD28] hover:bg-[#e0ad19] shadow-sm cursor-pointer"
               >
                 <span>DAFTAR PPDB ONLINE</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </button>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <button

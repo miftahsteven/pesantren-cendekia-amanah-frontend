@@ -15,7 +15,8 @@ import {
   PPDBSubmissionResult,
   FacilityItem,
   OrganizationMember,
-  CurriculumItem
+  CurriculumItem,
+  PpdbLink
 } from '@/types';
 
 export interface IContentRepository {
@@ -42,6 +43,7 @@ export interface IContentRepository {
   getFAQs(): Promise<FAQ[]>;
   getContactInfo(): Promise<ContactInfo>;
   submitPPDB(data: PPDBFormData): Promise<PPDBSubmissionResult>;
+  getPpdbLinks(): Promise<PpdbLink[]>;
 }
 
 export { apiContentRepo as contentRepo } from './api-content.repository';
