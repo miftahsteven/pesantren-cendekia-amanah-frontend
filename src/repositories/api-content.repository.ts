@@ -88,7 +88,8 @@ export class ApiContentRepository implements IContentRepository {
         };
       }
       return this.fallback.getEducationUnit(unitId);
-    } catch {
+    } catch (err: any) {
+      console.error(`[ApiContentRepository] Error fetching unit ${unitId}, falling back to mock:`, err?.message || err);
       return this.fallback.getEducationUnit(unitId);
     }
   }
@@ -118,7 +119,8 @@ export class ApiContentRepository implements IContentRepository {
         }));
       }
       return this.fallback.getAllEducationUnits();
-    } catch {
+    } catch (err: any) {
+      console.error('[ApiContentRepository] Error fetching all education units, falling back to mock:', err?.message || err);
       return this.fallback.getAllEducationUnits();
     }
   }
