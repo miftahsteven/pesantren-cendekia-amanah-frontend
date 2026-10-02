@@ -54,13 +54,14 @@ export const mainNavigation: NavigationItem[] = [
     ]
   },
   {
-    label: 'Diniyah',
+    label: 'MDTA',
     href: '/diniyah',
     children: [
-      { label: 'Profil Diniyah', href: '/diniyah#profil' },
-      { label: 'Kurikulum Diniyah', href: '/diniyah#kurikulum' },
-      { label: 'Program Pembelajaran', href: '/diniyah#program' },
-      { label: 'Prestasi Santri', href: '/diniyah#prestasi' }
+      { label: 'Profile MDTA', href: '/diniyah#profil', description: 'Mengenal visi & misi Madrasah Diniyah Takmiliyah Awaliyah' },
+      { label: 'Kurikulum', href: '/diniyah#kurikulum', description: 'BTQ, Aqidah, Fiqih Ibadah & Akhlak Mulia' },
+      { label: 'Program Unggulan', href: '/diniyah#program-unggulan', description: 'Program prioritas pendidikan agama Islam dasar' },
+      { label: 'Struktur Organisasi', href: '/diniyah#struktur-organisasi', description: 'Pengasuh & dewan asatidz pembina santri' },
+      { label: 'Prestasi Santri', href: '/diniyah#prestasi-santri', description: 'Raihan kejuaraan Tahfidz, MTQ & lomba Islami' }
     ]
   },
   {
@@ -101,5 +102,5 @@ export const unitShortcuts = [
   { id: 'pesantren', label: 'Pesantren', href: '/pesantren', icon: 'Mosque' },
   { id: 'smp', label: 'SMP Cendekia Amanah', href: '/smp', icon: 'GraduationCap' },
   { id: 'sma', label: 'SMA Cendekia Amanah', href: '/sma', icon: 'BookOpen' },
-  { id: 'diniyah', label: 'Diniyah', href: '/diniyah', icon: 'Award' }
+  { id: 'diniyah', label: 'MDTA', href: '/diniyah', icon: 'Award' }
 ];

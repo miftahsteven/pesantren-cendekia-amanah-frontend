@@ -301,7 +301,7 @@ export const educationUnits: Record<string, EducationUnit> = {
   diniyah: {
     id: 'diniyah',
     name: 'Madrasah Diniyah Takmiliyah Awaliyah',
-    shortName: 'Diniyah',
+    shortName: 'MDTA',
     badge: 'Non Formal Sore',
     tagline: 'Fondasi Kokoh Aqidah, Akhlak, dan Baca Tulis Al-Qur’an Sejak Dini',
     heroImage: '/uploads/gallery/madrasah1.png',

@@ -9,6 +9,7 @@ import UnitOrganizationSection from '@/components/unit/UnitOrganizationSection';
 import KurikulumPesantrenSection from '@/components/unit/KurikulumPesantrenSection';
 import KurikulumSMPSection from '@/components/unit/KurikulumSMPSection';
 import KurikulumSMASection from '@/components/unit/KurikulumSMASection';
+import KurikulumMDTASection from '@/components/unit/KurikulumMDTASection';
 import KalenderAkademikSection from '@/components/unit/KalenderAkademikSection';
 import SambutanKepalaUnitSection from '@/components/unit/SambutanKepalaUnitSection';
 import UnitSubNav from '@/components/unit/UnitSubNav';
@@ -71,7 +72,7 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
     { id: 'pesantren', label: 'Pesantren', href: '/pesantren' },
     { id: 'smp', label: 'SMP Cendekia Amanah', href: '/smp' },
     { id: 'sma', label: 'SMA Cendekia Amanah', href: '/sma' },
-    { id: 'diniyah', label: 'Madrasah Diniyah', href: '/diniyah' }
+    { id: 'diniyah', label: 'MDTA', href: '/diniyah' }
   ];
 
   const isPesantren = unit.id === 'pesantren';
@@ -108,6 +109,14 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
         { label: 'Prestasi Siswa', href: '#prestasi-siswa' },
         { label: 'Ekstrakurikuler', href: '#ekstrakurikuler' },
         { label: 'Kalender Akademik 1 Semester', href: '#kalender-akademik' }
+      ]
+    : isDiniyah
+    ? [
+        { label: 'Profile MDTA', href: '#profil' },
+        { label: 'Kurikulum', href: '#kurikulum' },
+        { label: 'Program Unggulan', href: '#program-unggulan' },
+        { label: 'Struktur Organisasi', href: '#struktur-organisasi' },
+        { label: 'Prestasi Santri', href: '#prestasi-santri' }
       ]
     : [
         { label: `Profil ${unit.shortName || unit.name}`, href: '#profil' },
@@ -284,6 +293,7 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
       {isPesantren && <KurikulumPesantrenSection />}
       {isSMP && <KurikulumSMPSection />}
       {isSMA && <KurikulumSMASection />}
+      {isDiniyah && <KurikulumMDTASection />}
 
       {/* 3. Program Unggulan Unit */}
       <div id="program-unggulan" className="scroll-mt-24" />
@@ -298,11 +308,15 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
                 ? 'PROGRAM UNGGULAN SMP'
                 : isSMA
                 ? 'PROGRAM UNGGULAN SMA'
+                : isDiniyah
+                ? 'PROGRAM UNGGULAN MDTA'
                 : 'PROGRAM PEMBELAJARAN'
             }
             subtitle={
               isSMA
                 ? 'Program unggulan komprehensif untuk persiapan sukses menembus Perguruan Tinggi Negeri (PTN) favorit, kedinasan, kampus luar negeri, serta kepemimpinan Islami.'
+                : isDiniyah
+                ? 'Ragam program pembelajaran agama Islam dasar yang dirancang untuk membentuk generasi Qur\'ani berakhlak mulia, cakap beribadah, dan berpondasi aqidah yang kokoh.'
                 : `Ragam program prioritas yang dirancang khusus untuk mengoptimalkan potensi ${isSMP ? 'siswa' : 'santri'} di ${unit.name}.`
             }
             centered
@@ -346,54 +360,58 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
       {/* 5. Prestasi Siswa / Santri */}
       <UnitPrestasiSection unitCode={unit.id} initialAchievements={unit.achievements} />
 
-      {/* 6. Kegiatan Santri / Ekstrakurikuler */}
-      <div id="kegiatan-santri" className="scroll-mt-24" />
-      <div id="ekstrakurikuler" className="scroll-mt-24" />
-      <section id="kegiatan" className="scroll-mt-24">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
-          <SectionHeader
-            badge={isSMP || isSMA ? 'Bakat & Minat Siswa' : 'Aktivitas Keseharian'}
-            title={
-              isPesantren
-                ? 'KEGIATAN SANTRI PESANTREN'
-                : isSMP
-                ? 'EKSTRAKURIKULER SMP'
-                : isSMA
-                ? 'EKSTRAKURIKULER SMA'
-                : 'KEGIATAN SANTRI & SISWA'
-            }
-            subtitle={
-              isSMA
-                ? 'Wadah eksplorasi minat bakat, riset ilmiah (KIR), kepemimpinan OSIS & MPK, olimpiade sains, olahraga prestasi, seni Islam, dan bahasa asing siswa SMA Cendekia Amanah.'
-                : isSMP
-                ? 'Wadah eksplorasi potensi bakat, kepanduan pramuka, riset sains & robotika, seni Islam, dan kebugaran jasmani siswa SMP Cendekia Amanah.'
-                : 'Keseimbangan antara rutinitas ibadah, eksplorasi akademik, dan pengembangan bakat kepemimpinan.'
-            }
-            centered
-          />
+      {/* 6. Kegiatan Santri / Ekstrakurikuler (Not shown for MDTA) */}
+      {!isDiniyah && (
+        <>
+          <div id="kegiatan-santri" className="scroll-mt-24" />
+          <div id="ekstrakurikuler" className="scroll-mt-24" />
+          <section id="kegiatan" className="scroll-mt-24">
+            <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-8">
+              <SectionHeader
+                badge={isSMP || isSMA ? 'Bakat & Minat Siswa' : 'Aktivitas Keseharian'}
+                title={
+                  isPesantren
+                    ? 'KEGIATAN SANTRI PESANTREN'
+                    : isSMP
+                    ? 'EKSTRAKURIKULER SMP'
+                    : isSMA
+                    ? 'EKSTRAKURIKULER SMA'
+                    : 'KEGIATAN SANTRI & SISWA'
+                }
+                subtitle={
+                  isSMA
+                    ? 'Wadah eksplorasi minat bakat, riset ilmiah (KIR), kepemimpinan OSIS & MPK, olimpiade sains, olahraga prestasi, seni Islam, dan bahasa asing siswa SMA Cendekia Amanah.'
+                    : isSMP
+                    ? 'Wadah eksplorasi potensi bakat, kepanduan pramuka, riset sains & robotika, seni Islam, dan kebugaran jasmani siswa SMP Cendekia Amanah.'
+                    : 'Keseimbangan antara rutinitas ibadah, eksplorasi akademik, dan pengembangan bakat kepemimpinan.'
+                }
+                centered
+              />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {unit.activities.map((act) => (
-              <div
-                key={act.id}
-                className="bg-white p-5 rounded-2xl border border-[#DDE6F1] shadow-xs hover-lift space-y-2"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-[#FDE8E9] text-[#D8232A] flex items-center justify-center shrink-0">
-                    <CheckCircle2 className="w-4 h-4" />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {unit.activities.map((act) => (
+                  <div
+                    key={act.id}
+                    className="bg-white p-5 rounded-2xl border border-[#DDE6F1] shadow-xs hover-lift space-y-2"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-full bg-[#FDE8E9] text-[#D8232A] flex items-center justify-center shrink-0">
+                        <CheckCircle2 className="w-4 h-4" />
+                      </div>
+                      <h3 className="text-sm font-bold text-[#0B2F6B] leading-snug">
+                        {act.title}
+                      </h3>
+                    </div>
+                    <p className="text-xs text-[#5C6B7D] leading-relaxed pl-9">
+                      {act.description}
+                    </p>
                   </div>
-                  <h3 className="text-sm font-bold text-[#0B2F6B] leading-snug">
-                    {act.title}
-                  </h3>
-                </div>
-                <p className="text-xs text-[#5C6B7D] leading-relaxed pl-9">
-                  {act.description}
-                </p>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+          </section>
+        </>
+      )}
 
       {/* 7. Kalender Akademik 1 Semester (Khusus Unit SMP & SMA) */}
       {(isSMP || isSMA) && <KalenderAkademikSection unitCode={unit.id} initialAgendas={agendas} />}
