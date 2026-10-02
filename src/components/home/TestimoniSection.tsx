@@ -8,12 +8,12 @@ import { Testimonial } from '@/types';
 
 const defaultTokoh: Testimonial = {
   id: 'tokoh-default',
-  author: 'K.H. Miftachul Achyar',
+  author: 'KH. Miftachul Achyar',
   role: "Rais 'Aam Pengurus Besar Nahdlatul Ulama (PBNU)",
   category: 'Tokoh',
   content:
     'Waduh, ini pesantren ini tanpa didoakan saja sudah sedemikian pesatnya. Nah, kalau didoakan, habis semua yang lain! Pesantren Cendekia Amanah adalah ikhtiar nyata memadukan ilmu agama, adab kepesantrenan, dan sains modern untuk mencetak generasi ulama intelektual.',
-  avatar: '/uploads/guru/_dsc3403-jpg-1790912451361.jpg',
+  avatar: '/uploads/guru/miftachul_akhyar-1790912556633.jpg',
   rating: 5
 };
 
@@ -45,7 +45,7 @@ const defaultUmum: Testimonial[] = [
     category: 'Tokoh Pendidikan',
     content:
       'Cendekia Amanah adalah lembaga pendidikan Islam terpadu yang memadukan kedalaman spiritualitas kepesantrenan dengan kecerdasan sains modern. Sangat layak menjadi teladan dan rujukan umat.',
-    avatar: '/uploads/guru/guru7.png',
+    avatar: '/uploads/guru/kh-nasarudin-1790912662845.jpg',
     rating: 5
   }
 ];
@@ -76,62 +76,68 @@ export default async function TestimoniSection() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          {/* Box Besar Sebelah Kiri - Kategori TOKOH */}
+          {/* Box Besar Sebelah Kiri - Kategori TOKOH (Highlight dengan Foto Besar) */}
           <div className="lg:col-span-5 flex flex-col">
-            <div className="bg-gradient-to-br from-[#07214E] via-[#0B2F6B] to-[#123D8A] text-white rounded-3xl p-7 sm:p-9 border border-[#1E4A96]/60 shadow-md relative overflow-hidden flex flex-col justify-between h-full group hover:shadow-xl transition-all">
+            <div className="bg-gradient-to-br from-[#07214E] via-[#0B2F6B] to-[#123D8A] text-white rounded-3xl p-6 sm:p-8 border border-[#1E4A96]/60 shadow-lg relative overflow-hidden flex flex-col justify-between h-full group hover:shadow-2xl transition-all">
               {/* Decorative Background Elements */}
-              <Quote className="w-28 h-28 text-white/5 absolute top-6 right-6 pointer-events-none -rotate-6" />
-              <div className="absolute top-0 right-0 w-64 h-64 bg-radial from-blue-400/10 to-transparent pointer-events-none" />
+              <Quote className="w-32 h-32 text-white/5 absolute -bottom-6 -right-6 pointer-events-none -rotate-12" />
+              <div className="absolute top-0 right-0 w-72 h-72 bg-radial from-[#F0BD28]/10 via-blue-400/10 to-transparent pointer-events-none" />
 
-              <div className="space-y-6 relative z-10">
-                {/* Header Tag Tokoh */}
-                <div className="flex items-center justify-between gap-3">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-[#D8232A] text-white shadow-xs">
-                    <Award className="w-3.5 h-3.5 text-[#F0BD28]" />
-                    <span>Tokoh Nasional</span>
-                  </span>
+              {/* 1. Header Bar: Tokoh Nasional badge & Stars */}
+              <div className="flex items-center justify-between gap-3 relative z-10">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-[#D8232A] text-white shadow-xs">
+                  <Award className="w-3.5 h-3.5 text-[#F0BD28]" />
+                  <span>Tokoh Nasional</span>
+                </span>
 
-                  {/* Stars */}
-                  <div className="flex items-center gap-1 text-[#F0BD28]">
-                    {[...Array(tokoh.rating || 5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#F0BD28]" />
-                    ))}
-                  </div>
+                <div className="flex items-center gap-1 text-[#F0BD28]">
+                  {[...Array(tokoh.rating || 5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-[#F0BD28]" />
+                  ))}
                 </div>
-
-                {/* Big Quote */}
-                <blockquote className="space-y-2">
-                  <p className="text-base sm:text-lg lg:text-xl font-medium leading-relaxed italic text-white/95">
-                    &ldquo;{tokoh.content}&rdquo;
-                  </p>
-                </blockquote>
               </div>
 
-              {/* Tokoh Author Info */}
-              <div className="pt-6 mt-6 border-t border-white/15 flex items-center gap-4 relative z-10">
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-white/10 border-2 border-white/30 shadow-md shrink-0">
-                  <Image
-                    src={getUploadUrl(tokoh.avatar)}
-                    alt={tokoh.author}
-                    fill
-                    className="object-cover object-top"
-                    sizes="80px"
-                  />
-                </div>
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5">
-                    <h3 className="text-base sm:text-lg font-bold text-white leading-tight">
-                      {tokoh.author}
-                    </h3>
-                    <CheckCircle2 className="w-4 h-4 text-[#38BDF8] shrink-0" />
+              {/* 2. Highlight Showcase: Foto Besar & Identitas Tokoh */}
+              <div className="flex flex-col items-center text-center my-auto py-5 relative z-10">
+                <div className="relative group/photo mb-4">
+                  {/* Glowing Aura Effect */}
+                  <div className="absolute -inset-2 bg-gradient-to-tr from-[#D8232A]/30 via-white/15 to-[#F0BD28]/35 rounded-3xl blur-xl opacity-80 group-hover/photo:opacity-100 transition duration-500" />
+
+                  {/* Foto Besar Framed */}
+                  <div className="relative w-44 h-56 sm:w-52 sm:h-64 rounded-3xl overflow-hidden border-3 border-white/30 shadow-2xl bg-white/10">
+                    <Image
+                      src={getUploadUrl(tokoh.avatar)}
+                      alt={tokoh.author}
+                      fill
+                      className="object-cover object-top group-hover/photo:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 640px) 176px, 208px"
+                      priority
+                    />
                   </div>
-                  <p className="text-xs text-[#FCA5A5] font-semibold mt-0.5 uppercase tracking-wide">
-                    {tokoh.category || 'Tokoh'}
-                  </p>
-                  <p className="text-xs sm:text-sm text-white/80 line-clamp-2 mt-0.5 leading-snug">
+
+                  {/* Verified Checkmark Badge */}
+                  <div className="absolute -bottom-2 -right-2 bg-[#D8232A] text-white p-1.5 rounded-full shadow-lg border-2 border-[#07214E]">
+                    <CheckCircle2 className="w-4 h-4 text-white" />
+                  </div>
+                </div>
+
+                {/* Nama & Gelar Tokoh */}
+                <div className="space-y-1 max-w-sm">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
+                    {tokoh.author}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-semibold text-[#F0BD28] tracking-wide">
                     {tokoh.role}
                   </p>
                 </div>
+              </div>
+
+              {/* 3. Quote Box Tokoh */}
+              <div className="relative z-10 bg-white/10 rounded-2xl p-4 sm:p-5 border border-white/15 backdrop-blur-xs shadow-inner">
+                <Quote className="w-6 h-6 text-[#F0BD28] mb-1.5 opacity-90" />
+                <blockquote className="text-xs sm:text-sm md:text-[15px] font-medium leading-relaxed italic text-white/95">
+                  &ldquo;{tokoh.content}&rdquo;
+                </blockquote>
               </div>
             </div>
           </div>
@@ -166,13 +172,13 @@ export default async function TestimoniSection() {
 
                 {/* Author Info */}
                 <div className="pt-3 border-t border-[#F4F7FB] flex items-center gap-3 relative z-10">
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden bg-gray-100 border border-[#DDE6F1] shrink-0">
+                  <div className="relative w-11 h-11 rounded-full overflow-hidden bg-gray-100 border border-[#DDE6F1] shrink-0">
                     <Image
                       src={getUploadUrl(item.avatar)}
                       alt={item.author}
                       fill
                       className="object-cover object-top"
-                      sizes="40px"
+                      sizes="44px"
                     />
                   </div>
                   <div className="min-w-0">

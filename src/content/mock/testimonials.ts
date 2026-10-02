@@ -8,7 +8,7 @@ export const testimonials: Testimonial[] = [
     category: 'Tokoh',
     content:
       'Waduh, ini pesantren ini tanpa didoakan saja sudah sedemikian pesatnya. Nah, kalau didoakan, habis semua yang lain! Pesantren Cendekia Amanah adalah ikhtiar nyata memadukan ilmu agama, adab kepesantrenan, dan sains modern untuk mencetak generasi ulama intelektual.',
-    avatar: '/uploads/guru/_dsc3403-jpg-1790912451361.jpg',
+    avatar: '/uploads/guru/miftachul_akhyar-1790912556633.jpg',
     rating: 5
   },
   {
