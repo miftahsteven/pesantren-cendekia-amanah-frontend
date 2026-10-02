@@ -66,7 +66,16 @@ export class ApiContentRepository implements IContentRepository {
           colorTheme: '#0B2F6B',
           features: unit.features || [],
           bulletPoints: unit.curriculumBody || [],
-          programs: unit.programs || [],
+          programs: Array.isArray(unit.programs)
+            ? unit.programs.map((p: any) => ({
+                id: p.id,
+                title: p.title,
+                description: p.description,
+                iconName: p.icon || p.iconName || 'BookOpen',
+                badge: p.badge || undefined,
+                image: p.imageUrl || p.image || undefined
+              }))
+            : [],
           facilities: unit.facilities || [],
           activities: unit.activities || [],
           achievements: Array.isArray(unit.achievements)
@@ -115,7 +124,16 @@ export class ApiContentRepository implements IContentRepository {
           colorTheme: '#0B2F6B',
           features: unit.features || [],
           bulletPoints: unit.curriculumBody || [],
-          programs: unit.programs || [],
+          programs: Array.isArray(unit.programs)
+            ? unit.programs.map((p: any) => ({
+                id: p.id,
+                title: p.title,
+                description: p.description,
+                iconName: p.icon || p.iconName || 'BookOpen',
+                badge: p.badge || undefined,
+                image: p.imageUrl || p.image || undefined
+              }))
+            : [],
           facilities: unit.facilities || [],
           activities: unit.activities || [],
           achievements: unit.achievements || [],

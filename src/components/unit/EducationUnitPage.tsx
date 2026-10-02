@@ -30,7 +30,15 @@ import {
   Building2,
   Phone,
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  Briefcase,
+  Trophy,
+  Cpu,
+  Globe,
+  Users,
+  Heart,
+  Compass,
+  Code
 } from 'lucide-react';
 import { getUploadUrl } from '@/lib/uploads';
 
@@ -63,6 +71,22 @@ export default function EducationUnitPage({ unit, organizations, agendas }: Educ
         return Scroll;
       case 'UserCheck':
         return UserCheck;
+      case 'Briefcase':
+        return Briefcase;
+      case 'Trophy':
+        return Trophy;
+      case 'Cpu':
+        return Cpu;
+      case 'Globe':
+        return Globe;
+      case 'Users':
+        return Users;
+      case 'Heart':
+        return Heart;
+      case 'Compass':
+        return Compass;
+      case 'Code':
+        return Code;
       default:
         return Sparkles;
     }
