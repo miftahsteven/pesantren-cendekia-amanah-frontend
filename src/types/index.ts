@@ -1,5 +1,12 @@
 export type UnitType = 'pesantren' | 'smp' | 'sma' | 'diniyah';
 
+export interface FoundationLeader {
+  name: string;
+  role: string;
+  title: string;
+  photoUrl: string;
+}
+
 export interface SiteConfig {
   name: string;
   tagline: string;
@@ -14,6 +21,7 @@ export interface SiteConfig {
     photoUrl: string;
     quote: string[];
   };
+  foundationLeaders?: FoundationLeader[];
 }
 
 export interface NavigationSubItem {

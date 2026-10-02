@@ -18,7 +18,21 @@ export const siteConfig: SiteConfig = {
       'Dengan perpaduan kurikulum nasional dan nilai-nilai luhur kepesantrenan, kami mendidik santri dan siswa untuk siap bersaing di kancah global tanpa kehilangan jati diri keislamannya.',
       'Semoga Allah SWT senantiasa memberikan keberkahan dan kemudahan dalam setiap langkah kita mendidik dan membimbing putra-putri terbaik bangsa.'
     ]
-  }
+  },
+  foundationLeaders: [
+    {
+      name: 'Dr. H. Agus Suprayogi, ST., M.Si',
+      role: 'Ketua Yayasan',
+      title: 'Ketua Yayasan Cendekia Amanah',
+      photoUrl: '/uploads/guru/dr-agus-suprayogi.jpg'
+    },
+    {
+      name: 'K.H. Zaiyadi, M.Pd',
+      role: 'Penjamin Mutu Pendidikan',
+      title: 'Penjamin Mutu Pendidikan Cendekia Amanah',
+      photoUrl: '/uploads/guru/kh-zaiyadi.jpg'
+    }
+  ]
 };
 
 export const socialLinks: SocialLink[] = [

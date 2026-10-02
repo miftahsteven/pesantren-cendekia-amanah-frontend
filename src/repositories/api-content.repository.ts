@@ -42,7 +42,21 @@ export class ApiContentRepository implements IContentRepository {
             title: res.setting.leaderTitle,
             photoUrl: res.setting.leaderPhotoUrl,
             quote: res.setting.leaderQuotes || []
-          }
+          },
+          foundationLeaders: [
+            {
+              name: res.setting.foundationChairName || 'Dr. H. Agus Suprayogi, ST., M.Si',
+              role: res.setting.foundationChairRole || 'Ketua Yayasan',
+              title: res.setting.foundationChairTitle || 'Ketua Yayasan Cendekia Amanah',
+              photoUrl: res.setting.foundationChairPhotoUrl || '/uploads/guru/dr-agus-suprayogi.jpg'
+            },
+            {
+              name: res.setting.foundationQualityName || 'K.H. Zaiyadi, M.Pd',
+              role: res.setting.foundationQualityRole || 'Penjamin Mutu Pendidikan',
+              title: res.setting.foundationQualityTitle || 'Penjamin Mutu Pendidikan Cendekia Amanah',
+              photoUrl: res.setting.foundationQualityPhotoUrl || '/uploads/guru/kh-zaiyadi.jpg'
+            }
+          ]
         };
       }
       return this.fallback.getSiteConfig();
