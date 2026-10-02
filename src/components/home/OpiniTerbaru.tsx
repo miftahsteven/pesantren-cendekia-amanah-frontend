@@ -11,7 +11,7 @@ export default async function OpiniTerbaru() {
   const latestOpinions = allOpinions.slice(0, 3);
 
   return (
-    <section className="py-14 sm:py-16">
+    <section className="pt-2 sm:pt-4 pb-12 sm:pb-16">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <SectionHeader
           badge="Kolom Pemikiran"

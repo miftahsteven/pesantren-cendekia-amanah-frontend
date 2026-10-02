@@ -114,7 +114,7 @@ export default async function BeritaDanAgenda() {
   const latestNews = allNews.slice(0, 6);
 
   return (
-    <section className="py-12 sm:py-16 bg-[#F4F7FB]/40">
+    <section className="pt-10 sm:pt-14 pb-3 sm:pb-4 bg-[#F4F7FB]/40">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* LEFT: BERITA TERBARU (8 cols on lg) */}
@@ -179,22 +179,13 @@ export default async function BeritaDanAgenda() {
           {/* RIGHT: AGENDA KEGIATAN (4 cols on lg) */}
           <div className="lg:col-span-4 space-y-5 flex flex-col">
             {/* Header */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <h2 className="text-xl sm:text-2xl font-black text-[#0B2F6B] tracking-tight uppercase">
-                  AGENDA KEGIATAN
-                </h2>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-[#EBF3FF] text-[#1A4FA0] border border-[#DDE6F1]">
-                  {agendas.length}
-                </span>
-              </div>
-              <Link
-                href="/kontak"
-                className="text-xs sm:text-sm font-bold text-[#1A4FA0] hover:text-[#0B2F6B] flex items-center gap-1 transition-colors"
-              >
-                <span>Lihat Semua</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+            <div className="flex items-center gap-2 h-7 sm:h-8">
+              <h2 className="text-xl sm:text-2xl font-black text-[#0B2F6B] tracking-tight uppercase">
+                AGENDA KEGIATAN
+              </h2>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-[#EBF3FF] text-[#1A4FA0] border border-[#DDE6F1]">
+                {agendas.length}
+              </span>
             </div>
 
             {/* Agenda Card List with internal scroll container matching news height */}
