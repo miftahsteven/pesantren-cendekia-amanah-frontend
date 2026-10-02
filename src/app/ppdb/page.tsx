@@ -8,11 +8,9 @@ import {
   Sparkles, 
   MessageCircleQuestion, 
   ShieldCheck, 
-  Calendar,
-  BookOpen
+  Calendar
 } from 'lucide-react';
 import Breadcrumb from '@/components/common/Breadcrumb';
-import PPDBWizard from '@/components/ppdb/PPDBWizard';
 import GlobalCTA from '@/components/layout/GlobalCTA';
 import { contentRepo } from '@/repositories/content.repository';
 import { PpdbLink } from '@/types';
@@ -187,23 +185,6 @@ export default async function PPDBPage() {
           </div>
         </section>
       )}
-
-      {/* Panduan & Formulir Alternatif Section */}
-      <section className="max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="mb-6">
-          <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-gray-500 uppercase mb-1">
-            <BookOpen className="w-4 h-4 text-[#0B2F6B]" />
-            PANDUAN & ALUR PENDAFTARAN
-          </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-[#0B2F6B]">
-            Alur Pendaftaran Santri Baru
-          </h2>
-          <p className="text-xs sm:text-sm text-gray-600 mt-1">
-            Ikuti 3 tahapan mudah proses seleksi dan administrasi di Pesantren Cendekia Amanah.
-          </p>
-        </div>
-        <PPDBWizard />
-      </section>
 
       {/* Global Callout */}
       <GlobalCTA />
